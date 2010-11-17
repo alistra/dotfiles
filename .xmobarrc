@@ -8,8 +8,9 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
                     , Run Swap [] 10
                     , Run Date "%a %d/%m/%y %H:%M:%S" "date" 1
 		    , Run Com "hostname" [] "hostname" 36000 
+		    , Run Com "uptime|tr ',' ' '|cut -d ' ' -f 4,5" [] "uptime" 36000 
 		    ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ <fc=white>%cpu%</fc> <fc=gray>%memory% * %swap%</fc> <fc=gray>%hostname%</fc> <fc=white>%date%</fc>"
+       , template = "%StdinReader% }{ <fc=white>%cpu%</fc> <fc=gray>%memory% * %swap%</fc> <fc=white>Up: %uptime%</fc> <fc=gray>%hostname%</fc> <fc=white>%date%</fc>"
        }
