@@ -1,0 +1,15 @@
+Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
+       , bgColor = "black"
+       , fgColor = "grey"
+       , position = TopW L 90
+       , commands = [ Run StdinReader
+       	            , Run Cpu [] 10
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run Swap [] 10
+                    , Run Date "%a %d/%m/%y %H:%M:%S" "date" 1
+		    , Run Com "hostname" [] "hostname" 36000 
+		    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader% }{ <fc=white>%cpu%</fc> <fc=gray>%memory% * %swap%</fc> <fc=gray>%hostname%</fc> <fc=white>%date%</fc>"
+       }

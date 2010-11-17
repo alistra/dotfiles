@@ -1,0 +1,18 @@
+urxvt*background: black
+urxvt*foreground: gray
+urxvt*fading: 10
+urxvt*scrollBar: false
+urxvt*font: xft:DejaVu Sans Mono:pixelsize=15
+urxvt*transparent: yes
+urxvt*shading: 10
+urxvt.urgentOnBell: true
+urxvt.cursorBlink: false
+urxvt.saveLines: 65535
+urxvt.perl-ext-common: default,matcher
+urxvt.urlLauncher: chromium
+urxvt.matcher.button: 2
+urxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
+urxvt.termName: rxvt
+urxvt.scrollTtyOutput: false
+urxvt.scrollWithBuffer: false
+urxvt.scrollTtyKeypress: true
