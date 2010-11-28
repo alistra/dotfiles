@@ -27,6 +27,8 @@ set header_cache =~/.mutt/cache/headers
 set message_cachedir =~/.mutt/cache/bodies
 set certificate_file =~/.mutt/certificates
 unset imap_passive
+set alias_file=~/.mutt/aliases
+source ~/.mutt/aliases
 set print=no
 set from="balicki.aleksander@gmail.com"        
 set realname="Aleksander Balicki"

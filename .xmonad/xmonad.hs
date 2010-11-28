@@ -224,7 +224,6 @@ myLayout = avoidStruts $ smartBorders $ tiled ||| Mirror tiled ||| Full
 myManageHook = manageDocks <+> composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Ktorrent"       --> doShift "9"
-    , className =? "ktorrent"       --> doShift "9"
     , className =? "Gimp"           --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]

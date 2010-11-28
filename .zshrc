@@ -108,9 +108,10 @@ bindkey '^S' history-incremental-search-forward
 #}}}
 #{{{Shell functions
 def(){ wn "$*" -over } 
-wiki(){ qry=`echo $@|sed 's/ /_/gi'`; dig +short txt "$qry.wp.dg.cx" }
 loop(){ while true; do $@; done }
-proxy()='ssh -f -N -D31337 "$*"'
+proxy(){ssh -f -N -D31337 "$*"}
+soundssh() {dd if=/dev/dsp | ssh -c arcfour -C $* dd of=/dev/dsp}
+
 #}}}
 #{{{Aliases
 alias ls='ls --color=auto -h'
