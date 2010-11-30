@@ -149,7 +149,7 @@ alias cwbench="awk '\$4~/alistra/{s+=\$2}\$4~/dude/{s-=\$2}END{print s}'"
 #{{{ Tmux Init
 if [ "$ZSHINIT" = "irc" ]
 then
-	ssh -t af 'ZSHINIT=irc zsh'
+	ssh -t ts ssh -t af 'ZSHINIT=irc zsh'
 elif [ "$ZSHINIT" = "rails" ]
 then
 	Imgur-Directory-Listing/script/server
