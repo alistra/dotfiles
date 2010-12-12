@@ -132,7 +132,7 @@ alias rcp='cp -r'
 alias rscp='scp -r'
 alias rgrep='grep -r'
 alias open='xdg-open'
-alias qiv='qiv -t'
+alias qiv='qiv -tm'
 
 alias scpresume="rsync --partial --progress --rsh=ssh"
 alias du1='du -h --max-depth=1'
@@ -149,7 +149,7 @@ alias cwbench="awk '\$4~/alistra/{s+=\$2}\$4~/dude/{s-=\$2}END{print s}'"
 #{{{ Tmux Init
 if [ "$ZSHINIT" = "irc" ]
 then
-	ssh -t ts ssh -t af 'ZSHINIT=irc zsh'
+	autossh -M 0 -t af 'ZSHINIT=irc zsh'
 elif [ "$ZSHINIT" = "rails" ]
 then
 	Imgur-Directory-Listing/script/server
