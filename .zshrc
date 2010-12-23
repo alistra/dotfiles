@@ -106,19 +106,13 @@ bindkey "\eOc" forward-word
 bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
 #}}}
-#{{{Shell functions
-def(){ wn "$*" -over } 
-loop(){ while true; do $@; done }
-proxy(){ssh -f -N -D31337 "$*"}
-soundssh() {dd if=/dev/dsp | ssh -c arcfour -C $* dd of=/dev/dsp}
-
-#}}}
 #{{{Aliases
 alias ls='ls --color=auto -h'
 alias grep='nocorrect grep -i --color'
 alias egrep='nocorrect egrep -i --color'
 alias du='du -h'
 alias df='df -h'
+alias ex='rlwrap ex'
 alias mplayer='mplayer -softvol -softvol-max 800 -volstep 1'
 alias mv='nocorrect mv -i'
 alias cp='nocorrect cp -i'
@@ -146,6 +140,13 @@ alias sc='wine ~/.wine/drive_c/Program\ Files/Starcraft/StarCraft.exe -window'
 alias cwbench="awk '\$4~/alistra/{s+=\$2}\$4~/dude/{s-=\$2}END{print s}'"
 
 #}}}
+#{{{Shell functions
+def(){ wn "$*" -over } 
+loop(){ while true; do $@; done }
+proxy(){ssh -f -N -D31337 "$*"}
+soundssh() {dd if=/dev/dsp | ssh -c arcfour -C $* dd of=/dev/dsp}
+todo(){ grep "$*" .todo}
+#}}}
 #{{{ Tmux Init
 if [ "$ZSHINIT" = "irc" ]
 then
@@ -166,9 +167,6 @@ then
 elif [ "$ZSHINIT" = "mail" ]
 then
 	mutt
-elif [ "$ZSHINIT" = "rss" ]
-then
-	newsbeuter
 elif [ "$ZSHINIT" = "vim" ]
 then
 	vim $VIMFILE

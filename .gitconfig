@@ -1,0 +1,15 @@
+[user]
+	name = Aleksander Balicki
+	email = balicki.aleksander@gmail.com
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+	showbranch = auto
+	ui = auto
+	pager = true
+[merge]
+[diff]
+[core]
+	editor = vim

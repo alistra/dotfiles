@@ -93,6 +93,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     
     , ((modMask,	       xK_c     ), kill)
 
+    , ((modMask,               xK_y     ), spawn "xclip -o selection p | xclip -i -selection c; xclip -o -selection c | xclip -i -selection p") -- p -> c
+
+    , ((modMask,               xK_p     ), spawn "xdotool type --clearmodifiers --delay 0 -- `xclip -o -selection c`")
+
      -- Rotate through the available layout algorithms
     , ((modMask,               xK_space ), sendMessage NextLayout)
 

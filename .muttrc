@@ -51,7 +51,6 @@ set charset="utf-8"
 set noconfirmappend
 unset confirmcreate
 set fcc_attach
-
 #}}}
 #{{{Formats
 set status_format=" %r %b %f %n      Del %d      Msgs %m %l %> (%P)"
