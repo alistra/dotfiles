@@ -13,6 +13,7 @@ export SAVEHIST=$HISTSIZE
 export WORDCHARS='*?_-[]~=&;!#$%^(){}<>'
 export EDITOR="vim"
 export BROWSER="chromium"
+export PATH="$PATH:$HOME/bin"
 #}}}
 #{{{ Options
 setopt correctall
@@ -116,6 +117,7 @@ alias ex='rlwrap ex'
 alias mplayer='mplayer -softvol -softvol-max 800 -volstep 1'
 alias mv='nocorrect mv -i'
 alias cp='nocorrect cp -i'
+alias vimgolf='nocorrect vimgolf'
 alias mkdir='nocorrect mkdir'
 alias git='nocorrect git'
 alias rm='nocorrect rm'
@@ -127,12 +129,15 @@ alias rscp='scp -r'
 alias rgrep='grep -r'
 alias open='xdg-open'
 alias qiv='qiv -tm'
+alias v='vim'
+alias i='tmux attach -t irc'
+alias M='tmux attach -t Music'
 
 alias scpresume="rsync --partial --progress --rsh=ssh"
 alias du1='du -h --max-depth=1'
 alias fresh='ls -lrt'
 alias noemptylines='grep -v "^$"'
-alias nocomments='grep -v "^#"'
+alias nocomments='grep -v "^[\t ]*#"'
 
 alias thps3='cd ~/.wine/drive_c/Program\ Files/Activision/Thps3 && wine Skate3.exe && cd -'
 alias dow='cd /windows/c/Program\ Files/THQ/Dawn\ of\ War\ -\ Dark\ Crusade/ && wine DarkCrusade.exe 1>/dev/null 2>/dev/null && cd -'
@@ -141,11 +146,12 @@ alias cwbench="awk '\$4~/alistra/{s+=\$2}\$4~/dude/{s-=\$2}END{print s}'"
 
 #}}}
 #{{{Shell functions
-def(){ wn "$*" -over } 
-loop(){ while true; do $@; done }
+def(){wn "$*" -over} 
+loop(){while true; do $@; done}
 proxy(){ssh -f -N -D31337 "$*"}
-soundssh() {dd if=/dev/dsp | ssh -c arcfour -C $* dd of=/dev/dsp}
-todo(){ grep "$*" .todo}
+soundssh(){dd if=/dev/dsp | ssh -c arcfour -C $* dd of=/dev/dsp}
+todo(){grep "$*" .todo}
+todoadd(){echo "$*" >> .todo}
 #}}}
 #{{{ Tmux Init
 if [ "$ZSHINIT" = "irc" ]

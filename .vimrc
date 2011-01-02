@@ -21,13 +21,11 @@ set commentstring="%s"
 set undofile
 set undodir=~/.vim/undo
 colorscheme darkblue 
-
-autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab|set sts=4 
+autocmd FileType python set tabstop=2|set shiftwidth=2|set expandtab|set sts=2 
 autocmd FileType ruby set tabstop=2|set shiftwidth=2|set expandtab|set sts=2 
-
+autocmd FileType c set tabstop=4|set shiftwidth=4|set expandtab|set sts=4 
 filetype plugin on
 filetype indent on
-
 "Zdalne sesje - kolor
 if &term == "xterm-color"
 	set t_kb
