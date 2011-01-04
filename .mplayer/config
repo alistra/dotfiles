@@ -1,0 +1,6 @@
+# Write your default config options here!
+zoom=yes
+ontop=yes
+vf=screenshot
+lavdopts=threads=8
+heartbeat-cmd="xscreensaver-command -deactivate"
