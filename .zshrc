@@ -107,7 +107,7 @@ bindkey "\eOc" forward-word
 bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
 #}}}
-#{{{Aliases
+#{{{ Aliases
 alias ls='ls --color=auto -h'
 alias grep='nocorrect grep -i --color'
 alias egrep='nocorrect egrep -i --color'
@@ -117,7 +117,6 @@ alias ex='rlwrap ex'
 alias mplayer='mplayer -softvol -softvol-max 800 -volstep 1'
 alias mv='nocorrect mv -i'
 alias cp='nocorrect cp -i'
-alias vimgolf='nocorrect vimgolf'
 alias mkdir='nocorrect mkdir'
 alias git='nocorrect git'
 alias rm='nocorrect rm'
@@ -132,20 +131,26 @@ alias qiv='qiv -tm'
 alias v='vim'
 alias i='tmux attach -t irc'
 alias M='tmux attach -t Music'
-
 alias scpresume="rsync --partial --progress --rsh=ssh"
 alias du1='du -h --max-depth=1'
 alias fresh='ls -lrt'
 alias noemptylines='grep -v "^$"'
 alias nocomments='grep -v "^[\t ]*#"'
-
-alias thps3='cd ~/.wine/drive_c/Program\ Files/Activision/Thps3 && wine Skate3.exe && cd -'
-alias dow='cd /windows/c/Program\ Files/THQ/Dawn\ of\ War\ -\ Dark\ Crusade/ && wine DarkCrusade.exe 1>/dev/null 2>/dev/null && cd -'
-alias sc='wine ~/.wine/drive_c/Program\ Files/Starcraft/StarCraft.exe -window'
-alias cwbench="awk '\$4~/alistra/{s+=\$2}\$4~/dude/{s-=\$2}END{print s}'"
-
+if [ `hostname` = "adeli" ]
+then
+	alias blueoff='echo 0 > /sys/devices/platform/thinkpad_acpi/bluetooth_enable'
+	alias blueon='echo 1 > /sys/devices/platform/thinkpad_acpi/bluetooth_enable'
+	alias hibernate='su -c pm-hibernate'
+	alias suspend='su -c pm-suspend'
+elif [ `hostname` = "bialobrewy" ]
+then
+	alias thps3='cd ~/.wine/drive_c/Program\ Files/Activision/Thps3 && wine Skate3.exe && cd -'
+	alias dow='cd /windows/c/Program\ Files/THQ/Dawn\ of\ War\ -\ Dark\ Crusade/ && wine DarkCrusade.exe 1>/dev/null 2>/dev/null && cd -'
+	alias sc='wine ~/.wine/drive_c/Program\ Files/Starcraft/StarCraft.exe -window'
+	alias cwbench="awk '\$4~/alistra/{s+=\$2}\$4~/dude/{s-=\$2}END{print s}'"
+fi
 #}}}
-#{{{Shell functions
+#{{{ Shell functions
 def(){wn "$*" -over} 
 loop(){while true; do $@; done}
 proxy(){ssh -f -N -D31337 "$*"}
@@ -154,29 +159,42 @@ todo(){grep "$*" .todo}
 todoadd(){echo "$*" >> .todo}
 #}}}
 #{{{ Tmux Init
-if [ "$ZSHINIT" = "irc" ]
+if [ `hostname` = "adeli" ]
 then
-	autossh -M 0 -t af 'ZSHINIT=irc zsh'
-elif [ "$ZSHINIT" = "rails" ]
+	if [ "$ZSHINIT" = "dudemusic" ]
+	then
+		cd ~/mp3
+	fi
+elif [ `hostname` = "bialobrewy" ] 
 then
-	Imgur-Directory-Listing/script/server
-elif [ "$ZSHINIT" = "seriale" ]
-then
-	cd /torrents
-elif [ "$ZSHINIT" = "current" ]
-then
-	cd /torrents
-	fresh
-elif [ "$ZSHINIT" = "music" ]
-then
-	cd /torrents/music
-elif [ "$ZSHINIT" = "mail" ]
+	if [ "$ZSHINIT" = "Imgur" ]
+	then
+		Imgur-Directory-Listing/script/server
+	elif ["$ZSHINIT" = "seriale" ]
+	then
+		cd /torrents
+	elif [ `hostname` = "bialobrewy" && "$ZSHINIT" = "current" ]
+	then
+		cd /torrents
+		fresh
+	elif [ `hostname` = "bialobrewy" && "$ZSHINIT" = "music" ]
+	then
+		cd /torrents/music
+	fi
+fi
+
+if [ "$ZSHINIT" = "mail" ]
 then
 	mutt
 elif [ "$ZSHINIT" = "vim" ]
 then
 	vim $VIMFILE
 	unset VIMFILE
+elif [ "$ZSHINIT" = "irc" ]
+then
+	AUTOSSH_POLL=60
+	autossh -M 0 -t af 'ZSHINIT=irc zsh'
+	unset AUTOSSH_POLL
 fi
 unset ZSHINIT
 #}}}
