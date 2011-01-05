@@ -148,6 +148,8 @@ then
 	alias dow='cd /windows/c/Program\ Files/THQ/Dawn\ of\ War\ -\ Dark\ Crusade/ && wine DarkCrusade.exe 1>/dev/null 2>/dev/null && cd -'
 	alias sc='wine ~/.wine/drive_c/Program\ Files/Starcraft/StarCraft.exe -window'
 	alias cwbench="awk '\$4~/alistra/{s+=\$2}\$4~/dude/{s-=\$2}END{print s}'"
+	alias s='tmux attach -t seriale'
+	alias c='tmux attach -t current'
 fi
 #}}}
 #{{{ Shell functions
@@ -170,14 +172,14 @@ then
 	if [ "$ZSHINIT" = "Imgur" ]
 	then
 		Imgur-Directory-Listing/script/server
-	elif ["$ZSHINIT" = "seriale" ]
+	elif [ "$ZSHINIT" = "seriale" ]
 	then
 		cd /torrents
-	elif [ `hostname` = "bialobrewy" && "$ZSHINIT" = "current" ]
+	elif [ "$ZSHINIT" = "current" ]
 	then
 		cd /torrents
 		fresh
-	elif [ `hostname` = "bialobrewy" && "$ZSHINIT" = "music" ]
+	elif [ "$ZSHINIT" = "music" ]
 	then
 		cd /torrents/music
 	fi
