@@ -3,7 +3,6 @@ urxvt*foreground: gray
 urxvt*fading: 10
 urxvt*scrollBar: false
 urxvt*font: xft:DejaVu Sans Mono:pixelsize=15
-#urxvt*font:  -misc-cmr10-medium-r-normal--13-0-0-0-p-0-iso10646-1
 urxvt*transparent: yes
 urxvt*shading: 10
 urxvt.urgentOnBell: true
