@@ -5,7 +5,7 @@
 trayer --edge top --align right --margin 1280 --SetDockType true --SetPartialStrut true --expand true --width 5 --transparent true --tint 0x191970 --height 12 &
 
 # Wallpaper
-qiv -y ~/wallpapers/Dragon.png &
+qiv -y ~/.wallpaper &
 
 # Numlock
 numlockx &
