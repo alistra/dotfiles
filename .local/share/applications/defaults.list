@@ -1,0 +1,11 @@
+[Default Applications]
+application/pdf=xpdf.desktop
+application/postscript=xps.desktop
+text/plain=vim.desktop
+text/html=chromium-chromium.desktop
+application/octet-stream=vim.desktop
+image/jpeg=qiv.desktop
+image/png=qiv.desktop
+application/vnd.oasis.opendocument.spreadsheet=openoffice.org-calc.desktop
+text/x-java=vim.desktop
+application/x-bittorrent=kde4/ktorrent.desktop
