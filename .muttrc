@@ -21,6 +21,8 @@ set folder="imaps://wszystkie.inne.byly.zajete@imap.gmail.com"
 mailboxes "=INBOX"
 unset folder
 macro index,pager H "<save-message>=INBOX<enter>"           "mark message as ham"
+set smtp_url="smtps://balicki.aleksander@smtp.gmail.com"
+set record="/dev/null"
 #}}}
 #{{{Settings
 set header_cache =~/.mutt/cache/headers
