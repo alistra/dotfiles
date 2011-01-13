@@ -9,3 +9,4 @@ image/png=qiv.desktop
 application/vnd.oasis.opendocument.spreadsheet=openoffice.org-calc.desktop
 text/x-java=vim.desktop
 application/x-bittorrent=kde4/ktorrent.desktop
+audio/mpeg=mplayer.desktop
