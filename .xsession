@@ -1,6 +1,3 @@
-# Resources
-# xrdb -merge .Xresources
-
 # Tray
 trayer --edge top --align right --margin 1280 --SetDockType true --SetPartialStrut true --expand true --width 5 --transparent true --tint 0x191970 --height 12 &
 
@@ -17,7 +14,9 @@ xset r rate 300 25 &
 setxkbmap -layout pl
 
 # Applications
-ktorrent &
+if [ "`hostname`" == bialobrewy ] ; then
+	ktorrent &
+fi
 kwalletd &
 xscreensaver -no-splash &
 tmux-init &
