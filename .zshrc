@@ -190,6 +190,59 @@ fi
 if [ "$ZSHINIT" = "mail" ]
 then
 	mutt
+elif [ "$ZSHINIT" = "mutt-compose" ]
+then
+	local MAILTO NEWMAILTO TO CC BCC SUBJECT BODY ATTACH MUTTPARAMS
+	MAILTO=$(echo "$MUTTDATA" | sed 's/^mailto://')
+	echo "$MAILTO" | grep -qs "^?"
+	if [ "$?" = "0" ] ; then
+	MAILTO=$(echo "$MAILTO" | sed 's/^?//')
+	else
+	MAILTO=$(echo "$MAILTO" | sed 's/^/to=/' | sed 's/?/\&/')
+	fi
+	
+	MAILTO=$(echo "$MAILTO" | sed 's/&/\n/g')
+	TO=$(echo "$MAILTO" | grep '^to=' | sed 's/^to=//' | awk '{ printf "%s,",$0 }')
+	CC=$(echo "$MAILTO" | grep '^cc=' | sed 's/^cc=//' | awk '{ printf "%s,",$0 }')
+	BCC=$(echo "$MAILTO" | grep '^bcc=' | sed 's/^bcc=//' | awk '{ printf "%s,",$0 }')
+	SUBJECT=$(echo "$MAILTO" | grep '^subject=' | tail -n 1)
+	BODY=$(echo "$MAILTO" | grep '^body=' | tail -n 1)
+	ATTACH=$(echo "$MAILTO" | sed 's/^attach=/\n\nfile:\/\//g' | awk '/^file:/ { printf "%s,",$0 }')
+	MUTTPARAMS=""
+
+	SUBJECT=`echo $SUBJECT | sed -e 's/%20/ /gi'| sed -e 's/subject=//'`
+	BODY=`echo $BODY|sed -e 's/%20/ /gi'|sed -e 's/body=//'`
+	CC=`echo $CC|sed -e 's/%20/ /gi'|sed -e 's/cc=//'`
+	BCC=`echo $BCC|sed -e 's/%20/ /gi'|sed -e 's/bcc=//'`
+	ATTACH=`echo $ATTACH|sed -e 's/%20/ /gi'|sed -e 's/attach=//'`
+	TO=`echo $TO|sed -e 's/%20/ /gi'| sed -e 's/,/ /gi'`
+	
+	if [ "$SUBJECT" != "" ] ; then
+		MUTTPARAMS="$MUTTPARAMS -s \"$SUBJECT\""
+	fi
+	if [ "$BODY" != "" ] ; then
+		BODYFILE=`mktemp /tmp/mutt.compose.XXXX`
+		echo $BODY|sed -e 's/%0A/\n/gi' > $BODYFILE
+		cat $BODYFILE
+		MUTTPARAMS="$MUTTPARAMS -i $BODYFILE"
+	fi	
+	if [ "$CC" != "" ] ; then
+		MUTTPARAMS="$MUTTPARAMS -c \"$CC\""
+	fi
+	if [ "$BCC" != "" ] ; then
+		MUTTPARAMS="$MUTTPARAMS -b \"$BCC\""
+	fi
+	if [ "$ATTACH" != "" ] ; then
+		MUTTPARAMS="$MUTTPARAMS -a \"$ATTACH\""
+	fi
+	
+	MUTTPARAMS="$MUTTPARAMS -- $TO"
+	
+	eval "mutt $MUTTPARAMS"
+	unset MUTTDATA
+	if [ "$BODYFILE" != "" ] ; then
+		rm $BODYFILE
+	fi
 elif [ "$ZSHINIT" = "vim" ]
 then
 	vim $VIMFILE
