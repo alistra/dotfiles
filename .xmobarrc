@@ -9,8 +9,10 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
                     , Run Date "%a %d/%m/%y %H:%M:%S" "date" 1
 		    , Run Com "hostname" [] "hostname" 36000 
 		    , Run Com "uptime|tr ',' ' '|cut -d ' ' -f 4,5" [] "uptime" 3600
+		    , Run Com "ips || echo \"No network\"" [] "ips" 60
+		    , Run Com "acpitool | cut -d ' ' -f 12 | egrep -v '^$' || echo \"charged\"" [] "battery" 60
 		    ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ <fc=white>%cpu%</fc> <fc=gray>%memory% * %swap%</fc> <fc=white>Up: %uptime%</fc> <fc=gray>%hostname%</fc> <fc=white>%date%</fc>"
+       , template = "%StdinReader% }{ <fc=white>%cpu%</fc> <fc=gray>%memory% * %swap%</fc> <fc=white>(%battery%)</fc> <fc=gray>%hostname%</fc> <fc=white>%date%</fc> <fc=gray>%ips%</fc>"
        }
