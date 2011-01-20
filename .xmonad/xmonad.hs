@@ -28,7 +28,7 @@ myBrowser	= "chromium"
 
 -- Duck Duck Go search engine
 --
-duckduckgo = searchEngine "duckduckgo" "https://duckduckgo.com/?q="
+duckduckgo = intelligent $ searchEngine "duckduckgo" "https://duckduckgo.com/?q="
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
