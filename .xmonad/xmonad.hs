@@ -92,11 +92,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     
     , ((0,                     xK_Print ), spawn "scrot")
  
-    , ((0,	               xf86AudioLowerVolume ), spawn "amixer -c 0 -- sset Master playback 5%- unmute")
+    , ((0,	               xf86AudioLowerVolume ), spawn "amixer -c 0 -- sset Master playback 5%- unmute&")
     
-    , ((0,	               xf86AudioRaiseVolume ), spawn "amixer -c 0 -- sset Master playback 5%+ unmute")
+    , ((0,	               xf86AudioRaiseVolume ), spawn "amixer -c 0 -- sset Master playback 5%+ unmute&")
 
-    , ((0,	               xf86AudioMute ), spawn "amixer -c 0 -- sset Master mute")
+    , ((0,	               xf86AudioMute ), spawn "amixer -c 0 -- sset Master mute&")
 
     -- close focused window 
     , ((modMask,               xK_c     ), kill)
