@@ -26,6 +26,10 @@ myBorderWidth   = 1
 --
 myBrowser	= "chromium"
 
+-- Duck Duck Go search engine
+--
+duckduckgo = searchEngine "duckduckgo" "https://duckduckgo.com/?q="
+
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
 -- ("right alt"), which does not conflict with emacs keybindings. The
@@ -80,7 +84,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     , ((0,                     xK_F4    ), spawn myBrowser)
 
-    , ((0,		       xK_F6    ), promptSearchBrowser greenXPConfig myBrowser google)
+    , ((0,		       xK_F6    ), promptSearchBrowser greenXPConfig myBrowser duckduckgo)
     
     , ((0,		       xK_F7    ), promptSearchBrowser greenXPConfig myBrowser wikipedia)
 

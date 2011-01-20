@@ -3,4 +3,4 @@ zoom=yes
 ontop=yes
 vf=screenshot
 lavdopts=threads=8
-heartbeat-cmd="xscreensaver-command -deactivate"
+heartbeat-cmd="xscreensaver-command -deactivate > /dev/null"

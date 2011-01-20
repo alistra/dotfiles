@@ -1,0 +1,4 @@
+aggressive-networking
+cachedir ~/.tarsnap/cache
+humanize-numbers
+keyfile ~/.tarsnap/key
