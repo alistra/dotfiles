@@ -16,6 +16,9 @@ xset r rate 300 25 &
 # Polish keyboard
 setxkbmap -layout pl
 
+# Back, forward unbind
+xmodmap ~/.Xmodmap
+
 # Applications
 if [ "`hostname`" == bialobrewy ] ; then
 	ktorrent &
