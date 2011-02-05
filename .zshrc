@@ -88,8 +88,6 @@ zstyle ':completion:*:warnings' format $'\e[01;31m -- No Matches Found --\e[0m'
 #}}}
 #{{{ Key Bindings
 bindkey -e
-bindkey '5D' emacs-backward-word
-bindkey '5C' emacs-forward-word
 bindkey "\e[1~" beginning-of-line
 bindkey "\e[2~" quoted-insert
 bindkey "\e[3~" delete-char
