@@ -25,6 +25,7 @@ colorscheme darkblue
 
 autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab|set sts=4 
 autocmd FileType ruby set tabstop=2|set shiftwidth=2|set expandtab|set sts=2 
+autocmd FileType haskell set tabstop=4|set shiftwidth=4|set expandtab|set sts=4
 
 filetype plugin on
 filetype indent on

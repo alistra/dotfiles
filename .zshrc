@@ -139,13 +139,13 @@ alias du1='du -h --max-depth=1'
 alias fresh='ls -lrt'
 alias noemptylines='grep -v "^$"'
 alias nocomments='grep -v "^[\t ]*#"'
-if [ `hostname` = "adeli" ]
+if [ "`hostname`" = "adeli" ]
 then
 	alias blueoff='echo 0 > /sys/devices/platform/thinkpad_acpi/bluetooth_enable'
 	alias blueon='echo 1 > /sys/devices/platform/thinkpad_acpi/bluetooth_enable'
 	alias hibernate='su -c pm-hibernate'
 	alias suspend='su -c pm-suspend'
-elif [ `hostname` = "bialobrewy" ]
+elif [ "`hostname`" = "bialobrewy" ]
 then
 	alias thps3='cd ~/.wine/drive_c/Program\ Files/Activision/Thps3 && wine Skate3.exe && cd -'
 	alias dow='cd /windows/c/Program\ Files/THQ/Dawn\ of\ War\ -\ Dark\ Crusade/ && wine DarkCrusade.exe 1>/dev/null 2>/dev/null && cd -'
@@ -164,13 +164,13 @@ todo(){grep "$*" .todo}
 todoadd(){echo "$*" >> .todo}
 #}}}
 #{{{ Tmux Init
-if [ `hostname` = "adeli" ]
+if [ "`hostname`" = "adeli" ]
 then
 	if [ "$ZSHINIT" = "dudemusic" ]
 	then
 		cd ~/mp3
 	fi
-elif [ `hostname` = "bialobrewy" ] 
+elif [ "`hostname`" = "bialobrewy" ] 
 then
 	if [ "$ZSHINIT" = "Imgur" ]
 	then
