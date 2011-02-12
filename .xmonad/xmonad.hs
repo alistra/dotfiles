@@ -238,6 +238,7 @@ myManageHook = manageDocks <+> composeAll
     , className =? "Ktorrent"       --> doShift "9"
     , className =? "Gimp"           --> doFloat
     , className =? "qemu"           --> doFloat
+    , className =? "Wine"           --> doFloat
     , className =? "ktorrent"	    --> doShift "9"
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
