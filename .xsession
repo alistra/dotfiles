@@ -24,6 +24,7 @@ if [ "`hostname`" == bialobrewy ] ; then
 	ktorrent &
 fi
 kwalletd &
+gnome-keyring-daemon &
 xscreensaver -no-splash &
 tmux-init &
 urxvtd &

@@ -12,6 +12,7 @@ export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 export WORDCHARS='*?_-[]~=&;!#$%^(){}<>'
 export EDITOR="vim"
+export VISUAL="/usr/bin/vim"
 export BROWSER="chromium"
 export PATH="$PATH:$HOME/bin"
 #}}}
@@ -188,8 +189,8 @@ fi
 
 if [ "$ZSHINIT" = "mail" ]
 then
-	mutt
-elif [ "$ZSHINIT" = "mutt-compose" ]
+	alpine
+elif [ "$ZSHINIT" = "mail-compose" ]
 then
 	local MAILTO NEWMAILTO TO CC BCC SUBJECT BODY ATTACH MUTTPARAMS
 	MAILTO=$(echo "$MUTTDATA" | sed 's/^mailto://')
