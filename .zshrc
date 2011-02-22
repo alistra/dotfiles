@@ -192,8 +192,8 @@ then
 	alpine
 elif [ "$ZSHINIT" = "mail-compose" ]
 then
-	local MAILTO NEWMAILTO TO CC BCC SUBJECT BODY ATTACH MUTTPARAMS
-	MAILTO=$(echo "$MUTTDATA" | sed 's/^mailto://')
+	local MAILTO NEWMAILTO TO CC BCC SUBJECT BODY ATTACH MAILPARAMS
+	MAILTO=$(echo "$MAILDATA" | sed 's/^mailto://')
 	echo "$MAILTO" | grep -qs "^?"
 	if [ "$?" = "0" ] ; then
 	MAILTO=$(echo "$MAILTO" | sed 's/^?//')
@@ -208,7 +208,7 @@ then
 	SUBJECT=$(echo "$MAILTO" | grep '^subject=' | tail -n 1)
 	BODY=$(echo "$MAILTO" | grep '^body=' | tail -n 1)
 	ATTACH=$(echo "$MAILTO" | sed 's/^attach=/\n\nfile:\/\//g' | awk '/^file:/ { printf "%s,",$0 }')
-	MUTTPARAMS=""
+	MAILPARAMS=""
 
 	SUBJECT=`echo $SUBJECT | sed -e 's/%20/ /gi'| sed -e 's/subject=//'`
 	BODY=`echo $BODY|sed -e 's/%20/ /gi'|sed -e 's/body=//'`
@@ -218,28 +218,28 @@ then
 	TO=`echo $TO|sed -e 's/%20/ /gi'| sed -e 's/,/ /gi'`
 	
 	if [ "$SUBJECT" != "" ] ; then
-		MUTTPARAMS="$MUTTPARAMS -s \"$SUBJECT\""
+		MAILPARAMS="$MAILPARAMS -s \"$SUBJECT\""
 	fi
 	if [ "$BODY" != "" ] ; then
-		BODYFILE=`mktemp /tmp/mutt.compose.XXXX`
+		BODYFILE=`mktemp /tmp/mail.compose.XXXX`
 		echo $BODY|sed -e 's/%0A/\n/gi' > $BODYFILE
 		cat $BODYFILE
-		MUTTPARAMS="$MUTTPARAMS -i $BODYFILE"
+		MAILPARAMS="$MAILPARAMS -i $BODYFILE"
 	fi	
 	if [ "$CC" != "" ] ; then
-		MUTTPARAMS="$MUTTPARAMS -c \"$CC\""
+		MAILPARAMS="$MAILPARAMS -c \"$CC\""
 	fi
 	if [ "$BCC" != "" ] ; then
-		MUTTPARAMS="$MUTTPARAMS -b \"$BCC\""
+		MAILPARAMS="$MAILPARAMS -b \"$BCC\""
 	fi
 	if [ "$ATTACH" != "" ] ; then
-		MUTTPARAMS="$MUTTPARAMS -a \"$ATTACH\""
+		MAILPARAMS="$MAILPARAMS -a \"$ATTACH\""
 	fi
 	
-	MUTTPARAMS="$MUTTPARAMS -- $TO"
+	MAILPARAMS="$MAILPARAMS -- $TO"
 	
-	eval "mutt $MUTTPARAMS"
-	unset MUTTDATA
+	eval "mutt $MAILPARAMS"
+	unset MAILDATA
 	if [ "$BODYFILE" != "" ] ; then
 		rm $BODYFILE
 	fi

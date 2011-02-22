@@ -20,7 +20,7 @@ set showcmd
 set undofile
 set undodir=~/.vim/undo
 set foldmethod=marker
-
+    
 colorscheme darkblue 
 
 autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab|set sts=4 
