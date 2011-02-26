@@ -252,6 +252,9 @@ then
 	AUTOSSH_POLL=60
 	autossh -M 0 -t af 'ZSHINIT=irc zsh'
 	unset AUTOSSH_POLL
+elif [ "$ZSHINIT" = "dev" ]
+then
+	autossh -M 0 -t vaf 'ZSHINIT=dev zsh'
 fi
 unset ZSHINIT
 #}}}
