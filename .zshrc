@@ -7,7 +7,7 @@ promptinit; prompt gentoo
 #}}}
 #{{{ Variables
 umask 077
-export HISTSIZE=2000
+export HISTSIZE=20000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 export WORDCHARS='*?_-[]~=&;!#$%^(){}<>'
@@ -133,6 +133,7 @@ alias v='vim'
 alias i='tmux attach -t irc'
 alias m='tmux attach -t mail'
 alias M='tmux attach -t Music'
+alias d='tmux attach -t dev'
 alias scpresume="rsync --partial --progress --rsh=ssh"
 alias du1='du -h --max-depth=1'
 alias fresh='ls -lrt'
@@ -148,8 +149,6 @@ elif [ "`hostname`" = "bialobrewy" ]
 then
 	alias thps3='cd ~/.wine/drive_c/Program\ Files/Activision/Thps3 && wine Skate3.exe && cd -'
 	alias dow='cd /windows/c/Program\ Files/THQ/Dawn\ of\ War\ -\ Dark\ Crusade/ && wine DarkCrusade.exe 1>/dev/null 2>/dev/null && cd -'
-	alias sc='wine ~/.wine/drive_c/Program\ Files/Starcraft/StarCraft.exe -window'
-	alias cwbench="awk '\$4~/alistra/{s+=\$2}\$4~/dude/{s-=\$2}END{print s}'"
 	alias s='tmux attach -t seriale'
 	alias c='tmux attach -t current'
 fi
