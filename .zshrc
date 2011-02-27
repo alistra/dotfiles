@@ -217,29 +217,31 @@ then
 	ATTACH=`echo $ATTACH|sed -e 's/%20/ /gi'|sed -e 's/attach=//'`
 	TO=`echo $TO|sed -e 's/%20/ /gi'| sed -e 's/,/ /gi'`
 	
-	if [ "$SUBJECT" != "" ] ; then
-		MAILPARAMS="$MAILPARAMS -s \"$SUBJECT\""
+#	if [ "$SUBJECT" != "" ] ; then
+#		MAILPARAMS="$MAILPARAMS -s \"$SUBJECT\""
+#	fi
+#	if [ "$CC" != "" ] ; then
+#		MAILPARAMS="$MAILPARAMS -c \"$CC\""
+#	fi
+#	if [ "$BCC" != "" ] ; then
+#		MAILPARAMS="$MAILPARAMS -b \"$BCC\""
+#	fi
+	if [ "$ATTACH" != "" ] ; then
+		MAILPARAMS="$MAILPARAMS -attach \"$ATTACH\""
 	fi
+	
+	MAILPARAMS="$MAILPARAMS $TO"
+	
 	if [ "$BODY" != "" ] ; then
 		BODYFILE=`mktemp /tmp/mail.compose.XXXX`
 		echo $BODY|sed -e 's/%0A/\n/gi' > $BODYFILE
 		cat $BODYFILE
-		MAILPARAMS="$MAILPARAMS -i $BODYFILE"
+		MAILPARAMS="$MAILPARAMS < $BODYFILE"
 	fi	
-	if [ "$CC" != "" ] ; then
-		MAILPARAMS="$MAILPARAMS -c \"$CC\""
-	fi
-	if [ "$BCC" != "" ] ; then
-		MAILPARAMS="$MAILPARAMS -b \"$BCC\""
-	fi
-	if [ "$ATTACH" != "" ] ; then
-		MAILPARAMS="$MAILPARAMS -a \"$ATTACH\""
-	fi
-	
-	MAILPARAMS="$MAILPARAMS -- $TO"
-	
-	eval "mutt $MAILPARAMS"
+
+	eval "alpine $MAILPARAMS"
 	unset MAILDATA
+	
 	if [ "$BODYFILE" != "" ] ; then
 		rm $BODYFILE
 	fi
