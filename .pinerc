@@ -63,7 +63,7 @@ trash-folder=[Google Mail]/Trash
 
 # Contains the actual signature contents as opposed to the signature filename.
 # If defined, this overrides the signature-file. Default is undefined.
-literal-signature=
+literal-signature=Aleksander \042Alistra\042 Balicki \n\nemail:\tbalicki.aleksander@gmail.com\njabber:\twszystkie.inne.byly.zajete@gmail.com\n
 
 # Over-rides default path for signature file. Default is ~/.signature
 signature-file=.sig
@@ -430,7 +430,8 @@ news-collections=
 # List of file or path names for personal addressbook(s).
 # Default: ~/.addressbook (Unix) or \PINE\ADDRBOOK (PC)
 # Syntax: optnl-label path-name
-address-book=
+address-book=.addressbook,
+	Rem {imap.gmail.com/ssl/user=balicki.aleksander@gmail.com}remote_addrbook
 
 # List of file or path names for global/shared addressbook(s).
 # Default: none
@@ -529,7 +530,7 @@ disable-these-drivers=
 disable-these-authenticators=
 
 # Set by Alpine; contains data for caching remote address books.
-remote-abook-metafile=
+remote-abook-metafile=.ab81273
 
 # How many extra copies of remote address book should be kept. Default: 3
 remote-abook-history=
@@ -549,7 +550,7 @@ personal-print-command=
 personal-print-category=
 
 # Patterns and their actions are stored here.
-patterns-roles=
+patterns-roles=LIT:pattern="/NICK=Official/COMM=Without \\042Alistra\\042 word\\n/FLDTYPE=EMAIL" action="/ROLE=1/FROM=Aleksander Balicki <balicki.aleksander@gmail.com>/LSIG=Aleksander Balicki \\n\\nemail:\\tbalicki.aleksander@gmail.com\\n/SIG=.sig-off/RTYPE=YES/FTYPE=YES/CTYPE=YES"
 
 # Patterns and their actions are stored here.
 patterns-filters2=
@@ -710,3 +711,6 @@ wp-state=
 
 # Web Alpine preferred width for message display in characters
 wp-columns=
+
+# Your login/e-mail user name
+user-id=alistra

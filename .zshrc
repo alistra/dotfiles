@@ -139,6 +139,7 @@ alias du1='du -h --max-depth=1'
 alias fresh='ls -lrt'
 alias noemptylines='grep -v "^$"'
 alias nocomments='grep -v "^[\t ]*#"'
+alias alpine='alpine -p "{imap.gmail.com/ssl/user=balicki.aleksander@gmail.com}remote_pinerc"'
 if [ "`hostname`" = "adeli" ]
 then
 	alias blueoff='echo 0 > /sys/devices/platform/thinkpad_acpi/bluetooth_enable'
