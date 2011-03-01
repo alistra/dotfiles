@@ -2,6 +2,7 @@ import XMonad
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Prompt
 import XMonad.Prompt.Shell
@@ -235,11 +236,12 @@ myLayout = avoidStruts $ smartBorders $ tiled ||| Mirror tiled ||| Full
 --
 myManageHook = manageDocks <+> composeAll
     [ className =? "MPlayer"        --> doFloat
-    , className =? "Ktorrent"       --> doShift "9"
     , className =? "Gimp"           --> doFloat
     , className =? "qemu"           --> doFloat
-    , className =? "Wine"           --> doFloat
+    , className =? "Wine"           --> doCenterFloat
+    , className =? "Window"         --> doCenterFloat
     , className =? "ktorrent"	    --> doShift "9"
+    , className =? "Ktorrent"       --> doShift "9"
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
