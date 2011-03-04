@@ -161,6 +161,7 @@ proxy(){ssh -f -N -D31337 "$*"}
 soundssh(){dd if=/dev/dsp | ssh -c arcfour -C $* dd of=/dev/dsp}
 todo(){grep "$*" ~/.todo}
 todoadd(){echo "$*" >> ~/.todo}
+clock(){at $* < .alarm}
 #}}}
 #{{{ Tmux Init
 if [ "`hostname`" = "adeli" ]
