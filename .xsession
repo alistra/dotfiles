@@ -1,11 +1,11 @@
 # Tray
 if [ "`hostname`" == bialobrewy ] ; then
-	trayer --edge top --align right --margin 1280 --SetDockType true --SetPartialStrut true --expand true --width 5 --transparent true --tint 0x191970 --height 12 &
+	trayer --edge top --align right --margin 1280 --SetDockType true --SetPartialStrut true --expand true --width 5 --transparent true --tint 0x000000 --height 12 &
 else
-	trayer --edge top --align right --margin 0 --SetDockType true --SetPartialStrut true --expand true --width 10 --transparent true --tint 0x191970 --height 12 &
+	trayer --edge top --align right --margin 0 --SetDockType true --SetPartialStrut true --expand true --width 10 --transparent true --tint 0x000000 --height 12 &
 fi
 # Wallpaper
-qiv -x ~/.wallpaper &
+qiv -y ~/.wallpaper &
 
 # Numlock
 numlockx &

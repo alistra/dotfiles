@@ -89,7 +89,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     
     , ((0,		       xK_F7    ), promptSearchBrowser greenXPConfig myBrowser wikipedia)
 
-    , ((0,		       xK_F8    ), selectSearchBrowser myBrowser google)
+    , ((0,		       xK_F8    ), selectSearchBrowser myBrowser duckduckgo)
     
     , ((0,                     xK_Print ), spawn "scrot")
  
