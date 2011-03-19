@@ -15,6 +15,7 @@ export EDITOR="vim"
 export VISUAL="/usr/bin/vim"
 export BROWSER="chromium"
 export PATH="$PATH:$HOME/bin"
+export AUTOSSH_POLL=60
 #}}}
 #{{{ Options
 setopt correctall
@@ -252,9 +253,7 @@ then
 	unset VIMFILE
 elif [ "$ZSHINIT" = "irc" ]
 then
-	AUTOSSH_POLL=60
 	autossh -M 0 -t af 'ZSHINIT=irc zsh'
-	unset AUTOSSH_POLL
 elif [ "$ZSHINIT" = "dev" ]
 then
 	autossh -M 0 -t vaf 'ZSHINIT=dev zsh'

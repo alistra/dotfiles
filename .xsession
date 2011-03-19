@@ -1,8 +1,8 @@
 # Tray
 if [ "`hostname`" == bialobrewy ] ; then
-	trayer --edge top --align right --margin 1280 --SetDockType true --SetPartialStrut true --expand true --width 5 --transparent true --tint 0x000000 --height 12 &
+	trayer --edge top --align right --margin 1280 --SetDockType true --SetPartialStrut true --expand true --width 2 --transparent true --tint 0x000000 --height 12 &
 else
-	trayer --edge top --align right --margin 0 --SetDockType true --SetPartialStrut true --expand true --width 10 --transparent true --tint 0x000000 --height 12 &
+	trayer --edge top --align right --margin 0 --SetDockType true --SetPartialStrut true --expand true --width 4 --transparent true --tint 0x000000 --height 12 &
 fi
 # Wallpaper
 qiv -y ~/.wallpaper &
@@ -27,6 +27,7 @@ kwalletd &
 xscreensaver -no-splash &
 tmux-init &
 nice -n -10 urxvtd &
+xsel-copier &
 
 # Xmonad start
 exec xmonad
