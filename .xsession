@@ -5,7 +5,11 @@ else
 	trayer --edge top --align right --margin 0 --SetDockType true --SetPartialStrut true --expand true --width 4 --transparent true --tint 0x000000 --height 12 &
 fi
 # Wallpaper
-qiv -y ~/.wallpaper &
+if [ "`hostname`" == bialobrewy ] ; then
+	qiv -x ~/.wallpaper &
+else
+	qiv -y ~/.wallpaper &
+fi
 
 # Numlock
 numlockx &
