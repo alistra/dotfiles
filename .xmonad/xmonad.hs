@@ -17,7 +17,8 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "nice -n -10 urxvtc"
+myTerminal          = "nice -n -10 urxvtc"
+myFailsafeTerminal  = "nice -n -20 urxvtc"
 
 -- Width of the window border in pixels.
 --
@@ -77,13 +78,15 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- launch a terminal
     [ ((modMask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
     
-    , ((0,                     xK_F1    ), spawn $ XMonad.terminal conf)
+    , ((0,             xK_F1    ), spawn $ XMonad.terminal conf)
+    
+    , ((shiftMask,     xK_F1    ), spawn $ myFailsafeTerminal)
     
     , ((0,	 	       xK_F2    ), shellPrompt defaultXPConfig)
 
     , ((0,		       xK_F3    ), sshPrompt defaultXPConfig)
 
-    , ((0,                     xK_F4    ), spawn myBrowser)
+    , ((0,             xK_F4    ), spawn myBrowser)
 
     , ((0,		       xK_F6    ), promptSearchBrowser greenXPConfig myBrowser duckduckgo)
     
@@ -91,13 +94,13 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     , ((0,		       xK_F8    ), selectSearchBrowser myBrowser duckduckgo)
     
-    , ((0,                     xK_Print ), spawn "scrot")
+    , ((0,             xK_Print ), spawn "scrot")
  
-    , ((0,	               xf86AudioLowerVolume ), spawn "amixer -c 0 -- sset Master playback 5%- unmute&")
+    , ((0,	           xf86AudioLowerVolume ), spawn "amixer -c 0 -- sset Master playback 5%- unmute&")
     
-    , ((0,	               xf86AudioRaiseVolume ), spawn "amixer -c 0 -- sset Master playback 5%+ unmute&")
+    , ((0,	           xf86AudioRaiseVolume ), spawn "amixer -c 0 -- sset Master playback 5%+ unmute&")
 
-    , ((0,	               xf86AudioMute ), spawn "amixer -c 0 -- sset Master mute&")
+    , ((0,	           xf86AudioMute ), spawn "amixer -c 0 -- sset Master mute&")
 
     -- close focused window 
     , ((modMask,               xK_c     ), kill)
@@ -242,6 +245,8 @@ myManageHook = manageDocks <+> composeAll
     , className =? "Window"         --> doCenterFloat
     , className =? "ktorrent"	    --> doShift "9"
     , className =? "Ktorrent"       --> doShift "9"
+    , className =? "bitcoin"	    --> doShift "8"
+    , className =? "Bitcoin"        --> doShift "8"
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
