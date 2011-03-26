@@ -16,6 +16,7 @@ export VISUAL="/usr/bin/vim"
 export BROWSER="chromium"
 export PATH="$PATH:$HOME/bin"
 export AUTOSSH_POLL=60
+export PYTHONPATH="/var/django"
 #}}}
 #{{{ Options
 setopt correctall
