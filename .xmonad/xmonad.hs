@@ -241,6 +241,7 @@ myManageHook = manageDocks <+> composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
     , className =? "qemu"           --> doFloat
+    , className =? "qemu-system-x86_64" --> doFloat
     , className =? "Wine"           --> doCenterFloat
     , className =? "Window"         --> doCenterFloat
     , className =? "ktorrent"	    --> doShift "9"
