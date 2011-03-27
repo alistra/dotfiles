@@ -6,9 +6,9 @@ else
 fi
 # Wallpaper
 if [ "`hostname`" == bialobrewy ] ; then
-	qiv -x ~/.wallpaper &
-else
 	qiv -y ~/.wallpaper &
+else
+	qiv -x ~/.wallpaper &
 fi
 
 # Numlock
