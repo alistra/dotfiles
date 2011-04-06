@@ -15,7 +15,6 @@ export EDITOR="vim"
 export VISUAL="/usr/bin/vim"
 export BROWSER="chromium"
 export PATH="$PATH:$HOME/bin"
-export AUTOSSH_POLL=60
 export PYTHONPATH="/var/django"
 #}}}
 #{{{ Options
@@ -254,10 +253,10 @@ then
 	unset VIMFILE
 elif [ "$ZSHINIT" = "irc" ]
 then
-	autossh -M 0 -t af 'ZSHINIT=irc zsh'
+	ssh -t af 'ZSHINIT=irc zsh'
 elif [ "$ZSHINIT" = "dev" ]
 then
-	autossh -M 0 -t vaf 'ZSHINIT=dev zsh'
+	ssh -t vaf 'ZSHINIT=dev zsh'
 fi
 unset ZSHINIT
 #}}}

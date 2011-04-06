@@ -94,7 +94,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     , ((0,		       xK_F8    ), selectSearchBrowser myBrowser duckduckgo)
     
-    , ((0,             xK_Print ), spawn "scrot")
+    , ((0,             xK_Print ), spawn "scrot '%Y-%m-%d_%R:%S_$wx$h_scrot.png'")
  
     , ((0,	           xf86AudioLowerVolume ), spawn "amixer -c 0 -- sset Master playback 5%- unmute&")
     
