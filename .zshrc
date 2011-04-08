@@ -146,6 +146,7 @@ then
 	alias blueoff='echo 0 > /sys/devices/platform/thinkpad_acpi/bluetooth_enable'
 	alias blueon='echo 1 > /sys/devices/platform/thinkpad_acpi/bluetooth_enable'
 	alias hibernate='su -c pm-hibernate'
+	alias hi='su -c pm-hibernate'
 	alias suspend='su -c pm-suspend'
 elif [ "`hostname`" = "bialobrewy" ]
 then
@@ -256,7 +257,8 @@ then
 	ssh -t af 'ZSHINIT=irc zsh'
 elif [ "$ZSHINIT" = "dev" ]
 then
-	ssh -t vaf 'ZSHINIT=dev zsh'
+	export PYTHONPATH="/var/django"
+	cd /var/django/archfinch
 fi
 unset ZSHINIT
 #}}}
