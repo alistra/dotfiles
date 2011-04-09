@@ -254,7 +254,7 @@ then
 	unset VIMFILE
 elif [ "$ZSHINIT" = "irc" ]
 then
-	ssh -t af 'ZSHINIT=irc zsh'
+	ssh -t spock 'ZSHINIT=irc zsh'
 elif [ "$ZSHINIT" = "dev" ]
 then
 	export PYTHONPATH="/var/django"
