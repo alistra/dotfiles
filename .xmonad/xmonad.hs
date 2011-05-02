@@ -5,83 +5,51 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Prompt
+import XMonad.Prompt.Input
 import XMonad.Prompt.Shell
 import XMonad.Prompt.Ssh
 import XMonad.Actions.Search
 import XMonad.Util.EZConfig(additionalKeys)
 import System.IO
+import System.Process(runInteractiveCommand)
 import System.Exit
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
--- The preferred terminal program, which is used in a binding below and by
--- certain contrib modules.
---
 myTerminal          = "urxvtc -e tmux"
+myBorderWidth       = 1
+myBrowser	        = "chromium"
+duckduckgo          = intelligent $ searchEngine "duckduckgo" "https://duckduckgo.com/?q="
+myModMask           = mod4Mask
+myNumlockMask       = mod2Mask
+myWorkspaces        = map show [1..9]
+myNormalBorderColor = "#dddddd"
+myFocusedBorderColor= "#ff0000"
 
--- Width of the window border in pixels.
---
-myBorderWidth   = 1
+tmuxAttachSession s = io $ if s == "" 
+    then spawn s
+    else spawn ("urxvtc -e tmux attach -t " ++ s)
 
--- My browser
---
-myBrowser	= "chromium"
+tmuxCompletion = do
+    (stdin, stdout, stderr, ph) <- runInteractiveCommand "tmux list-sessions|cut -f1 -d:"
+    contents <- hGetContents stdout
+    return $ lines $ contents
 
--- Duck Duck Go search engine
---
-duckduckgo = intelligent $ searchEngine "duckduckgo" "https://duckduckgo.com/?q="
+tmuxAttachPromptCompl config= do
+    tc <- io tmuxCompletion
+    inputPromptWithCompl config "tmux attach"  (mkComplFunFromList' tc) ?+ tmuxAttachSession
 
--- modMask lets you specify which modkey you want to use. The default
--- is mod1Mask ("left alt").  You may also consider using mod3Mask
--- ("right alt"), which does not conflict with emacs keybindings. The
--- "windows key" is usually mod4Mask.
---
-myModMask       = mod4Mask
+tmuxAttachPrompt = \config -> inputPrompt config "tmux attach" ?+ tmuxAttachSession
 
--- The mask for the numlock key. Numlock status is "masked" from the
--- current modifier status, so the keybindings will work with numlock on or
--- off. You may need to change this on some systems.
---
--- You can find the numlock modifier by running "xmodmap" and looking for a
--- modifier with Num_Lock bound to it:
---
--- > $ xmodmap | grep Num
--- > mod2        Num_Lock (0x4d)
---
--- Set numlockMask = 0 if you don't have a numlock key, or want to treat
--- numlock status separately.
---
-myNumlockMask   = mod2Mask
-
--- The default number of workspaces (virtual screens) and their names.
--- By default we use numeric strings, but any string may be used as a
--- workspace name. The number of workspaces is determined by the length
--- of this list.
---
--- A tagging example:
---
--- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
---
-myWorkspaces    = map show [1..9]
-
--- Border colors for unfocused and focused windows, respectively.
---
-myNormalBorderColor  = "#dddddd"
-myFocusedBorderColor = "#ff0000"
-
-------------------------------------------------------------------------
--- Key bindings. Add, modify or remove key bindings here.
---
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
-    -- launch a terminal
     [ ((modMask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
     
     , ((0,             xK_F1    ), spawn $ XMonad.terminal conf)
     
     , ((0,	 	       xK_F2    ), shellPrompt defaultXPConfig)
 
-    , ((0,		       xK_F3    ), sshPrompt defaultXPConfig)
+    , ((0,		       xK_F3    ), tmuxAttachPromptCompl defaultXPConfig)
 
     , ((0,             xK_F4    ), spawn myBrowser)
 
