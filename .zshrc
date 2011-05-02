@@ -115,12 +115,11 @@ alias cogrep='grep -v'
 alias du='du -h'
 alias df='df -h'
 alias ex='rlwrap ex'
-alias adventure='rlwrap adventure .adventure'
 alias mplayer='mplayer -softvol -softvol-max 800 -volstep 1'
 alias mv='nocorrect mv -i'
 alias cp='nocorrect cp -i'
 alias mkdir='nocorrect mkdir'
-alias git='nocorrect git'
+alias git='nocorrect noglob git'
 alias rm='nocorrect rm'
 alias locate='nocorrect locate'
 alias echo='nocorrect echo'
@@ -130,7 +129,6 @@ alias rscp='scp -r'
 alias rgrep='grep -r'
 alias open='xdg-open'
 alias qiv='qiv -tm'
-alias v='vim'
 alias i='tmux attach -t irc'
 alias m='tmux attach -t mail'
 alias M='tmux attach -t Music'
@@ -164,7 +162,6 @@ proxy(){ssh -f -N -D31337 "$*"}
 soundssh(){dd if=/dev/dsp | ssh -c arcfour -C $* dd of=/dev/dsp}
 todo(){grep "$*" ~/.todo}
 todoadd(){echo "$*" >> ~/.todo}
-clock(){at $* < .alarm}
 #}}}
 #{{{ Tmux Init
 if [ "`hostname`" = "adeli" ]
@@ -172,10 +169,14 @@ then
 	if [ "$ZSHINIT" = "dudemusic" ]
 	then
 		cd ~/mp3
+	elif [ "$ZSHINIT" = "dev" ]
+	then
+		export PYTHONPATH="/var/django"
+		cd /var/django/archfinch
 	fi
 elif [ "`hostname`" = "bialobrewy" ] 
 then
-	if [ "$ZSHINIT" = "Imgur" ]
+	if [ "$ZSHINIT" = "rails" ]
 	then
 		Imgur-Directory-Listing/script/server
 	elif [ "$ZSHINIT" = "seriale" ]
@@ -256,10 +257,6 @@ then
 elif [ "$ZSHINIT" = "irc" ]
 then
 	ssh -t spock 'ZSHINIT=irc zsh'
-elif [ "$ZSHINIT" = "dev" ]
-then
-	export PYTHONPATH="/var/django"
-	cd /var/django/archfinch
 fi
 unset ZSHINIT
 #}}}

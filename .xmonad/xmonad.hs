@@ -17,8 +17,7 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal          = "nice -n -10 urxvtc"
-myFailsafeTerminal  = "nice -n -20 urxvtc"
+myTerminal          = "urxvtc -e tmux"
 
 -- Width of the window border in pixels.
 --
@@ -79,8 +78,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [ ((modMask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
     
     , ((0,             xK_F1    ), spawn $ XMonad.terminal conf)
-    
-    , ((shiftMask,     xK_F1    ), spawn $ myFailsafeTerminal)
     
     , ((0,	 	       xK_F2    ), shellPrompt defaultXPConfig)
 
