@@ -1,14 +1,13 @@
 #!/bin/zsh
 tmux new-session -d -s mail 'ZSHINIT=mail zsh'
 tmux new-session -d -s irc 'ZSHINIT=irc zsh'
-tmux new-session -d -s dev 'ZSHINIT=dev zsh'
 if [ `hostname` = "bialobrewy" ]
 then
 	tmux new-session -d -s Imgur 'ZSHINIT=rails zsh'
-	tmux new-session -d -s Music 'ZSHINIT=music zsh'
 	tmux new-session -d -s seriale 'ZSHINIT=seriale zsh'
 	tmux new-session -d -s current 'ZSHINIT=current zsh'
 elif [ `hostname` = "adeli" ]
 then
+	tmux new-session -d -s dev 'ZSHINIT=dev zsh'
 	tmux new-session -d -s dude-music 'ZSHINIT=dudemusic zsh'
 fi
