@@ -133,6 +133,7 @@ alias i='tmux attach -t irc'
 alias m='tmux attach -t mail'
 alias M='tmux attach -t Music'
 alias d='tmux attach -t dev'
+alias t='tmux'
 alias scpresume="rsync --partial --progress --rsh=ssh"
 alias du1='du -h --max-depth=1'
 alias fresh='ls -lrt'
