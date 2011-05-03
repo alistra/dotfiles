@@ -26,9 +26,9 @@ myWorkspaces        = map show [1..9]
 myNormalBorderColor = "#dddddd"
 myFocusedBorderColor= "#ff0000"
 
-tmuxAttachSession s = io $ if s == "" 
-    then spawn s
-    else spawn ("urxvtc -e tmux attach -t " ++ s)
+tmuxAttachSession tc s = io $ if s `elem` tc
+        then spawn ("urxvtc -e tmux attach -t " ++ s)
+        else spawn ("urxvtc -e tmux new-session -s " ++ s)
 
 tmuxCompletion = do
     (stdin, stdout, stderr, ph) <- runInteractiveCommand "tmux list-sessions|cut -f1 -d:"
@@ -37,9 +37,7 @@ tmuxCompletion = do
 
 tmuxAttachPromptCompl config= do
     tc <- io tmuxCompletion
-    inputPromptWithCompl config "tmux attach"  (mkComplFunFromList' tc) ?+ tmuxAttachSession
-
-tmuxAttachPrompt = \config -> inputPrompt config "tmux attach" ?+ tmuxAttachSession
+    inputPromptWithCompl config "tmux attach" (mkComplFunFromList' tc) ?+ (tmuxAttachSession tc)
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
