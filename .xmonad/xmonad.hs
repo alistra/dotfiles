@@ -13,6 +13,7 @@ import XMonad.Util.EZConfig(additionalKeys)
 import System.IO
 import System.Process(runInteractiveCommand)
 import System.Exit
+import Data.List
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
@@ -26,7 +27,9 @@ myWorkspaces        = map show [1..9]
 myNormalBorderColor = "#dddddd"
 myFocusedBorderColor= "#ff0000"
 
-tmuxAttachSession tc s = io $ if s `elem` tc
+prefixOfElem el list = any (isPrefixOf el) list
+
+tmuxAttachSession tc s = io $ if s `prefixOfElem` tc
         then spawn ("urxvtc -e tmux attach -t " ++ s)
         else spawn ("urxvtc -e tmux new-session -s " ++ s)
 
