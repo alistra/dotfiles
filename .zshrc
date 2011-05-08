@@ -142,6 +142,7 @@ alias nocomments='grep -v "^[\t ]*#"'
 alias alpine='alpine -p "{imap.gmail.com/ssl/user=balicki.aleksander@gmail.com}remote_pinerc"'
 alias vncviewer='vncviewer -DotWhenNoCursor=0'
 alias proxy-chromium='chromium --proxy-server="socks://localhost:31337"'
+alias gist='gist -o -p'
 if [ "`hostname`" = "adeli" ]
 then
 	alias blueoff='echo 0 > /sys/devices/platform/thinkpad_acpi/bluetooth_enable'

@@ -30,7 +30,7 @@ fi
 kwalletd &
 xscreensaver -no-splash &
 tmux-init &
-nice -n -10 urxvtd &
+urxvtd &
 xsel-copier &
 
 # Xmonad start
