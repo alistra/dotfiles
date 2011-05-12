@@ -1,4 +1,5 @@
 #!/bin/zsh
+TMUX= 
 tmux new-session -d -s mail 'ZSHINIT=mail zsh'
 tmux new-session -d -s irc 'ZSHINIT=irc zsh'
 if [ `hostname` = "bialobrewy" ]

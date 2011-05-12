@@ -108,31 +108,28 @@ bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
 #}}}
 #{{{ Aliases
-alias ls='ls --color=auto -h'
 alias grep='nocorrect grep -i --color'
 alias egrep='nocorrect egrep -i --color'
-alias cogrep='grep -v'
+alias mv='nocorrect mv -i'
+alias cp='nocorrect cp -i'
+alias mkdir='nocorrect mkdir'
+alias echo='nocorrect echo'
+alias rm='nocorrect rm'
+alias locate='nocorrect locate'
+alias eix='nocorrect noglob eix'
+alias git='nocorrect noglob git'
+
+alias tmux='TMUX= tmux'
+alias ls='ls --color=auto -h'
 alias du='du -h'
 alias df='df -h'
 alias ex='rlwrap ex'
 alias mplayer='mplayer -softvol -softvol-max 800 -volstep 1'
-alias mv='nocorrect mv -i'
-alias cp='nocorrect cp -i'
-alias mkdir='nocorrect mkdir'
-alias git='nocorrect noglob git'
-alias rm='nocorrect rm'
-alias locate='nocorrect locate'
-alias echo='nocorrect echo'
-alias eix='nocorrect noglob eix'
 alias rcp='cp -r'
 alias rscp='scp -r'
-alias rgrep='grep -r'
-alias open='xdg-open'
 alias qiv='qiv -tm'
 alias i='tmux attach -t irc'
 alias m='tmux attach -t mail'
-alias M='tmux attach -t Music'
-alias d='tmux attach -t dev'
 alias t='tmux'
 alias scpresume="rsync --partial --progress --rsh=ssh"
 alias du1='du -h --max-depth=1'
@@ -143,6 +140,7 @@ alias alpine='alpine -p "{imap.gmail.com/ssl/user=balicki.aleksander@gmail.com}r
 alias vncviewer='vncviewer -DotWhenNoCursor=0'
 alias proxy-chromium='chromium --proxy-server="socks://localhost:31337"'
 alias gist='gist -o -p'
+
 if [ "`hostname`" = "adeli" ]
 then
 	alias blueoff='echo 0 > /sys/devices/platform/thinkpad_acpi/bluetooth_enable'
@@ -154,8 +152,6 @@ elif [ "`hostname`" = "bialobrewy" ]
 then
 	alias thps3='cd ~/.wine/drive_c/Program\ Files/Activision/Thps3 && wine Skate3.exe && cd -'
 	alias dow='cd /windows/c/Program\ Files/THQ/Dawn\ of\ War\ -\ Dark\ Crusade/ && wine DarkCrusade.exe 1>/dev/null 2>/dev/null && cd -'
-	alias s='tmux attach -t seriale'
-	alias c='tmux attach -t current'
 fi
 #}}}
 #{{{ Shell functions
