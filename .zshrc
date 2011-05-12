@@ -8,12 +8,15 @@ promptinit; prompt gentoo
 #{{{ Variables
 umask 077
 export HISTSIZE=20000
+export LESS="$LESS -e -i"
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 export WORDCHARS='*?_-[]~=&;!#$%^(){}<>'
 export EDITOR="vim"
-export VISUAL="/usr/bin/vim"
-export BROWSER="chromium"
+export VISUAL="vim"
+export PAGER="less"
+export SOCKS_SERVER="localhost:31337"
+export BROWSER='chromium' 
 export PATH="$PATH:$HOME/bin"
 export PYTHONPATH="/var/django"
 #}}}
@@ -138,7 +141,6 @@ alias noemptylines='grep -v "^$"'
 alias nocomments='grep -v "^[\t ]*#"'
 alias alpine='alpine -p "{imap.gmail.com/ssl/user=balicki.aleksander@gmail.com}remote_pinerc"'
 alias vncviewer='vncviewer -DotWhenNoCursor=0'
-alias chromium='chromium --proxy-server="socks://localhost:31337"'
 alias gist='gist -o -p'
 
 if [ "`hostname`" = "adeli" ]
