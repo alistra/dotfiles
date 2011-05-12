@@ -10,5 +10,4 @@ then
 elif [ `hostname` = "adeli" ]
 then
 	tmux new-session -d -s dev 'ZSHINIT=dev zsh'
-	tmux new-session -d -s dude-music 'ZSHINIT=dudemusic zsh'
 fi
