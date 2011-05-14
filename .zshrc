@@ -159,7 +159,13 @@ fi
 #{{{ Shell functions
 def(){wn "$*" -over} 
 loop(){while true; do $@; done}
-proxy(){ssh -f -N -D31337 "$*"}
+proxy(){
+	if [ $# -gt 1 ]; then
+		ssh -f -N -D"$2" $1
+	else
+		ssh -f -N -D31337 $1
+	fi
+}
 soundssh(){dd if=/dev/dsp | ssh -c arcfour -C $* dd of=/dev/dsp}
 todo(){grep "$*" ~/.todo}
 todoadd(){echo "$*" >> ~/.todo}
