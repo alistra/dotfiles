@@ -17,7 +17,6 @@ export VISUAL="vim"
 export PAGER="less"
 export SOCKS_SERVER="localhost:31337"
 export BROWSER='chromium' 
-export PATH="$PATH:$HOME/bin"
 export PYTHONPATH="/var/django"
 #}}}
 #{{{ Options
