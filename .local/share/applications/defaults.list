@@ -1,5 +1,5 @@
 [Default Applications]
-application/pdf=xpdf.desktop
+application/pdf=zathura.desktop
 application/postscript=xps.desktop
 text/plain=vim.desktop
 text/html=chromium-chromium.desktop
