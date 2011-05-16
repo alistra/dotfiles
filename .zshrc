@@ -8,7 +8,7 @@ promptinit; prompt gentoo
 #{{{ Variables
 umask 077
 export HISTSIZE=20000
-export LESS="$LESS -e -i"
+export LESS="$LESS -i"
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 export WORDCHARS='*?_-[]~=&;!#$%^(){}<>'
