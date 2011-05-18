@@ -1,0 +1,3 @@
+set pages-per-row 1
+set uri_command "chromium-bg %s"
+set scroll_wrap true

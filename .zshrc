@@ -172,10 +172,7 @@ todoadd(){echo "$*" >> ~/.todo}
 #{{{ Tmux Init
 if [ "`hostname`" = "adeli" ]
 then
-	if [ "$ZSHINIT" = "dudemusic" ]
-	then
-		cd ~/mp3
-	elif [ "$ZSHINIT" = "dev" ]
+	if [ "$ZSHINIT" = "dev" ]
 	then
 		export PYTHONPATH="/var/django"
 		cd /var/django/archfinch
@@ -192,10 +189,6 @@ then
 	then
 		cd /torrents
 		fresh
-	elif [ "$ZSHINIT" = "music" ]
-	then
-		cd /torrents/music
-	fi
 fi
 
 if [ "$ZSHINIT" = "mail" ]
@@ -263,6 +256,8 @@ then
 elif [ "$ZSHINIT" = "irc" ]
 then
 	ssh -t spock 'ZSHINIT=irc zsh'
+elif [ "$ZSHINIT" = "wget" ]
+	#todo
 fi
 unset ZSHINIT
 #}}}

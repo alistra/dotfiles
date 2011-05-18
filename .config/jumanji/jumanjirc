@@ -1,0 +1,19 @@
+script ~/.config/jumanji/scripts/hints.js
+
+searchengine goo https://encrypted.google.com/search?hl=en&q=%s
+searchengine wiki https://secure.wikimedia.org/wikipedia/en/w/index.php?search=%s
+searchengine ddg https://duckduckgo.com/?q=%s
+
+set plugin_blocker false
+set full_content_zoom true
+set single_instance false
+
+set auto_save 60
+
+set download_dir ~/Downloads/
+#set download_command "urxvt -e sh -c \"wget --load-cookies ~/.config/jumanji/cookies '%s' -O %s\""; #todo
+set spawn_editor VIMFILE=%s ZSHINIT=vim urxvt -e tmux
+set homepage calendar.google.com
+
+#plugin application/x-shockwave-flash
+#set proxy 127.0.0.1:31338
