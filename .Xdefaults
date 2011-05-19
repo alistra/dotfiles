@@ -10,7 +10,7 @@ urxvt.urgentOnBell: true
 urxvt.cursorBlink: false
 urxvt.saveLines: 65535
 urxvt.perl-ext-common: default,matcher
-urxvt.urlLauncher: chromium
+urxvt.urlLauncher: jumanji
 urxvt.matcher.button: 2
 urxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
 urxvt.termName: rxvt

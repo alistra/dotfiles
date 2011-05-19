@@ -4,6 +4,7 @@ application/postscript=xps.desktop
 text/plain=vim.desktop
 text/html=chromium-chromium.desktop
 text/x-c=vim.desktop
+text/x-diff=vim.desktop
 application/octet-stream=vim.desktop
 image/jpeg=qiv.desktop
 image/png=qiv.desktop
