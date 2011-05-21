@@ -1,3 +1,7 @@
 set pages-per-row 1
 set uri_command "chromium-bg %s"
-set scroll_wrap true
+set scroll_wrap false
+map <PageDown> navigate next
+map <PageUp> navigate previous
+map + zoom in
+map - zoom out
