@@ -6,6 +6,7 @@ searchengine	w 	https://secure.wikimedia.org/wikipedia/en/w/index.php?search=%s
 searchengine 	wiki	https://secure.wikimedia.org/wikipedia/en/w/index.php?search=%s
 searchengine 	ddg 	https://duckduckgo.com/?q=%s
 searchengine 	duck 	https://duckduckgo.com/?q=%s
+searchengine 	maps 	https://maps.google.com/?q=%s
 
 set 	plugin_blocker 		false
 set 	full_content_zoom 	true
@@ -14,7 +15,7 @@ set 	auto_save 		60
 
 set 	download_dir 		~/Downloads/
 #set 	proxy 			127.0.0.1:8118
-set 	download_command 	wget-download %s
+set 	download_command 	wget-download %s %s
 set 	spawn_editor 		vim-open %s
 set 	homepage 		calendar.google.com
 set 	completion_hl_bgcolor	#FF0000

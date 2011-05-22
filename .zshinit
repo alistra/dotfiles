@@ -90,7 +90,7 @@ then
 	ssh -t spock 'ZSHINIT=irc zsh'
 elif [ "$ZSHINIT" = "wget" ]
 then
-	wget --load-cookies ~/.config/jumanji/cookies -P ~/Downloads -- "$WGETFILE"
+	wget -nc --adjust-extension --load-cookies ~/.config/jumanji/cookies -O "$WGETOUTFILE" -- "$WGETFILE"
 	unset WGETFILE
 fi #}}}
 unset ZSHINIT

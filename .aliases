@@ -31,6 +31,7 @@ alias nocomments='grep -v "^[\t ]*#"'
 alias alpine='alpine -p "{imap.gmail.com/ssl/user=balicki.aleksander@gmail.com}remote_pinerc"'
 alias vncviewer='vncviewer -DotWhenNoCursor=0'
 alias gist='gist -o -p'
+alias open='xdg-open'
 
 if [ "`hostname`" = "adeli" ]
 then
@@ -46,16 +47,37 @@ then
 fi
 #}}}
 #{{{ Shell functions
-def(){wn "$*" -over} 
-loop(){while true; do $@; done}
-proxy(){
+def()
+{
+	wn "$*" -over
+} 
+tmpinstall()
+{
+	install -m 755 "$*" /srv/www/tmp/
+}
+loop()
+{
+	while true
+	do 
+		$@
+	done
+}
+proxy()
+{
 	if [ $# -gt 1 ]; then
 		ssh -f -N -D"$2" $1
 	else
 		ssh -f -N -D31337 $1
 	fi
 }
-soundssh(){dd if=/dev/dsp | ssh -c arcfour -C $* dd of=/dev/dsp}
-todo(){grep "$*" ~/.todo}
-todoadd(){echo "$*" >> ~/.todo}
+soundssh()
+{
+	dd if=/dev/dsp | ssh -c arcfour -C $* dd of=/dev/dsp
+}
+todo(){
+	grep "$*" ~/.todo
+}
+todoadd(){
+	echo "$*" >> ~/.todo
+}
 #}}}
