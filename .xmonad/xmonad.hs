@@ -17,7 +17,7 @@ import Data.List
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
-myTerminal          = "urxvtc"
+myTerminal          = "urxvtc -e tmux"
 myBorderWidth       = 1
 myBrowser	        = "jumanji"
 myMom'sBrowser      = "chromium"
