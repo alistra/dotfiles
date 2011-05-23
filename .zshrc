@@ -109,5 +109,5 @@ bindkey "\eOc" forward-word
 bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
 #}}}
-source ~/.aliases
-source ~/.zshinit
+source ~alistra/.aliases
+source ~alistra/.zshinit
