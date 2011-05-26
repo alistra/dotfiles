@@ -1,12 +1,13 @@
 script 		~/.config/jumanji/scripts/hints.js
 
-searchengine 	g 	https://encrypted.google.com/search?hl=en&q=%s
-searchengine 	google 	https://encrypted.google.com/search?hl=en&q=%s
-searchengine	w 	https://secure.wikimedia.org/wikipedia/en/w/index.php?search=%s
-searchengine 	wiki	https://secure.wikimedia.org/wikipedia/en/w/index.php?search=%s
-searchengine 	ddg 	https://duckduckgo.com/?q=%s
-searchengine 	duck 	https://duckduckgo.com/?q=%s
-searchengine 	maps 	https://maps.google.com/?q=%s
+searchengine 	g 		https://encrypted.google.com/search?hl=en&q=%s
+searchengine 	google 		https://encrypted.google.com/search?hl=en&q=%s
+searchengine	w 		https://secure.wikimedia.org/wikipedia/en/w/index.php?search=%s
+searchengine 	wiki		https://secure.wikimedia.org/wikipedia/en/w/index.php?search=%s
+searchengine 	ddg 		https://duckduckgo.com/?q=%s
+searchengine 	duck 		https://duckduckgo.com/?q=%s
+searchengine 	maps 		https://maps.google.com/?q=%s
+searchengine	torrentz	http://torrentz.com/search?f=%s
 
 set 	plugin_blocker 		false
 set 	full_content_zoom 	true
@@ -20,5 +21,3 @@ set 	spawn_editor 		vim-open %s
 set 	homepage 		calendar.google.com
 set 	completion_hl_bgcolor	#FF0000
 set 	tabbar_focus_fgcolor	#FFFF00
-
-#plugin application/x-shockwave-flash

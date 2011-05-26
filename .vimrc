@@ -1,4 +1,3 @@
-"{{{ My own
 set number     
 set smartindent
 set showmatch
@@ -29,11 +28,4 @@ autocmd FileType haskell set tabstop=4|set shiftwidth=4|set expandtab|set sts=4
 
 filetype plugin on
 filetype indent on
-
-"Zdalne sesje - kolor
-if &term == "xterm-color"
-	set t_kb
-	fixdel
-endif
-"}}}
 " vim: set fenc=utf-8 tw=80 sw=2 sts=2 et foldmethod=marker :
