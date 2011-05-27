@@ -215,8 +215,6 @@ myManageHook = manageDocks <+> composeAll
     , className =? "Window"         --> doCenterFloat
     , className =? "ktorrent"	    --> doShift "9"
     , className =? "Ktorrent"       --> doShift "9"
-    , className =? "bitcoin"	    --> doShift "8"
-    , className =? "Bitcoin"        --> doShift "8"
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
