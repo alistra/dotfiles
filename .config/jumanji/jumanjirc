@@ -9,6 +9,7 @@ searchengine	yt		https://youtube.com/results?search_query=%s
 
 set 	plugin_blocker 		false
 set 	full_content_zoom 	true
+set	single_instance		false
 
 set 	auto_save 		60
 
