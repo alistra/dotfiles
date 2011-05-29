@@ -15,8 +15,8 @@ set 	auto_save 		60
 
 set 	download_dir 		~/Downloads/
 #set 	proxy 			127.0.0.1:8118
-set 	download_command 	wget-download %s %s
-set 	spawn_editor 		vim-open %s
+set 	download_command 	wget-download "%s" "%s"
+set 	spawn_editor 		vim-open "%s"
 set 	homepage 		https://calendar.google.com
 set 	completion_hl_bgcolor	#FF0000
 set 	tabbar_focus_fgcolor	#FFFF00
