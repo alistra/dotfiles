@@ -25,7 +25,7 @@ duckduckgo          = intelligent $ searchEngine "duckduckgo" "https://duckduckg
 myModMask           = mod4Mask
 myNumlockMask       = mod2Mask
 myWorkspaces        = map show [1..9]
-myNormalBorderColor = "#dddddd"
+myNormalBorderColor = "#000000"
 myFocusedBorderColor= "#ff0000"
 
 prefixOfElem el list = any (isPrefixOf el) list
