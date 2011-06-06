@@ -91,6 +91,7 @@ then
 elif [ "$ZSHINIT" = "wget" ]
 then
 	wget -nc --adjust-extension --load-cookies ~/.config/jumanji/cookies -O "$WGETOUTFILE" -- "$WGETFILE"
-	unset WGETFILE
+	xdg-open $WGETOUTFILE
+	unset WGETFILE, WGETOUTFILE
 fi #}}}
 unset ZSHINIT
