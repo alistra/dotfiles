@@ -26,61 +26,6 @@ fi #}}}
 if [ "$ZSHINIT" = "mail" ]
 then
 	alpine
-elif [ "$ZSHINIT" = "mail-compose" ]
-then
-	local MAILTO NEWMAILTO TO CC BCC SUBJECT BODY ATTACH MAILPARAMS
-	MAILTO=$(echo "$MAILDATA" | sed 's/^mailto://')
-	echo "$MAILTO" | grep -qs "^?"
-	if [ "$?" = "0" ] ; then
-	MAILTO=$(echo "$MAILTO" | sed 's/^?//')
-	else
-	MAILTO=$(echo "$MAILTO" | sed 's/^/to=/' | sed 's/?/\&/')
-	fi
-	
-	MAILTO=$(echo "$MAILTO" | sed 's/&/\n/g')
-	TO=$(echo "$MAILTO" | grep '^to=' | sed 's/^to=//' | awk '{ printf "%s,",$0 }')
-	CC=$(echo "$MAILTO" | grep '^cc=' | sed 's/^cc=//' | awk '{ printf "%s,",$0 }')
-	BCC=$(echo "$MAILTO" | grep '^bcc=' | sed 's/^bcc=//' | awk '{ printf "%s,",$0 }')
-	SUBJECT=$(echo "$MAILTO" | grep '^subject=' | tail -n 1)
-	BODY=$(echo "$MAILTO" | grep '^body=' | tail -n 1)
-	ATTACH=$(echo "$MAILTO" | sed 's/^attach=/\n\nfile:\/\//g' | awk '/^file:/ { printf "%s,",$0 }')
-	MAILPARAMS=""
-
-	SUBJECT=`echo $SUBJECT | sed -e 's/%20/ /gi'| sed -e 's/subject=//'`
-	BODY=`echo $BODY|sed -e 's/%20/ /gi'|sed -e 's/body=//'`
-	CC=`echo $CC|sed -e 's/%20/ /gi'|sed -e 's/cc=//'`
-	BCC=`echo $BCC|sed -e 's/%20/ /gi'|sed -e 's/bcc=//'`
-	ATTACH=`echo $ATTACH|sed -e 's/%20/ /gi'|sed -e 's/attach=//'`
-	TO=`echo $TO|sed -e 's/%20/ /gi'| sed -e 's/,/ /gi'`
-	
-#	if [ "$SUBJECT" != "" ] ; then
-#		MAILPARAMS="$MAILPARAMS -s \"$SUBJECT\""
-#	fi
-#	if [ "$CC" != "" ] ; then
-#		MAILPARAMS="$MAILPARAMS -c \"$CC\""
-#	fi
-#	if [ "$BCC" != "" ] ; then
-#		MAILPARAMS="$MAILPARAMS -b \"$BCC\""
-#	fi
-	if [ "$ATTACH" != "" ] ; then
-		MAILPARAMS="$MAILPARAMS -attach \"$ATTACH\""
-	fi
-	
-	MAILPARAMS="$MAILPARAMS $TO"
-	
-	if [ "$BODY" != "" ] ; then
-		BODYFILE=`mktemp /tmp/mail.compose.XXXX`
-		echo $BODY|sed -e 's/%0A/\n/gi' > $BODYFILE
-		cat $BODYFILE
-		MAILPARAMS="$MAILPARAMS < $BODYFILE"
-	fi	
-
-	eval "alpine $MAILPARAMS"
-	unset MAILDATA
-	
-	if [ "$BODYFILE" != "" ] ; then
-		rm $BODYFILE
-	fi
 elif [ "$ZSHINIT" = "vim" ]
 then
 	vim $VIMFILE
@@ -91,7 +36,9 @@ then
 elif [ "$ZSHINIT" = "wget" ]
 then
 	wget -nc --adjust-extension --load-cookies ~/.config/jumanji/cookies -O "$WGETOUTFILE" -- "$WGETFILE"
-	xdg-open $WGETOUTFILE
+	local TMP
+	TMP=$WGETOUTFILE
 	unset WGETFILE, WGETOUTFILE
+	exec xdg-open $TMP
 fi #}}}
 unset ZSHINIT
