@@ -5,5 +5,9 @@ vf=screenshot
 lavdopts=threads=8
 nosub=yes
 noautosub=yes
+softvol=yes
+softvol-max=800
+volstep=1
+
 
 heartbeat-cmd="xscreensaver-command -deactivate > /dev/null"
