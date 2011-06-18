@@ -3,5 +3,7 @@ zoom=yes
 ontop=yes
 vf=screenshot
 lavdopts=threads=8
+nosub=yes
+noautosub=yes
 
 heartbeat-cmd="xscreensaver-command -deactivate > /dev/null"
