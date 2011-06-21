@@ -39,6 +39,6 @@ then
 	local TMP
 	TMP=$WGETOUTFILE
 	unset WGETFILE, WGETOUTFILE
-	exec xdg-open $TMP
+	exec xdg-open $TMP &
 fi #}}}
 unset ZSHINIT
