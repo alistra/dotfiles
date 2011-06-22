@@ -40,5 +40,7 @@ then
 	TMP=$WGETOUTFILE
 	unset WGETFILE, WGETOUTFILE
 	exec xdg-open $TMP &
+	unset ZSHINIT
+	exit
 fi #}}}
 unset ZSHINIT
