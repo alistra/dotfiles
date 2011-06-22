@@ -35,7 +35,7 @@ tmuxAttachSession tc s = io $ if s `prefixOfElem` tc
         else spawn ("urxvtc -e tmux new-session -s " ++ s)
 
 tmuxCompletion = do
-    (stdin, stdout, stderr, ph) <- runInteractiveCommand "tmux list-sessions|cut -f1 -d:"
+    (stdin, stdout, stderr, ph) <- runInteractiveCommand "tmux-init 1>/dev/null; tmux list-sessions|cut -f1 -d:"
     contents <- hGetContents stdout
     return $ lines $ contents
 
