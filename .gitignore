@@ -1,6 +1,7 @@
 [^\.]*
 .serverauth.*
 .pine-debug*
+.cv*
 .zcompdump
 .xsession-errors
 .xsel.log
