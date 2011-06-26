@@ -32,6 +32,7 @@ setopt APPEND_HISTORY
 setopt share_history
 setopt complete_in_word
 setopt list_packed
+setopt noequals
 #}}}
 #{{{ Completion
 zmodload  zsh/complist
