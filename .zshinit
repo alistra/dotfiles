@@ -1,5 +1,5 @@
 #!/bin/zsh
-#{{{bialobrewy
+#{{{ adeli
 if [ "`hostname`" = "adeli" ]
 then
 	if [ "$ZSHINIT" = "dev" ]
@@ -7,7 +7,7 @@ then
 		export PYTHONPATH="/var/django"
 		cd /var/django/archfinch
 	fi #}}}
-#{{{adeli
+#{{{ bialobrewy
 elif [ "`hostname`" = "bialobrewy" ] 
 then
 	if [ "$ZSHINIT" = "rails" ]
@@ -20,6 +20,9 @@ then
 	then
 		cd /torrents
 		fresh
+	elif [ "$ZSHINIT" = "torrents" ]
+	then
+		watch -n 30 "transmission-remote -l"
 	fi
 fi #}}} 
 #{{{all
