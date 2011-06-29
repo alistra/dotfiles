@@ -24,14 +24,6 @@ setxkbmap -layout pl
 xmodmap ~/.Xmodmap
 
 # Applications
-if [ "`hostname`" == bialobrewy ] ; then
-	ktorrent &
-	proxy localhost
-elif [ "`hostname`" == adeli ] ; then
-	proxy ii
-fi
-
-kwalletd &
 xscreensaver -no-splash &
 tmux-init &
 urxvtd &

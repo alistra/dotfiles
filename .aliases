@@ -51,10 +51,20 @@ def()
 {
 	wn "$*" -over
 } 
+
 tmpinstall()
 {
 	install -m 755 "$*" /srv/www/tmp/
 }
+
+torrentload()
+{
+	for file in $*
+	do
+		install -m 755 $file /torrents/start/
+	done
+}
+
 loop()
 {
 	while true

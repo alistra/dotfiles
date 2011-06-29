@@ -213,8 +213,6 @@ myManageHook = manageDocks <+> composeAll
     , className =? "qemu-system-x86_64" --> doFloat
     , className =? "Wine"           --> doCenterFloat
     , className =? "Window"         --> doCenterFloat
-    , className =? "ktorrent"	    --> doShift "9"
-    , className =? "Ktorrent"       --> doShift "9"
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
