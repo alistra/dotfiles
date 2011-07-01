@@ -10,7 +10,6 @@ alias rm='nocorrect rm'
 alias locate='nocorrect locate'
 alias eix='nocorrect noglob eix'
 alias git='nocorrect noglob git'
-
 alias tmux='TMUX= tmux'
 alias ls='ls --color=auto -h'
 alias du='du -h'
@@ -57,12 +56,18 @@ tmpinstall()
 	install -m 755 "$*" /srv/www/tmp/
 }
 
-torrentload()
+torrent-load()
 {
+
 	for file in $*
 	do
-		install -m 755 $file /torrents/start/
+		transmission-remote -a $file 
 	done
+}
+
+torrent-active()
+{
+	transmission-remote -l | awk -F "^ +|  +"  '$1=="Sum:" || NR==1 {next} $8 < 1 {printf "%s%d",i++?",":"",$2+0} END {printf "\n"}'
 }
 
 loop()
