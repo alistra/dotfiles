@@ -44,7 +44,7 @@ elif [ "$ZSHINIT" = "torrents" ]
 then
 	if [ "`hostname`" = "bialobrewy" ]
 	then
-		tmux split-window -v -p 25 'tail -f /var/log/tvtorrents'
+		tmux split-window -v -p 25 'watch -n1 "tail /var/log/tvtorrents"'
 	fi
 	watch -n1 "transmission-remote -l"
 fi #}}}
