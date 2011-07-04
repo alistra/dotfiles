@@ -36,10 +36,7 @@ then
 elif [ "$ZSHINIT" = "wget" ]
 then
 	wget -nc --adjust-extension --load-cookies ~/.config/jumanji/cookies -O "$WGETOUTFILE" -- "$WGETFILE"
-	local TMP
-	TMP=$WGETOUTFILE
-	unset WGETFILE, WGETOUTFILE
-	exec xdg-open $TMP &
+	exec xdg-open $WGETOUTFILE &
 	disown
 	unset ZSHINIT
 	exit

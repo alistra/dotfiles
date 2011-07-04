@@ -2,6 +2,7 @@
 #{{{ Aliases
 alias grep='nocorrect grep -i'
 alias egrep='nocorrect egrep -i'
+alias convert='nocorrect convert'
 alias mv='nocorrect mv -i'
 alias cp='nocorrect cp -i'
 alias mkdir='nocorrect mkdir'
