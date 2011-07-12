@@ -25,7 +25,6 @@ xmodmap ~/.Xmodmap
 
 # Applications
 xscreensaver -no-splash &
-tmux-init &
 urxvtd &
 xsel-copier &
 
