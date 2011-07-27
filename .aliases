@@ -32,7 +32,7 @@ alias alpine='alpine -p "{imap.gmail.com/ssl/user=balicki.aleksander@gmail.com}r
 alias vncviewer='vncviewer -DotWhenNoCursor=0'
 alias gist='gist -o -p'
 alias open='xdg-open'
-
+alias psgrep='ps aux|grep'
 if [ "`hostname`" = "adeli" ]
 then
 	alias blueoff='echo 0 > /sys/devices/platform/thinkpad_acpi/bluetooth_enable'
@@ -49,6 +49,8 @@ fi
 #{{{ Shell functions
 def() {	wn "$*" -over } 
 tmpinstall() { install -m 755 "$*" /srv/www/tmp/ }
+
+torrent-ids() { grep -v 'ETA'| grep -v 'Sum:'| cut -c-4 | xargs commify }
 
 torrent-load()
 {
