@@ -22,7 +22,7 @@ alias scp='noglob scp'
 alias qiv='qiv -tm'
 alias i='tmux attach -t irc'
 alias m='tmux attach -t mail'
-alias t='transmission'
+alias t='transmission-remote'
 alias scpresume="rsync --partial --progress --rsh=ssh"
 alias du1='du --max-depth=1'
 alias fresh='ls -lrt'
