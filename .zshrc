@@ -17,7 +17,7 @@ export EDITOR="vim"
 export VISUAL="vim"
 export PAGER="less"
 export SOCKS_SERVER="localhost:31337"
-export BROWSER='jumanji' 
+export BROWSER='xxxterm' 
 #}}}
 #{{{ Options
 setopt correctall

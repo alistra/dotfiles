@@ -19,7 +19,7 @@ import qualified Data.Map        as M
 
 myTerminal          = "urxvtc -e tmux"
 myBorderWidth       = 1
-myBrowser	        = "jumanji"
+myBrowser	        = "xxxterm"
 myMom'sBrowser      = "chromium"
 duckduckgo          = intelligent $ searchEngine "duckduckgo" "https://duckduckgo.com/?q="
 myModMask           = mod4Mask
