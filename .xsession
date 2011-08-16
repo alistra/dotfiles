@@ -12,16 +12,19 @@ else
 fi
 
 # Numlock
-numlockx &
+numlockx
 
 # Repeat speed
-xset r rate 300 25 &
+xset r rate 300 25
 
 # Polish keyboard
 setxkbmap -layout pl
 
 # Back, forward unbind
 xmodmap ~/.Xmodmap
+
+# Cursor
+xsetroot -cursor_name left_ptr
 
 # Applications
 xscreensaver -no-splash &
