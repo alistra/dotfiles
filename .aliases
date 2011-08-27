@@ -11,6 +11,7 @@ alias rm='nocorrect rm'
 alias locate='nocorrect locate'
 alias eix='nocorrect noglob eix'
 alias git='nocorrect noglob git'
+
 alias tmux='TMUX= tmux'
 alias ls='ls --color=auto -h'
 alias du='du -h'
@@ -20,6 +21,11 @@ alias rcp='cp -r'
 alias rscp='scp -r'
 alias scp='noglob scp'
 alias qiv='qiv -tm'
+alias alpine='alpine -p "{imap.gmail.com/ssl/user=balicki.aleksander@gmail.com}remote_pinerc"'
+alias vncviewer='vncviewer -DotWhenNoCursor=0'
+alias gist='gist -o -p'
+alias pgrep='pgrep -fl'
+
 alias i='tmux attach -t irc'
 alias m='tmux attach -t mail'
 alias t='transmission-remote'
@@ -28,11 +34,10 @@ alias du1='du --max-depth=1'
 alias fresh='ls -lrt'
 alias noemptylines='grep -v "^[ \t]*$"'
 alias nocomments='grep -v "^[\t ]*#"'
-alias alpine='alpine -p "{imap.gmail.com/ssl/user=balicki.aleksander@gmail.com}remote_pinerc"'
-alias vncviewer='vncviewer -DotWhenNoCursor=0'
-alias gist='gist -o -p'
 alias open='xdg-open'
-alias pgrep='pgrep -fl'
+alias eng2pl='translate -d pl -s en'
+alias pl2eng='translate -s pl -d en'
+
 if [ "`hostname`" = "adeli" ]
 then
 	alias blueoff='echo 0 > /sys/devices/platform/thinkpad_acpi/bluetooth_enable'
@@ -80,6 +85,25 @@ proxy()
 	fi
 }
 soundssh() { dd if=/dev/dsp | ssh -c arcfour -C $* dd of=/dev/dsp }
-todo(){ grep "$*" ~/.todo }
-todoadd(){ echo "$*" >> ~/.todo }
+todo()
+{ 
+	if [ "$*" ]; then
+		echo "$*" >> .todo
+	else
+		cat ~/.todo
+	fi
+}
+screenshot(){
+	local FILE OUTPUT
+	FILE=`mktemp /tmp/shotXXXX.png`
+	if [ "$*" ]; then
+		OUTPUT=`scrot "$*" $FILE`
+	else
+		OUTPUT=`scrot $FILE`
+	fi
+	xsel -c
+	imgur $FILE 2>/dev/null|xclip
+	xclip -o
+	rm $FILE
+}
 #}}}

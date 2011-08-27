@@ -29,7 +29,7 @@ xsetroot -cursor_name left_ptr
 # Applications
 xscreensaver -no-splash &
 urxvtd &
-xsel-copier &
+autocutsel -s PRIMARY &
 
 # Xmonad start
 exec xmonad
