@@ -33,6 +33,7 @@ alias vncviewer='vncviewer -DotWhenNoCursor=0'
 alias gist='gist -o -p'
 alias open='xdg-open'
 alias pgrep='pgrep -fl'
+alias vm='kdesu virt-manager'
 if [ "`hostname`" = "adeli" ]
 then
 	alias blueoff='echo 0 > /sys/devices/platform/thinkpad_acpi/bluetooth_enable'

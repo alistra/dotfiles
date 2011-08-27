@@ -4,6 +4,7 @@ urxvt*fading: 10
 urxvt*scrollBar: false
 
 urxvt*font: xft:DejaVu Sans Mono:pixelsize=15:antialias=false
+#urxvt*font: xft:DejaVu Sans Mono:pixelsize=15:antialias=true
 #urxvt*font: xft:Bitstream Vera Sans Mono:pixelsize=15
 #urxvt*font: xft:Inconsolata:pixelsize=17
 urxvt*transparent: yes
