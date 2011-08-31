@@ -211,8 +211,8 @@ myManageHook = manageDocks <+> composeAll
     , className =? "Gimp"           --> doFloat
     , className =? "qemu"           --> doFloat
     , className =? "qemu-system-x86_64" --> doFloat
-    , className =? "Wine"           --> doCenterFloat
-    , className =? "Window"         --> doCenterFloat
+    , className =? "Wine"           --> doFloat
+    , className =? "Window"         --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 

@@ -37,6 +37,8 @@ alias nocomments='grep -v "^[\t ]*#"'
 alias open='xdg-open'
 alias eng2pl='translate -d pl -s en'
 alias pl2eng='translate -s pl -d en'
+alias eng2pol='translate -d pl -s en'
+alias pol2eng='translate -s pl -d en'
 
 if [ "`hostname`" = "adeli" ]
 then
