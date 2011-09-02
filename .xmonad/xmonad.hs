@@ -19,7 +19,7 @@ import qualified Data.Map        as M
 
 myTerminal          = "urxvtc -e tmux"
 myBorderWidth       = 1
-myBrowser	        = "xxxterm"
+myBrowser           = "xxxterm"
 myMom'sBrowser      = "chromium"
 duckduckgo          = intelligent $ searchEngine "duckduckgo" "https://duckduckgo.com/?q="
 myModMask           = mod4Mask
@@ -49,27 +49,27 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     
     , ((0,             xK_F1    ), spawn $ XMonad.terminal conf)
     
-    , ((0,	 	       xK_F2    ), shellPrompt defaultXPConfig)
+    , ((0,             xK_F2    ), shellPrompt defaultXPConfig)
 
-    , ((0,		       xK_F3    ), tmuxAttachPromptCompl defaultXPConfig)
+    , ((0,             xK_F3    ), tmuxAttachPromptCompl defaultXPConfig)
 
     , ((0,             xK_F4    ), spawn myBrowser)
     
     , ((0,             xK_F12   ), spawn myMom'sBrowser)
 
-    , ((0,		       xK_F6    ), promptSearchBrowser greenXPConfig myBrowser duckduckgo)
+    , ((0,             xK_F6    ), promptSearchBrowser greenXPConfig myBrowser duckduckgo)
     
-    , ((0,		       xK_F7    ), promptSearchBrowser greenXPConfig myBrowser wikipedia)
+    , ((0,             xK_F7    ), promptSearchBrowser greenXPConfig myBrowser wikipedia)
 
-    , ((0,		       xK_F8    ), selectSearchBrowser myBrowser duckduckgo)
+    , ((0,             xK_F8    ), selectSearchBrowser myBrowser duckduckgo)
     
     , ((0,             xK_Print ), spawn "scrot '%Y-%m-%d_%R:%S_$wx$h_scrot.png'")
  
-    , ((0,	           xf86AudioLowerVolume ), spawn "amixer -c 0 -- sset Master playback 5%- unmute&")
+    , ((0,             xf86AudioLowerVolume ), spawn "amixer -c 0 -- sset Master playback 5%- unmute&")
     
-    , ((0,	           xf86AudioRaiseVolume ), spawn "amixer -c 0 -- sset Master playback 5%+ unmute&")
+    , ((0,             xf86AudioRaiseVolume ), spawn "amixer -c 0 -- sset Master playback 5%+ unmute&")
 
-    , ((0,	           xf86AudioMute ), spawn "amixer -c 0 -- sset Master mute&")
+    , ((0,             xf86AudioMute ), spawn "amixer -c 0 -- sset Master mute&")
 
     -- close focused window 
     , ((modMask,               xK_c     ), kill)
@@ -232,9 +232,9 @@ myFocusFollowsMouse = True
 -- > logHook = dynamicLogDzen
 --
 myLogHook xmobar = dynamicLogWithPP $ xmobarPP
-            	{ ppOutput = hPutStrLn xmobar
-		, ppTitle = xmobarColor "white" "" . shorten 50
-		}
+                { ppOutput = hPutStrLn xmobar
+        , ppTitle = xmobarColor "white" "" . shorten 50
+        }
 
 ------------------------------------------------------------------------
 -- Startup hook
@@ -252,8 +252,8 @@ myStartupHook = return ()
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-		xmobar <- spawnPipe "xmobar"
-		xmonad (defaults xmobar)
+        xmobar <- spawnPipe "xmobar"
+        xmonad (defaults xmobar)
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will 
