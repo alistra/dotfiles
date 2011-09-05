@@ -8,8 +8,4 @@ noautosub=yes
 softvol=yes
 softvol-max=800
 volstep=1
-noslices=yes
-dr=yes
-
-
 heartbeat-cmd="xscreensaver-command -deactivate > /dev/null"
