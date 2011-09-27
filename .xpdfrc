@@ -1,3 +1,0 @@
-urlCommand "chromium-bg %s"
-bind c any toggleContinuousMode
-bind f any toggleFullScreenMode
