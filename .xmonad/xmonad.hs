@@ -28,7 +28,7 @@ myWorkspaces        = map show [1..9]
 myNormalBorderColor = "#000000"
 myFocusedBorderColor= "#ff0000"
 
-prefixOfElem el list = any (isPrefixOf el) list
+prefixOfElem el = any (isPrefixOf el)
 
 tmuxAttachSession tc s = io $ if s `prefixOfElem` tc
         then spawn ("urxvtc -e tmux attach -t " ++ s)
@@ -37,41 +37,41 @@ tmuxAttachSession tc s = io $ if s `prefixOfElem` tc
 tmuxCompletion = do
     (stdin, stdout, stderr, ph) <- runInteractiveCommand "tmux-init 1>/dev/null; tmux list-sessions|cut -f1 -d:"
     contents <- hGetContents stdout
-    return $ lines $ contents
+    return $ lines contents
 
 tmuxAttachPromptCompl config= do
     tc <- io tmuxCompletion
-    inputPromptWithCompl config "tmux attach" (mkComplFunFromList' tc) ?+ (tmuxAttachSession tc)
+    inputPromptWithCompl config "tmux attach" (mkComplFunFromList' tc) ?+ tmuxAttachSession tc
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     [ ((modMask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
-    
+
     , ((0,             xK_F1    ), spawn $ XMonad.terminal conf)
-    
+
     , ((0,             xK_F2    ), shellPrompt defaultXPConfig)
 
     , ((0,             xK_F3    ), tmuxAttachPromptCompl defaultXPConfig)
 
     , ((0,             xK_F4    ), spawn myBrowser)
-    
+
     , ((0,             xK_F12   ), spawn myMom'sBrowser)
 
     , ((0,             xK_F6    ), promptSearchBrowser greenXPConfig myBrowser duckduckgo)
-    
+
     , ((0,             xK_F7    ), promptSearchBrowser greenXPConfig myBrowser wikipedia)
 
     , ((0,             xK_F8    ), selectSearchBrowser myBrowser duckduckgo)
-    
+
     , ((0,             xK_Print ), spawn "scrot '%Y-%m-%d_%R:%S_$wx$h_scrot.png'")
- 
+
     , ((0,             xf86AudioLowerVolume ), spawn "amixer -c 0 -- sset Master playback 5%- unmute&")
-    
+
     , ((0,             xf86AudioRaiseVolume ), spawn "amixer -c 0 -- sset Master playback 5%+ unmute&")
 
     , ((0,             xf86AudioMute ), spawn "amixer -c 0 -- sset Master mute&")
 
-    -- close focused window 
+    -- close focused window
     , ((modMask,               xK_c     ), kill)
 
      -- Rotate through the available layout algorithms
@@ -155,13 +155,13 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     -- mod-button1, Set the window to floating mode and move by dragging
-    [ ((modMask, button1), (\w -> focus w >> mouseMoveWindow w))
+    [ ((modMask, button1), \w -> focus w >> mouseMoveWindow w)
 
     -- mod-button2, Raise the window to the top of the stack
-    , ((modMask, button2), (\w -> focus w >> windows W.swapMaster))
+    , ((modMask, button2), \w -> focus w >> windows W.swapMaster)
 
     -- mod-button3, Set the window to floating mode and resize by dragging
-    , ((modMask, button3), (\w -> focus w >> mouseResizeWindow w))
+    , ((modMask, button3), \w -> focus w >> mouseResizeWindow w)
 
     -- you may also bind events to the mouse scroll wheel (button4 and button5)
     ]
