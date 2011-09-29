@@ -21,6 +21,7 @@ set showcmd
 set undofile
 set undodir=~/.vim/undo
 set foldmethod=marker
+set backspace=indent,eol,start
 
 colorscheme darkblue 
 
