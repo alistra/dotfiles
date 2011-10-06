@@ -28,19 +28,29 @@ let mapleader='\'
 " quickfix maps
 nmap <leader>n :cnext<CR>
 nmap <leader>p :cprev<CR>
-nmap <leader>g :cc<CR>
+nmap <leader>l :cc<CR>
 vmap <leader>n :cnext<CR>
 vmap <leader>p :cprev<CR>
-vmap <leader>g :cc<CR>
+vmap <leader>l :cc<CR>
+
+" 2 compilers for haskell
+
+vmap <leader>h :compiler hlint<CR>:make<CR>
+nmap <leader>h :compiler hlint<CR>:make<CR>
+vmap <leader>g :compiler ghc<CR>:make<CR>
+nmap <leader>g :compiler ghc<CR>:make<CR>
+
+" detect indent
+
 
 " command-t ignores
 set wildignore+=*.o,*.obj,*.jpg,*.png,*.pdf,*.JPG,*.gz,*.dat,*.ps,*.djvu,*.bz2,*.tar,*.ppt,*.dvi,*.doc,*.tif,*.eps,*.gif,*.jpeg
 
 colorscheme darkblue 
 
-autocmd FileType python   set tabstop=4|set shiftwidth=4|set expandtab|set sts=4 
-autocmd FileType ruby     set tabstop=2|set shiftwidth=2|set expandtab|set sts=2 
-autocmd FileType haskell  set tabstop=4|set shiftwidth=4|set expandtab|set sts=4|compiler hlint
+autocmd FileType python   set tabstop=4|set shiftwidth=4|set expandtab|set sts=4|compiler pylint
+autocmd FileType ruby     set tabstop=2|set shiftwidth=2|set expandtab|set sts=2|compiler ruby
+autocmd FileType haskell  set tabstop=4|set shiftwidth=4|set expandtab|set sts=4|compiler ghc
 
 filetype plugin on
 filetype indent on
