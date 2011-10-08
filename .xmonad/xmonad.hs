@@ -83,14 +83,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- Resize viewed windows to the correct size
     , ((modMask,               xK_n     ), refresh)
 
-    -- Move focus to the next window
     , ((modMask,               xK_Tab   ), windows W.focusDown)
-
-    -- Move focus to the next window
     , ((modMask,               xK_j     ), windows W.focusDown)
-
-    -- Move focus to the previous window
-    , ((modMask,               xK_k     ), windows W.focusUp  )
+    , ((modMask .|. shiftMask, xK_Tab   ), windows W.focusUp)
+    , ((modMask,               xK_k     ), windows W.focusUp)
 
     -- Swap the focused window and the master window
     , ((modMask,               xK_Return), windows W.swapMaster)
