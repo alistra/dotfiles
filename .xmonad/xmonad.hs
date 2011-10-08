@@ -20,7 +20,7 @@ import qualified Data.Map        as M
 myTerminal          = "urxvtc -e tmux"
 myBorderWidth       = 1
 myBrowser           = "xxxterm"
-myMom'sBrowser      = "chromium"
+myMomsBrowser      = "firefox-bin"
 duckduckgo          = intelligent $ searchEngine "duckduckgo" "https://duckduckgo.com/?q="
 myModMask           = mod4Mask
 myNumlockMask       = mod2Mask
@@ -55,7 +55,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     , ((0,             xK_F4    ), spawn myBrowser)
 
-    , ((0,             xK_F12   ), spawn myMom'sBrowser)
+    , ((0,             xK_F12   ), spawn myMomsBrowser)
 
     , ((0,             xK_F6    ), promptSearchBrowser greenXPConfig myBrowser duckduckgo)
 
