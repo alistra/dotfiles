@@ -27,31 +27,31 @@ let mapleader='\'
 
 " quickfix maps
 nmap <leader>n :cnext<CR>
-nmap <leader>p :cprev<CR>
-nmap <leader>l :cc<CR>
 vmap <leader>n :cnext<CR>
+nmap <leader>p :cprev<CR>
 vmap <leader>p :cprev<CR>
-vmap <leader>l :cc<CR>
+nmap <leader>g :cc<CR>
+vmap <leader>g :cc<CR>
 
-" 2 compilers for haskell
-
-vmap <leader>h :compiler hlint<CR>:make<CR>
-nmap <leader>h :compiler hlint<CR>:make<CR>
-vmap <leader>g :compiler ghc<CR>:make<CR>
-nmap <leader>g :compiler ghc<CR>:make<CR>
+" clang complete
+let g:clang_complete_copen = 1
+let g:clang_periodic_quickfix = 1
 
 " detect indent
-
+nmap <leader>d :DetectIndent<CR>
+vmap <leader>d :DetectIndent<CR>
 
 " command-t ignores
 set wildignore+=*.o,*.obj,*.jpg,*.png,*.pdf,*.JPG,*.gz,*.dat,*.ps,*.djvu,*.bz2,*.tar,*.ppt,*.dvi,*.doc,*.tif,*.eps,*.gif,*.jpeg
 
 colorscheme darkblue 
 
+autocmd Filetype c        set tabstop=8|set shiftwidth=8|compiler clang|set makeprg=clang\ -Wall\ %<.c
+autocmd Filetype cpp      set tabstop=8|set shiftwidth=8|compiler clang|set makeprg=clang++\ -Wall\ %<.cpp
 autocmd FileType python   set tabstop=4|set shiftwidth=4|set expandtab|set sts=4|compiler pylint
 autocmd FileType ruby     set tabstop=2|set shiftwidth=2|set expandtab|set sts=2|compiler ruby
 autocmd FileType haskell  set tabstop=4|set shiftwidth=4|set expandtab|set sts=4
-autocmd FileType ocaml    set tabstop=4|set shiftwidth=4|set expandtab|set sts=4
+autocmd FileType ocaml    set tabstop=4|set shiftwidth=4|set expandtab|set sts=4|set tw=0
 
 filetype plugin on
 filetype indent on
