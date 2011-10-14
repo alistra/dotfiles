@@ -33,6 +33,15 @@ vmap <leader>p :cprev<CR>
 nmap <leader>g :cc<CR>
 vmap <leader>g :cc<CR>
 
+" nerd tree
+nmap <leader>t :NERDTree<CR>
+vmap <leader>t :NERDTree<CR>
+
+" fuzzy finder
+
+nmap <leader>f :FufCoverageFile<CR>
+vmap <leader>f :FufCoverageFile<CR>
+
 " clang complete
 let g:clang_complete_copen = 1
 let g:clang_periodic_quickfix = 1
@@ -48,7 +57,7 @@ colorscheme darkblue
 
 autocmd Filetype c        set tabstop=8|set shiftwidth=8|compiler clang|set makeprg=clang\ -Wall\ %<.c
 autocmd Filetype cpp      set tabstop=8|set shiftwidth=8|compiler clang|set makeprg=clang++\ -Wall\ %<.cpp
-autocmd FileType python   set tabstop=4|set shiftwidth=4|set expandtab|set sts=4|compiler pylint
+autocmd FileType python   set tabstop=4|set shiftwidth=4|set expandtab|set sts=4|set makeprg=pychecker\ %<.py
 autocmd FileType ruby     set tabstop=2|set shiftwidth=2|set expandtab|set sts=2|compiler ruby
 autocmd FileType haskell  set tabstop=4|set shiftwidth=4|set expandtab|set sts=4
 autocmd FileType ocaml    set tabstop=4|set shiftwidth=4|set expandtab|set sts=4|set tw=0

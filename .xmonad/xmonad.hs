@@ -2,28 +2,39 @@ import XMonad
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.ManageHelpers
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Prompt
 import XMonad.Prompt.Input
 import XMonad.Prompt.Shell
-import XMonad.Prompt.Ssh
 import XMonad.Actions.Search
-import XMonad.Util.EZConfig(additionalKeys)
 import System.IO
 import System.Process(runInteractiveCommand)
 import System.Exit
-import Data.List
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
+myTerminal :: String
 myTerminal          = "urxvtc -e tmux"
+
+myBorderWidth :: Dimension
 myBorderWidth       = 1
+
+myBrowser :: String
 myBrowser           = "xxxterm"
-myMomsBrowser      = "firefox-bin"
+
+myMomsBrowser :: String
+myMomsBrowser       = "firefox-bin"
+
+duckduckgo :: SearchEngine
 duckduckgo          = intelligent $ searchEngine "duckduckgo" "https://duckduckgo.com/?q="
+
+myModMask :: KeyMask
 myModMask           = mod4Mask
+
+myNumlockMask :: KeyMask
 myNumlockMask       = mod2Mask
+
+myWorkspaces :: [String]
 myWorkspaces        = map show [1..9]
 myNormalBorderColor = "#000000"
 myFocusedBorderColor= "#ff0000"
@@ -34,8 +45,9 @@ tmuxAttachSession tc s = io $ if s `prefixOfElem` tc
         then spawn ("urxvtc -e tmux attach -t " ++ s)
         else spawn ("urxvtc -e tmux new-session -s " ++ s)
 
+tmuxCompletion :: IO [String]
 tmuxCompletion = do
-    (stdin, stdout, stderr, ph) <- runInteractiveCommand "tmux-init 1>/dev/null; tmux list-sessions|cut -f1 -d:"
+    (_, stdout, _, ph) <- runInteractiveCommand "tmux-init 1>/dev/null; tmux list-sessions|cut -f1 -d:"
     contents <- hGetContents stdout
     return $ lines contents
 
@@ -202,6 +214,7 @@ myLayout = avoidStruts $ smartBorders $ tiled ||| Mirror tiled ||| Full
 -- To match on the WM_NAME, you can use 'title' in the same way that
 -- 'className' and 'resource' are used below.
 --
+myManageHook :: ManageHook
 myManageHook = manageDocks <+> composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
@@ -209,6 +222,8 @@ myManageHook = manageDocks <+> composeAll
     , className =? "qemu-system-x86_64" --> doFloat
     , className =? "Wine"           --> doFloat
     , className =? "Window"         --> doFloat
+    , className =? "xmessage"       --> doFloat
+    , className =? "Xmessage"       --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
@@ -227,10 +242,11 @@ myFocusFollowsMouse = True
 --
 -- > logHook = dynamicLogDzen
 --
-myLogHook xmobar = dynamicLogWithPP $ xmobarPP
-                { ppOutput = hPutStrLn xmobar
-        , ppTitle = xmobarColor "white" "" . shorten 50
-        }
+myLogHook :: Handle -> X ()
+myLogHook xmobar = dynamicLogWithPP $ xmobarPP {
+    ppOutput = hPutStrLn xmobar,
+    ppTitle = xmobarColor "white" "" . shorten 50
+    }
 
 ------------------------------------------------------------------------
 -- Startup hook
@@ -252,9 +268,9 @@ main = do
         xmonad (defaults xmobar)
 
 -- A structure containing your configuration settings, overriding
--- fields in the default config. Any you don't override, will 
+-- fields in the default config. Any you don't override, will
 -- use the defaults defined in xmonad/XMonad/Config.hs
--- 
+--
 -- No need to modify this.
 --
 defaults xmobar = defaultConfig {

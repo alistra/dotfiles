@@ -92,7 +92,7 @@ soundssh() { dd if=/dev/dsp | ssh -c arcfour -C $* dd of=/dev/dsp }
 todo()
 { 
 	if [ "$*" ]; then
-		echo "$*" >> .todo
+		echo "$*" >> ~/.todo
 	else
 		cat ~/.todo
 	fi
