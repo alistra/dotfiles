@@ -57,7 +57,7 @@ colorscheme darkblue
 
 autocmd Filetype c        set tabstop=8|set shiftwidth=8|compiler clang|set makeprg=clang\ -Wall\ %<.c
 autocmd Filetype cpp      set tabstop=8|set shiftwidth=8|compiler clang|set makeprg=clang++\ -Wall\ %<.cpp
-autocmd FileType python   set tabstop=4|set shiftwidth=4|set expandtab|set sts=4|set makeprg=pychecker\ %<.py
+autocmd FileType python   set tabstop=4|set shiftwidth=4|set expandtab|set sts=4
 autocmd FileType ruby     set tabstop=2|set shiftwidth=2|set expandtab|set sts=2|compiler ruby
 autocmd FileType haskell  set tabstop=4|set shiftwidth=4|set expandtab|set sts=4
 autocmd FileType ocaml    set tabstop=4|set shiftwidth=4|set expandtab|set sts=4|set tw=0
