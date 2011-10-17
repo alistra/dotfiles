@@ -8,7 +8,7 @@ alias cp='nocorrect cp -i'
 alias mkdir='nocorrect mkdir'
 alias echo='nocorrect echo'
 alias rm='nocorrect rm'
-alias locate='nocorrect locate'
+alias locate='nocorrect locate -i'
 alias eix='nocorrect noglob eix'
 alias git='nocorrect noglob git'
 
