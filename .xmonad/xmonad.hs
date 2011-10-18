@@ -35,25 +35,13 @@ myNumlockMask :: KeyMask
 myNumlockMask       = mod2Mask
 
 myWorkspaces :: [String]
-myWorkspaces        = map show [1..9]
+myWorkspaces        = map show [1::Integer .. 9::Integer]
+
+myNormalBorderColor :: String
 myNormalBorderColor = "#000000"
+
+myFocusedBorderColor :: String
 myFocusedBorderColor= "#ff0000"
-
-prefixOfElem el = any (isPrefixOf el)
-
-tmuxAttachSession tc s = io $ if s `prefixOfElem` tc
-        then spawn ("urxvtc -e tmux attach -t " ++ s)
-        else spawn ("urxvtc -e tmux new-session -s " ++ s)
-
-tmuxCompletion :: IO [String]
-tmuxCompletion = do
-    (_, stdout, _, ph) <- runInteractiveCommand "tmux-init 1>/dev/null; tmux list-sessions|cut -f1 -d:"
-    contents <- hGetContents stdout
-    return $ lines contents
-
-tmuxAttachPromptCompl config= do
-    tc <- io tmuxCompletion
-    inputPromptWithCompl config "tmux attach" (mkComplFunFromList' tc) ?+ tmuxAttachSession tc
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
@@ -151,9 +139,27 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
         | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
-    where  xf86AudioLowerVolume = 0x1008ff11
-           xf86AudioMute        = 0x1008ff12
-           xf86AudioRaiseVolume = 0x1008ff13
+    where   xf86AudioLowerVolume = 0x1008ff11
+            xf86AudioMute        = 0x1008ff12
+            xf86AudioRaiseVolume = 0x1008ff13
+            tmuxAttachSession tc s = io $ if s `prefixOfElem` tc
+                    then spawn ("urxvtc -e tmux attach -t " ++ s)
+                    else spawn ("urxvtc -e tmux new-session -s " ++ s)
+
+            tmuxCompletion :: IO [String]
+            tmuxCompletion = do
+                (_, stdout, _, ph) <- runInteractiveCommand "tmux-init 1>/dev/null; tmux list-sessions|cut -f1 -d:"
+                contents <- hGetContents stdout
+                return $ lines contents
+
+            tmuxAttachPromptCompl config= do
+                tc <- io tmuxCompletion
+                inputPromptWithCompl config "tmux attach" (mkComplFunFromList' tc) ?+ tmuxAttachSession tc
+
+            prefixOfElem :: Eq a => [a] -> [[a]] -> Bool
+            prefixOfElem el = any (isPrefixOf el)
+
+
 
 
 
@@ -256,6 +262,7 @@ myLogHook xmobar = dynamicLogWithPP $ xmobarPP {
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
+myStartupHook :: X ()
 myStartupHook = return ()
 
 ------------------------------------------------------------------------
@@ -263,6 +270,7 @@ myStartupHook = return ()
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
+main :: IO ()
 main = do
         xmobar <- spawnPipe "xmobar"
         xmonad (defaults xmobar)
