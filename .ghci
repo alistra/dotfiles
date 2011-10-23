@@ -1,1 +1,2 @@
+:set -Wall
 :def hoogle \x -> return $ ":!hoogle \"" ++ x ++ "\""

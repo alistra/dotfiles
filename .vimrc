@@ -50,6 +50,11 @@ let g:clang_periodic_quickfix = 1
 nmap <leader>d :DetectIndent<CR>
 vmap <leader>d :DetectIndent<CR>
 
+" use ghc functionality for haskell files
+au Bufenter *.hs compiler ghc
+" configure browser for haskell_doc.vim
+let g:haddock_browser = "/usr/bin/xxxterm"
+
 " command-t ignores
 set wildignore+=*.o,*.obj,*.jpg,*.png,*.pdf,*.JPG,*.gz,*.dat,*.ps,*.djvu,*.bz2,*.tar,*.ppt,*.dvi,*.doc,*.tif,*.eps,*.gif,*.jpeg
 
