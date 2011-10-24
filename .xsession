@@ -31,6 +31,7 @@ xscreensaver -no-splash &
 urxvtd &
 autocutsel -s PRIMARY &
 autocutsel -s CLIPBOARD &
+hoogle server -p 12345 &
 
 # Xmonad start
 exec xmonad

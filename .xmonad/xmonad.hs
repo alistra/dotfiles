@@ -25,8 +25,8 @@ myBrowser           = "xxxterm"
 myMomsBrowser :: String
 myMomsBrowser       = "firefox-bin"
 
-duckduckgo :: SearchEngine
-duckduckgo          = intelligent $ searchEngine "duckduckgo" "https://duckduckgo.com/?q="
+scroogle :: SearchEngine
+scroogle          = intelligent $ searchEngine "scroogle" "https://ssl.scroogle.org/cgi-bin/nbbwssl.cgi?Gw="
 
 myModMask :: KeyMask
 myModMask           = mod4Mask
@@ -57,11 +57,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     , ((0,             xK_F12   ), spawn myMomsBrowser)
 
-    , ((0,             xK_F6    ), promptSearchBrowser greenXPConfig myBrowser duckduckgo)
+    , ((0,             xK_F6    ), promptSearchBrowser greenXPConfig myBrowser scroogle)
 
     , ((0,             xK_F7    ), promptSearchBrowser greenXPConfig myBrowser wikipedia)
 
-    , ((0,             xK_F8    ), selectSearchBrowser myBrowser duckduckgo)
+    , ((0,             xK_F8    ), selectSearchBrowser myBrowser scroogle)
 
     , ((0,             xK_Print ), spawn "scrot '%Y-%m-%d_%R:%S_$wx$h_scrot.png'")
 
