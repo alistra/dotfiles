@@ -1,19 +1,8 @@
 #!/bin/zsh
-#{{{ adeli
-if [ "`hostname`" = "adeli" ]
-then
-	if [ "$ZSHINIT" = "dev" ]
-	then
-		export PYTHONPATH="/var/django"
-		cd /var/django/archfinch
-	fi #}}}
 #{{{ bialobrewy
-elif [ "`hostname`" = "bialobrewy" ] 
+if [ "`hostname`" = "bialobrewy" ] 
 then
-	if [ "$ZSHINIT" = "rails" ]
-	then
-		Imgur-Directory-Listing/script/server
-	elif [ "$ZSHINIT" = "seriale" ]
+	if [ "$ZSHINIT" = "seriale" ]
 	then
 		cd /torrents
 	elif [ "$ZSHINIT" = "current" ]
