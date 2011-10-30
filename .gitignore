@@ -32,3 +32,8 @@
 .swp
 .ocaml_history
 .scanview.cfg
+.dosbox-data/
+.ex_history
+.fonts.conf
+.freeciv*
+.liquidwarrc
