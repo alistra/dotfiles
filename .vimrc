@@ -25,7 +25,6 @@ set backspace=indent,eol,start
 
 let mapleader='\'
 
-" quickfix maps
 nmap <leader>n :cnext<CR>
 vmap <leader>n :cnext<CR>
 nmap <leader>p :cprev<CR>
@@ -33,30 +32,25 @@ vmap <leader>p :cprev<CR>
 nmap <leader>g :cc<CR>
 vmap <leader>g :cc<CR>
 
-" nerd tree
 nmap <leader>t :NERDTree<CR>
 vmap <leader>t :NERDTree<CR>
-
-" fuzzy finder
 
 nmap <leader>f :FufCoverageFile<CR>
 vmap <leader>f :FufCoverageFile<CR>
 
-" clang complete
 let g:clang_complete_copen = 1
 let g:clang_periodic_quickfix = 1
 
-" detect indent
 nmap <leader>d :DetectIndent<CR>
 vmap <leader>d :DetectIndent<CR>
 
-" use ghc functionality for haskell files
 au Bufenter *.hs compiler ghc
-" configure browser for haskell_doc.vim
+au Bufenter *.cabal set tabstop=4|set shiftwidth=4|set expandtab|set sts=4 
 let g:haddock_browser = "/usr/bin/xxxterm"
 
-" command-t ignores
 set wildignore+=*.o,*.obj,*.jpg,*.png,*.pdf,*.JPG,*.gz,*.dat,*.ps,*.djvu,*.bz2,*.tar,*.ppt,*.dvi,*.doc,*.tif,*.eps,*.gif,*.jpeg
+
+
 
 colorscheme darkblue 
 
