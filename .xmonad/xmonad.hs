@@ -9,6 +9,8 @@ import XMonad.Prompt.Shell
 import XMonad.Actions.Search
 import XMonad.Actions.UpdateFocus
 import XMonad.Actions.FindEmptyWorkspace
+import XMonad.Actions.GridSelect
+import XMonad.Actions.WindowGo
 import qualified XMonad.Actions.FlexibleResize as Flex
 import System.IO
 import System.Process(runInteractiveCommand)
@@ -19,17 +21,17 @@ import qualified Data.Map        as M
 myTerminal :: String
 myTerminal          = "urxvtc -e tmux"
 
-myBorderWidth :: Dimension
-myBorderWidth       = 1
-
 myBrowser :: String
 myBrowser           = "xxxterm"
+
+myEditor :: String
+myEditor            = "vim-open"
 
 myMomsBrowser :: String
 myMomsBrowser       = "firefox-bin"
 
 scroogle :: SearchEngine
-scroogle          = intelligent $ searchEngine "scroogle" "https://ssl.scroogle.org/cgi-bin/nbbwssl.cgi?Gw="
+scroogle            = intelligent $ searchEngine "scroogle" "https://ssl.scroogle.org/cgi-bin/nbbwssl.cgi?Gw="
 
 myModMask :: KeyMask
 myModMask           = mod4Mask
@@ -38,13 +40,7 @@ myNumlockMask :: KeyMask
 myNumlockMask       = mod2Mask
 
 myWorkspaces :: [String]
-myWorkspaces        = map show [1::Integer .. 9::Integer]
-
-myNormalBorderColor :: String
-myNormalBorderColor = "#000000"
-
-myFocusedBorderColor :: String
-myFocusedBorderColor= "#ff0000"
+myWorkspaces        = map show ([1..9] :: [Integer])
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [ ((modMask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
@@ -52,7 +48,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0,                     xK_F1    ), spawn $ XMonad.terminal conf)
     , ((0,                     xK_F2    ), shellPrompt defaultXPConfig)
     , ((0,                     xK_F3    ), tmuxAttachPromptCompl defaultXPConfig)
-    , ((0,                     xK_F4    ), spawn myBrowser)
+    , ((0,                     xK_F4    ), runOrRaiseNext myBrowser (className =? "XXXTerm"))
     , ((0,                     xK_F6    ), promptSearchBrowser greenXPConfig myBrowser scroogle)
     , ((0,                     xK_F7    ), promptSearchBrowser greenXPConfig myBrowser wikipedia)
     , ((0,                     xK_F8    ), selectSearchBrowser myBrowser scroogle)
@@ -63,6 +59,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0,                     xf86AudioLowerVolume ), spawn "amixer -c 0 -- sset Master playback 5%- unmute&")
     , ((0,                     xf86AudioRaiseVolume ), spawn "amixer -c 0 -- sset Master playback 5%+ unmute&")
     , ((0,                     xf86AudioMute ), spawn "amixer -c 0 -- sset Master mute&")
+
+    , ((modMask,               xK_g     ), goToSelected defaultGSConfig)
 
     , ((modMask,               xK_c     ), kill)
 
@@ -155,7 +153,6 @@ myLogHook xmobar = dynamicLogWithPP $ xmobarPP {
     ppTitle = xmobarColor "white" "" . shorten 50
     }
 
-
 main :: IO ()
 main = do
     xmobar <- spawnPipe "xmobar"
@@ -164,12 +161,12 @@ main = do
 defaults xmobar = defaultConfig {
     terminal           = myTerminal,
     focusFollowsMouse  = True,
-    borderWidth        = myBorderWidth,
+    borderWidth        = 1,
     modMask            = myModMask,
     numlockMask        = myNumlockMask,
     workspaces         = myWorkspaces,
-    normalBorderColor  = myNormalBorderColor,
-    focusedBorderColor = myFocusedBorderColor,
+    normalBorderColor  = "#000000",
+    focusedBorderColor = "#ff0000",
 
     keys               = myKeys,
     mouseBindings      = myMouseBindings,
