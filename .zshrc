@@ -13,8 +13,8 @@ export GREP_OPTIONS="--color"
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 export WORDCHARS='*?_-[]~=&;!#$%^(){}<>'
-export EDITOR="vim-open"
-export VISUAL="vim-open"
+export EDITOR="vim"
+export VISUAL="vim"
 export PAGER="less"
 export SOCKS_SERVER="localhost:31337"
 export BROWSER='xxxterm' 
