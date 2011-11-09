@@ -25,6 +25,7 @@ alias alpine='alpine -p "{imap.gmail.com/ssl/user=balicki.aleksander@gmail.com}r
 alias vncviewer='vncviewer -DotWhenNoCursor=0'
 alias gist='gist -o -p'
 alias pgrep='pgrep -fl'
+alias xpdf='xpdf -fullscreen'
 
 alias i='tmux attach -t irc'
 alias m='tmux attach -t mail'
