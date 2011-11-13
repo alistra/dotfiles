@@ -1,5 +1,6 @@
 #!/bin/zsh
 #{{{ Aliases
+alias man='nocorrect man'
 alias grep='nocorrect grep -i'
 alias egrep='nocorrect egrep -i'
 alias convert='nocorrect convert'
