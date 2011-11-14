@@ -88,6 +88,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,               xK_q     ), restart "xmonad" True)
 
     , ((modMask,               xK_grave ), viewEmptyWorkspace)
+    , ((modMask .|. shiftMask, xK_grave ), tagToEmptyWorkspace)
     ]
     ++
 
