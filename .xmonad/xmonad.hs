@@ -53,7 +53,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0,                     xK_F3    ), tmuxAttachPromptCompl defaultXPConfig)
     , ((0,                     xK_F4    ), runOrRaiseNext myBrowser (className =? "XXXTerm"))
     , ((0,                     xK_F6    ), promptSearchBrowser greenXPConfig myBrowser scroogle)
-    , ((0,                     xK_F7    ), promptSearchBrowser greenXPConfig myBrowser wikipedia)
+    , ((0,                     xK_F7    ), promptSearchBrowser greenXPConfig myBrowser (intelligent wikipedia))
     , ((0,                     xK_F8    ), selectSearchBrowser myBrowser scroogle)
     , ((0,                     xK_F12   ), spawn myMomsBrowser)
 
