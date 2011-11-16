@@ -1,22 +1,25 @@
-import XMonad
-import XMonad.Layout.NoBorders
-import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.ManageDocks
+import Control.Monad
 import XMonad.Util.Run(spawnPipe)
-import XMonad.Prompt
-import XMonad.Prompt.Input
 import XMonad.Prompt.Shell
-import XMonad.Actions.Search
-import XMonad.Actions.UpdateFocus
-import XMonad.Actions.FindEmptyWorkspace
-import XMonad.Actions.GridSelect
+import XMonad.Prompt.Input
+import XMonad.Prompt
+import XMonad.Layout.NoBorders
+import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.DynamicLog
 import XMonad.Actions.WindowGo
-import qualified XMonad.Actions.FlexibleResize as Flex
-import System.IO
+import XMonad.Actions.Volume
+import XMonad.Actions.UpdateFocus
+import XMonad.Actions.Search
+import XMonad.Actions.GridSelect
+import XMonad.Actions.FindEmptyWorkspace
+import XMonad
 import System.Process(runInteractiveCommand)
+import System.IO
 import System.Exit
 import qualified XMonad.StackSet as W
+import qualified XMonad.Actions.FlexibleResize as Flex
 import qualified Data.Map        as M
+import Graphics.X11.ExtraTypes.XF86
 
 myTerminal :: String
 myTerminal          = "urxvtc -e tmux"
@@ -56,9 +59,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     , ((0,                     xK_Print ), spawn "scrot '%Y-%m-%d_%R:%S_$wx$h_scrot.png'")
 
-    , ((0,                     xf86AudioLowerVolume ), spawn "amixer -c 0 -- sset Master playback 5%- unmute&")
-    , ((0,                     xf86AudioRaiseVolume ), spawn "amixer -c 0 -- sset Master playback 5%+ unmute&")
-    , ((0,                     xf86AudioMute ), spawn "amixer -c 0 -- sset Master mute&")
+    , ((0,                     xF86XK_AudioLowerVolume ), setMute False >> void (raiseVolume 5))
+    , ((0,                     xF86XK_AudioRaiseVolume ), void $ lowerVolume 5)
+    , ((0,                     xF86XK_AudioMute        ), setMute True)
 
     , ((modMask,               xK_g     ), goToSelected defaultGSConfig)
 
@@ -101,9 +104,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
     where
-        xf86AudioLowerVolume = 0x1008ff11
-        xf86AudioMute        = 0x1008ff12
-        xf86AudioRaiseVolume = 0x1008ff13
         tmuxAttachSession tc s = io $ if s `prefixOfElem` tc
                 then spawn ("urxvtc -e tmux attach -t " ++ s)
                 else spawn ("urxvtc -e tmux new-session -s " ++ s)
