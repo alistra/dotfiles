@@ -12,6 +12,7 @@ alias rm='nocorrect rm'
 alias locate='nocorrect locate -i'
 alias eix='nocorrect noglob eix'
 alias git='nocorrect noglob git'
+alias wget='nocorrect noglob wget'
 
 alias tmux='TMUX= tmux'
 alias ls='ls --color=auto -h'
@@ -58,7 +59,7 @@ then
 fi
 #}}}
 #{{{ Shell functions
-def() {	wn "$*" -over } 
+def() {	wn "$*" -over }
 tmpinstall() { install -m 755 "$*" /srv/www/tmp/ }
 
 torrent-ids() { grep -v 'ETA'| grep -v 'Sum:'| cut -c-4 | xargs commify }
@@ -68,7 +69,7 @@ torrent-load()
 
 	for file in $*
 	do
-		transmission-remote -a $file 
+		transmission-remote -a $file
 	done
 }
 
@@ -78,7 +79,7 @@ torrent-finished() { transmission-remote -l | grep Finished | cut -c-4 | xargs c
 loop()
 {
 	while true
-	do 
+	do
 		$@
 	done
 }
@@ -92,13 +93,14 @@ proxy()
 }
 soundssh() { dd if=/dev/dsp | ssh -c arcfour -C $* dd of=/dev/dsp }
 todo()
-{ 
+{
 	if [ "$*" ]; then
 		echo "$*" >> ~/.todo
 	else
 		cat ~/.todo
 	fi
 }
+alias todo='nocorrect noglob todo'
 screenshot(){
 	local FILE OUTPUT
 	FILE=`mktemp /tmp/shotXXXX.png`

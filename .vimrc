@@ -70,4 +70,23 @@ endif
 
 
 colorscheme understated
+
+set laststatus=2
+
+set statusline=%f    " Path.
+set statusline+=%m   " Modified flag.
+set statusline+=%r   " Readonly flag.
+set statusline+=%w   " Preview window flag.
+
+set statusline+=%=   " Right align.
+
+" File format, encoding and type.  Ex: "(unix/utf-8/python)"
+set statusline+=[%{strlen(&fenc)?&fenc:&enc}   " Encoding (utf-8).
+set statusline+=/
+set statusline+=%{&ft}                        " Type (python).
+set statusline+=]
+
+" Line and column position and counts.
+set statusline+=\ [line\ %l\/%L,\ col\ %03c]
+
 " vim: set fenc=utf-8 tw=80 sw=2 sts=2 et foldmethod=marker :
