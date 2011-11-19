@@ -39,9 +39,6 @@ scroogle            = intelligent $ searchEngine "scroogle" "https://ssl.scroogl
 myModMask :: KeyMask
 myModMask           = mod4Mask
 
-myNumlockMask :: KeyMask
-myNumlockMask       = mod2Mask
-
 myWorkspaces :: [String]
 myWorkspaces        = map show ([1..9] :: [Integer])
 
@@ -122,7 +119,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         prefixOfElem el = any (isPrefixOf el)
 
 
-myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
+myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList
     [ ((modMask, button1), \w -> focus w >> mouseMoveWindow w)
     , ((modMask, button2), \w -> focus w >> windows W.swapMaster)
     , ((modMask, button3), \w -> focus w >> Flex.mouseResizeWindow w)
@@ -164,7 +161,6 @@ defaults xmobar = defaultConfig {
     focusFollowsMouse  = True,
     borderWidth        = 1,
     modMask            = myModMask,
-    numlockMask        = myNumlockMask,
     workspaces         = myWorkspaces,
     normalBorderColor  = "#000000",
     focusedBorderColor = "#ff0000",
