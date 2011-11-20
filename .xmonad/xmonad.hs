@@ -11,7 +11,7 @@ import XMonad.Actions.Volume
 import XMonad.Actions.UpdateFocus
 import XMonad.Actions.Search
 import XMonad.Actions.GridSelect
-import XMonad.Actions.FindEmptyWorkspace
+import XMonad.Actions.CycleWS
 import XMonad
 import System.Process(runInteractiveCommand)
 import System.IO
@@ -27,17 +27,9 @@ myTerminal          = "urxvtc -e tmux"
 myBrowser :: String
 myBrowser           = "xxxterm"
 
-myEditor :: String
-myEditor            = "vim-open"
-
 myMomsBrowser :: String
 myMomsBrowser       = "firefox-bin"
 
-scroogle :: SearchEngine
-scroogle            = intelligent $ searchEngine "scroogle" "https://ssl.scroogle.org/cgi-bin/nbbwssl.cgi?Gw="
-
-myModMask :: KeyMask
-myModMask           = mod4Mask
 
 myWorkspaces :: [String]
 myWorkspaces        = map show ([1..9] :: [Integer])
@@ -65,16 +57,23 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,               xK_c     ), kill)
 
     , ((modMask,               xK_space ), sendMessage NextLayout)
-    , ((modMask,               xK_n     ), refresh)
 
-    , ((modMask,               xK_Tab   ), windows W.focusDown)
-    , ((modMask,               xK_j     ), windows W.focusDown)
-    , ((modMask .|. shiftMask, xK_Tab   ), windows W.focusUp)
-    , ((modMask,               xK_k     ), windows W.focusUp)
+    , ((modMask,               xK_Tab   ), windows W.focusUp)
+    , ((modMask .|. shiftMask, xK_Tab   ), windows W.focusDown)
+
+    , ((modMask,               xK_Left  ), windows W.focusUp)
+    , ((modMask,               xK_Right ), windows W.focusDown)
+
+    , ((modMask .|. shiftMask, xK_Left  ), windows W.swapUp)
+    , ((modMask .|. shiftMask, xK_Right ), windows W.swapDown)
+
+    , ((modMask,               xK_Up  ), windows W.focusUp)
+    , ((modMask,               xK_Down ), windows W.focusDown)
+
+    , ((modMask .|. shiftMask, xK_Up  ), windows W.swapUp)
+    , ((modMask .|. shiftMask, xK_Down ), windows W.swapDown)
 
     , ((modMask,               xK_Return), windows W.swapMaster)
-    , ((modMask .|. shiftMask, xK_j     ), windows W.swapDown  )
-    , ((modMask .|. shiftMask, xK_k     ), windows W.swapUp    )
 
     , ((modMask,               xK_h     ), sendMessage Shrink)
     , ((modMask,               xK_l     ), sendMessage Expand)
@@ -87,8 +86,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
     , ((modMask,               xK_q     ), restart "xmonad" True)
 
-    , ((modMask,               xK_grave ), viewEmptyWorkspace)
-    , ((modMask .|. shiftMask, xK_grave ), tagToEmptyWorkspace)
+    , ((modMask,               xK_grave ), moveTo Next EmptyWS)
+    , ((modMask .|. shiftMask, xK_grave ), shiftTo Next EmptyWS)
     ]
     ++
 
@@ -101,22 +100,21 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
     where
-        tmuxAttachSession tc s = io $ if s `prefixOfElem` tc
+        tmuxAttachSession tc s = io $ if any (isPrefixOf s) tc
                 then spawn ("urxvtc -e tmux attach -t " ++ s)
                 else spawn ("urxvtc -e tmux new-session -s " ++ s)
 
-        tmuxCompletion :: IO [String]
         tmuxCompletion = do
             (_, stdout, _, _) <- runInteractiveCommand "tmux-init 1>/dev/null; tmux list-sessions|cut -f1 -d:"
             contents <- hGetContents stdout
             return $ lines contents
 
-        tmuxAttachPromptCompl config= do
+        tmuxAttachPromptCompl config = do
             tc <- io tmuxCompletion
             inputPromptWithCompl config "tmux attach" (mkComplFunFromList' tc) ?+ tmuxAttachSession tc
 
-        prefixOfElem :: Eq a => [a] -> [[a]] -> Bool
-        prefixOfElem el = any (isPrefixOf el)
+        scroogle = intelligent $ searchEngine "scroogle" "https://ssl.scroogle.org/cgi-bin/nbbwssl.cgi?Gw="
+
 
 
 myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList
@@ -160,7 +158,7 @@ defaults xmobar = defaultConfig {
     terminal           = myTerminal,
     focusFollowsMouse  = True,
     borderWidth        = 1,
-    modMask            = myModMask,
+    modMask            = mod4Mask,
     workspaces         = myWorkspaces,
     normalBorderColor  = "#000000",
     focusedBorderColor = "#ff0000",

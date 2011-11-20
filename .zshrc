@@ -107,8 +107,13 @@ bindkey "\eOH" beginning-of-line
 bindkey "\eOF" end-of-line
 bindkey "\eOd" backward-word
 bindkey "\eOc" forward-word
-bindkey '^R' history-incremental-search-backward
-bindkey '^S' history-incremental-search-forward
+bindkey '^r' history-incremental-search-backward
+bindkey '^e' history-incremental-search-forward
+
+autoload -U edit-command-line
+zle -N edit-command-line
+
+bindkey '^x' edit-command-line
 #}}}
 source ~alistra/.aliases
 source ~alistra/.zshinit

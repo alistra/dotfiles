@@ -55,16 +55,16 @@ then
 elif [ "`hostname`" = "bialobrewy" ]
 then
 	alias thps3='cd ~/.wine/drive_c/Program\ Files/Activision/Thps3 && wine Skate3.exe && cd -'
-	alias dow='cd /windows/c/Program\ Files/THQ/Dawn\ of\ War\ -\ Dark\ Crusade/ && wine DarkCrusade.exe 1>/dev/null 2>/dev/null && cd -'
 fi
 #}}}
 #{{{ Shell functions
 def() {	wn "$*" -over }
+
 tmpinstall() { install -m 755 "$*" /srv/www/tmp/ }
 
-torrent-ids() { grep -v 'ETA'| grep -v 'Sum:'| cut -c-4 | xargs commify }
+t-ids() { grep -v 'ETA'| grep -v 'Sum:'| cut -c-4 | xargs commify }
 
-torrent-load()
+t-load()
 {
 
 	for file in $*
@@ -73,8 +73,9 @@ torrent-load()
 	done
 }
 
-torrent-active() { transmission-remote -l | grep -v 'ETA'| grep -v 'Sum:'| grep -v 'Finished'| cut -c-4 | xargs commify }
-torrent-finished() { transmission-remote -l | grep Finished | cut -c-4 | xargs commify }
+t-active() { transmission-remote -l | grep -v 'ETA'| grep -v 'Sum:'| grep -v 'Finished'| cut -c-4 | xargs commify }
+
+t-finished() { transmission-remote -l | grep Finished | cut -c-4 | xargs commify }
 
 loop()
 {
@@ -83,6 +84,7 @@ loop()
 		$@
 	done
 }
+
 proxy()
 {
 	if [ $# -gt 1 ]; then
@@ -91,7 +93,9 @@ proxy()
 		ssh -f -N -D31337 $1
 	fi
 }
+
 soundssh() { dd if=/dev/dsp | ssh -c arcfour -C $* dd of=/dev/dsp }
+
 todo()
 {
 	if [ "$*" ]; then
@@ -101,17 +105,4 @@ todo()
 	fi
 }
 alias todo='nocorrect noglob todo'
-screenshot(){
-	local FILE OUTPUT
-	FILE=`mktemp /tmp/shotXXXX.png`
-	if [ "$*" ]; then
-		OUTPUT=`scrot "$*" $FILE`
-	else
-		OUTPUT=`scrot $FILE`
-	fi
-	xsel -c
-	imgur $FILE 2>/dev/null|xclip
-	xclip -o
-	rm $FILE
-}
 #}}}
