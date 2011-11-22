@@ -109,7 +109,13 @@ alias todo='nocorrect noglob todo'
 screengrab()
 {
 	file=`mktemp screengrabXXXX.mpg`
-	ffmpeg -f x11grab -s sxga -i :0.0 -y -sameq "$file" 1>/dev/null 2>&1
+	if [ "`hostname`" = "adeli" ]
+	then
+		ffmpeg -f x11grab -s wsxga -i :0.0 -y -sameq "$file" 1>/dev/null 2>&1
+	else
+		ffmpeg -f x11grab -s sxga -i :0.0 -y -sameq "$file" 1>/dev/null 2>&1
+
+	fi
 	echo "screengrab file: $file"
 }
 #}}}

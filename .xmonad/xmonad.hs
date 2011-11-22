@@ -48,8 +48,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     , ((0,                     xK_Print ), spawn "scrot '%Y-%m-%d_%R:%S_$wx$h_scrot.png'")
 
-    , ((0,                     xF86XK_AudioLowerVolume ), setMute False >> void (raiseVolume 5))
-    , ((0,                     xF86XK_AudioRaiseVolume ), void $ lowerVolume 5)
+    , ((0,                     xF86XK_AudioRaiseVolume ), setMute False >> void (raiseVolume 5))
+    , ((0,                     xF86XK_AudioLowerVolume ), void $ lowerVolume 5)
     , ((0,                     xF86XK_AudioMute        ), setMute True)
 
     , ((modMask,               xK_g     ), goToSelected defaultGSConfig)
