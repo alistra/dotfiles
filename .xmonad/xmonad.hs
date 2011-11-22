@@ -1,4 +1,3 @@
-import Control.Monad
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Prompt.Shell
 import XMonad.Prompt.Input
@@ -20,6 +19,7 @@ import qualified XMonad.StackSet as W
 import qualified XMonad.Actions.FlexibleResize as Flex
 import qualified Data.Map        as M
 import Graphics.X11.ExtraTypes.XF86
+import Control.Monad
 
 myTerminal :: String
 myTerminal          = "urxvtc -e tmux"

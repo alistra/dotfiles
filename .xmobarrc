@@ -6,7 +6,7 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
        	            , Run Cpu [] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
                     , Run Date "%a %d/%m/%y %H:%M:%S" "date" 1
-		    , Run Com "mailcheck|grep Mail || echo" [] "mail" 300
+		    , Run Com "timeout 5 mailcheck|grep Mail || echo" [] "mail" 300
 		    , Run Com "hostname" [] "hostname" 36000 
 		    , Run Com "uptime|tr ',' ' '|cut -d ' ' -f 4,5" [] "uptime" 3600
 		    , Run Com "ips" [] "ips" 60
