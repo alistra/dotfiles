@@ -94,7 +94,7 @@ proxy()
 	fi
 }
 
-soundssh() { dd if=/dev/dsp | ssh -c arcfour -C $* dd of=/dev/dsp }
+soundssh() { dd if=/dev/adsp | ssh -c arcfour -C $* dd of=/dev/adsp }
 
 todo()
 {

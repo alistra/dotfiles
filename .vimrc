@@ -1,3 +1,4 @@
+call pathogen#infect()
 syntax on
 
 set number
@@ -66,7 +67,9 @@ if has("autocmd")
 endif
 
 
-colorscheme understated
+" colorscheme understated
+set background=dark
+colorscheme solarized
 
 set laststatus=2
 set statusline=%f
