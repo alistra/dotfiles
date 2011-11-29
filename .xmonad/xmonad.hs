@@ -1,4 +1,5 @@
 import XMonad.Util.Run(spawnPipe)
+import XMonad.Util.PasteP
 import XMonad.Prompt.Shell
 import XMonad.Prompt.Input
 import XMonad.Prompt
@@ -27,6 +28,9 @@ myTerminal          = "urxvtc -e tmux"
 myBrowser :: String
 myBrowser           = "xxxterm"
 
+email :: String
+email               = "balicki.aleksander@gmail.com"
+
 myMomsBrowser :: String
 myMomsBrowser       = "firefox-bin"
 
@@ -53,6 +57,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0,                     xF86XK_AudioMute        ), setMute True)
 
     , ((modMask,               xK_g     ), goToSelected defaultGSConfig)
+    , ((modMask,               xK_m     ), XMonad.Util.PasteP.pasteString email)
 
     , ((modMask,               xK_c     ), kill)
 

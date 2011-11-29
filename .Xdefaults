@@ -3,7 +3,7 @@
 # 1 "<command-line>"
 # 1 ".Xdefaults.cpp"
 !! urxvt*background: black
-!! urxvt*foreground: gray
+urxvt*foreground: white
 !! urxvt*fading: 10
 urxvt*scrollBar: false
 
