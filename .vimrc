@@ -61,7 +61,7 @@ au ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 
 if has("autocmd")
   if v:version > 701
-    autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|BUG\|HACK\)')
+    autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|BUG\|HACK\|STUB\)')
     autocmd Syntax * call matchadd('ExtraWhitespace', '\s\+$')
   endif
 endif
