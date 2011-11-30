@@ -57,19 +57,20 @@ autocmd Bufenter *.cabal  set tabstop=4|set shiftwidth=4|set expandtab|set sts=4
 filetype plugin on
 filetype indent on
 
-au ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+" au ColorScheme *
 
 if has("autocmd")
   if v:version > 701
     autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|BUG\|HACK\|STUB\)')
+    highlight ExtraWhitespace ctermbg=red guibg=red
     autocmd Syntax * call matchadd('ExtraWhitespace', '\s\+$')
   endif
 endif
 
 
 " colorscheme understated
-set background=dark
-colorscheme solarized
+" set background=dark
+" colorscheme solarized
 
 set laststatus=2
 set statusline=%f
