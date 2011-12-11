@@ -2,7 +2,7 @@
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 1 ".Xdefaults.cpp"
-!! urxvt*background: black
+urxvt*background: black
 urxvt*foreground: white
 !! urxvt*fading: 10
 urxvt*scrollBar: false

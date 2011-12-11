@@ -32,6 +32,7 @@ urxvtd &
 autocutsel -s PRIMARY &
 autocutsel -s CLIPBOARD &
 hoogle server -p 12345 &
+notifyd &
 
 # Xmonad start
 exec xmonad
