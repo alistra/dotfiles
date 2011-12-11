@@ -4,6 +4,7 @@ if [ "`hostname`" == bialobrewy ] ; then
 else
 	trayer --edge top --align right --margin 0 --SetDockType true --SetPartialStrut true --expand true --width 4 --transparent true --tint 0x000000 --height 12 &
 	qiv -x ~/.wallpaper &
+	autossh -M 40000 -f -N -R 40311:localhost:22 dom &
 fi
 numlockx &
 xset r rate 300 25 &
@@ -16,6 +17,5 @@ urxvtd &
 autocutsel -s PRIMARY &
 autocutsel -s CLIPBOARD &
 hoogle server -p 12345 &
-notifyd &
 
 exec xmonad
