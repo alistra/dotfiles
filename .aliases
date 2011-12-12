@@ -49,9 +49,9 @@ if [ "`hostname`" = "adeli" ]
 then
 	alias blueoff='echo 0 > /sys/devices/platform/thinkpad_acpi/bluetooth_enable'
 	alias blueon='echo 1 > /sys/devices/platform/thinkpad_acpi/bluetooth_enable'
-	alias hibernate='su -c pm-hibernate'
-	alias hi='su -c pm-hibernate'
-	alias suspend='su -c pm-suspend'
+	alias hibernate='sudo pm-hibernate'
+	alias hi='sudo pm-hibernate'
+	alias suspend='sudo pm-suspend'
 elif [ "`hostname`" = "bialobrewy" ]
 then
 	alias thps3='cd ~/.wine/drive_c/Program\ Files/Activision/Thps3 && wine Skate3.exe && cd -'
