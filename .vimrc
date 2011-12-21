@@ -39,8 +39,8 @@ vmap <leader>t :NERDTree<CR>
 nmap <leader>f :FufCoverageFile<CR>
 vmap <leader>f :FufCoverageFile<CR>
 
-let g:clang_complete_copen = 1
-let g:clang_periodic_quickfix = 1
+"let g:clang_complete_copen = 1
+"let g:clang_periodic_quickfix = 1
 
 let g:haddock_browser = "xxxterm"
 

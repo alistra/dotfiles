@@ -13,7 +13,6 @@ urxvt*font: xft:DejaVu Sans Mono:pixelsize=15:antialias=false
 !! urxvt*font: xft:Inconsolata:pixelsize=17
 urxvt*transparent: yes
 !! urxvt*shading: 10
-urxvt.urgentOnBell: true
 urxvt.cursorBlink: false
 urxvt.saveLines: 65535
 urxvt.perl-ext-common: default,matcher
