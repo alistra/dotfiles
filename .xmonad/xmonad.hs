@@ -31,6 +31,9 @@ myBrowser           = "xxxterm"
 email :: String
 email               = "balicki.aleksander@gmail.com"
 
+email2 :: String
+email2              = "wszystkie.inne.byly.zajete@gmail.com"
+
 myMomsBrowser :: String
 myMomsBrowser       = "firefox-bin"
 
@@ -51,6 +54,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0,                     xK_F12   ), spawn myMomsBrowser)
 
     , ((0,                     xK_Print ), spawn "scrot '%Y-%m-%d_%R:%S_$wx$h_scrot.png'")
+    , ((0,                     xK_s     ), spawn "scrot -s '%Y-%m-%d_%R:%S_$wx$h_scrot.png'")
 
     , ((0,                     xF86XK_AudioRaiseVolume ), setMute False >> void (raiseVolume 5))
     , ((0,                     xF86XK_AudioLowerVolume ), void $ lowerVolume 5)
@@ -58,6 +62,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     , ((modMask,               xK_g     ), goToSelected defaultGSConfig)
     , ((modMask,               xK_m     ), XMonad.Util.PasteP.pasteString email)
+    , ((modMask .|. shiftMask, xK_m     ), XMonad.Util.PasteP.pasteString email2)
 
     , ((modMask,               xK_c     ), kill)
 
@@ -72,11 +77,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_Left  ), windows W.swapUp)
     , ((modMask .|. shiftMask, xK_Right ), windows W.swapDown)
 
-    , ((modMask,               xK_Up  ), windows W.focusUp)
-    , ((modMask,               xK_Down ), windows W.focusDown)
+    , ((modMask,               xK_Up    ), windows W.focusUp)
+    , ((modMask,               xK_Down  ), windows W.focusDown)
 
-    , ((modMask .|. shiftMask, xK_Up  ), windows W.swapUp)
-    , ((modMask .|. shiftMask, xK_Down ), windows W.swapDown)
+    , ((modMask .|. shiftMask, xK_Up    ), windows W.swapUp)
+    , ((modMask .|. shiftMask, xK_Down  ), windows W.swapDown)
 
     , ((modMask,               xK_Return), windows W.swapMaster)
 

@@ -61,7 +61,8 @@ filetype indent on
 
 if has("autocmd")
   if v:version > 701
-    autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|HMMM\|FIXME\|BUG\|HACK\|STUB\)')
+    highlight Todo ctermbg=green guibg=green
+    autocmd Syntax * call matchadd('Todo', '\W\zs\(TODO\|HMMM\|FIXME\|BUG\|HACK\|STUB\|undefined\)')
     highlight ExtraWhitespace ctermbg=red guibg=red
     autocmd Syntax * call matchadd('ExtraWhitespace', '\s\+$')
   endif
