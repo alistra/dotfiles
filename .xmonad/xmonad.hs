@@ -54,12 +54,12 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0,                     xK_F12   ), spawn myMomsBrowser)
 
     , ((0,                     xK_Print ), spawn "scrot '%Y-%m-%d_%R:%S_$wx$h_scrot.png'")
-    , ((0,                     xK_s     ), spawn "scrot -s '%Y-%m-%d_%R:%S_$wx$h_scrot.png'")
 
     , ((0,                     xF86XK_AudioRaiseVolume ), setMute False >> void (raiseVolume 5))
     , ((0,                     xF86XK_AudioLowerVolume ), void $ lowerVolume 5)
     , ((0,                     xF86XK_AudioMute        ), setMute True)
 
+    , ((modMask,               xK_s     ), spawn "sleep 0.2; scrot -s '%Y-%m-%d_%R:%S_$wx$h_scrot.png'")
     , ((modMask,               xK_g     ), goToSelected defaultGSConfig)
     , ((modMask,               xK_m     ), XMonad.Util.PasteP.pasteString email)
     , ((modMask .|. shiftMask, xK_m     ), XMonad.Util.PasteP.pasteString email2)
