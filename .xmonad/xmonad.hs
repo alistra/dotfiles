@@ -13,6 +13,8 @@ import XMonad.Actions.Search
 import XMonad.Actions.GridSelect
 import XMonad.Actions.CycleWS
 import XMonad
+import Graphics.X11.Xlib.Misc
+import Graphics.X11.Xlib.Extras
 import System.Process(runInteractiveCommand)
 import System.IO
 import System.Exit
@@ -59,7 +61,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0,                     xF86XK_AudioLowerVolume ), void $ lowerVolume 5)
     , ((0,                     xF86XK_AudioMute        ), setMute True)
 
-    , ((modMask,               xK_s     ), spawn "sleep 0.2; scrot -s '%Y-%m-%d_%R:%S_$wx$h_scrot.png'")
+    , ((modMask,               xK_s     ), withDisplay (io . flip ungrabKeyboard currentTime) >> spawn "scrot -s '%Y-%m-%d_%R:%S_$wx$h_scrot.png'")
     , ((modMask,               xK_g     ), goToSelected defaultGSConfig)
     , ((modMask,               xK_m     ), XMonad.Util.PasteP.pasteString email)
     , ((modMask .|. shiftMask, xK_m     ), XMonad.Util.PasteP.pasteString email2)

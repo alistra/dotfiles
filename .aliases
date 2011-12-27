@@ -118,4 +118,24 @@ screengrab()
 	fi
 	echo "screengrab file: $file"
 }
+
+ghci()
+{
+	if [ -d cabal-dev/packages-7.2.2.conf ]
+	then
+		/usr/bin/ghci -package-conf cabal-dev/packages-7.2.2.conf "$*"
+	else
+		/usr/bin/ghci "$*"
+	fi
+}
+
+ghc()
+{
+	if [ -d cabal-dev/packages-7.2.2.conf ]
+	then
+		/usr/bin/ghc -package-conf cabal-dev/packages-7.2.2.conf "$*"
+	else
+		/usr/bin/ghc "$*"
+	fi
+}
 #}}}
