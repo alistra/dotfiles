@@ -4,6 +4,9 @@ if [ "`hostname`" == bialobrewy ] ; then
 else
 	trayer --edge top --align right --margin 0 --SetDockType true --SetPartialStrut true --expand true --width 4 --transparent true --tint 0x000000 --height 12 &
 	qiv -x ~/.wallpaper &
+	synclient VertTwoFingerScroll=1 &
+	synclient VertEdgeScroll=0 &
+	synclient EmulateTwoFingerMinW=50 &
 fi
 numlockx &
 xset r rate 300 25 &
