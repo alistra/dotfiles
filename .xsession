@@ -6,7 +6,7 @@ else
 	qiv -x ~/.wallpaper &
 	synclient VertTwoFingerScroll=1 &
 	synclient VertEdgeScroll=0 &
-	synclient EmulateTwoFingerMinW=20 &
+	synclient EmulateTwoFingerMinw=10 &
 fi
 numlockx &
 xset r rate 300 25 &
