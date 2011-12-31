@@ -1,6 +1,5 @@
 #!/bin/zsh
-#{{{ bialobrewy
-if [ "`hostname`" = "bialobrewy" ] 
+if [ "`hostname`" = "bialobrewy" ]
 then
 	if [ "$ZSHINIT" = "seriale" ]
 	then
@@ -10,11 +9,11 @@ then
 		cd /torrents
 		fresh
 	fi
-fi #}}} 
-#{{{all
+fi
+
 if [ "$ZSHINIT" = "mail" ]
 then
-	alpine
+	cone || alpine
 elif [ "$ZSHINIT" = "vim" ]
 then
 	vim $VIMFILE
@@ -36,5 +35,5 @@ then
 		tmux split-window -l11 'watch -n1 "tail -n10 /var/log/tvtorrents"'
 	fi
 	watch -n1 "transmission-remote -l"
-fi #}}}
+fi
 unset ZSHINIT
