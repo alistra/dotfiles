@@ -23,6 +23,7 @@ set showmatch
 set showmode
 set smartcase
 set smartindent
+set ttyfast
 set undodir=~/.vim/undo
 set undofile
 let mapleader='\'
