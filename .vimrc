@@ -38,9 +38,11 @@ vmap <leader>g :cc<CR>
 nmap <leader>t :NERDTree<CR>
 vmap <leader>t :NERDTree<CR>
 
-nmap <leader>f :FufCoverageFile<CR>
-vmap <leader>f :FufCoverageFile<CR>
+nmap <leader>f :CommandT<CR>
+vmap <leader>f :CommandT<CR>
 
+nmap <Leader>p :set paste!<CR>
+vmap <Leader>p :set paste!<CR>
 "let g:clang_complete_copen = 1
 "let g:clang_periodic_quickfix = 1
 
@@ -48,7 +50,7 @@ let g:haddock_browser = "xxxterm"
 
 set wildmode=list:longest
 set wildmenu
-set wildignore+=*.o,*.obj,*.jpg,*.png,*.pdf,*.JPG,*.gz,*.dat,*.ps,*.djvu,*.bz2,*.tar,*.ppt,*.dvi,*.doc,*.tif,*.eps,*.gif,*.jpeg
+set wildignore+=*.o,*.obj,*.jpg,*.png,*.pdf,*.JPG,*.gz,*.dat,*.ps,*.djvu,*.bz2,*.tar,*.ppt,*.dvi,*.doc,*.tif,*.eps,*.gif,*.jpeg,*.hi,*.a,*.mp[34]
 
 autocmd Filetype c        set tabstop=8|set shiftwidth=8|compiler clang|set makeprg=clang\ -Wall\ %<.c
 autocmd Filetype cpp      set tabstop=8|set shiftwidth=8|compiler clang|set makeprg=clang++\ -Wall\ %<.cpp
@@ -61,8 +63,6 @@ autocmd Bufenter *.cabal  set tabstop=4|set shiftwidth=4|set expandtab|set sts=4
 filetype plugin on
 filetype indent on
 
-" au ColorScheme *
-
 if has("autocmd")
   if v:version > 701
     highlight Todo ctermbg=green guibg=green
@@ -72,10 +72,7 @@ if has("autocmd")
   endif
 endif
 
-
-" colorscheme understated
-" set background=dark
-" colorscheme solarized
+colorscheme understated
 
 set laststatus=2
 set statusline=%f
