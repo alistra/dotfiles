@@ -53,6 +53,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0,                     xK_F6    ), promptSearchBrowser greenXPConfig myBrowser scroogle)
     , ((0,                     xK_F7    ), promptSearchBrowser greenXPConfig myBrowser (intelligent wikipedia))
     , ((0,                     xK_F8    ), selectSearchBrowser myBrowser scroogle)
+    , ((0,                     xK_F11   ), spawn myBrowser)
     , ((0,                     xK_F12   ), spawn myMomsBrowser)
 
     , ((0,                     xK_Print ), spawn "scrot '%Y-%m-%d_%R:%S_$wx$h_scrot.png'")
