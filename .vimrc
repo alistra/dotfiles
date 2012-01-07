@@ -1,4 +1,6 @@
 call pathogen#infect()
+
+colorscheme understated
 syntax on
 
 set autoread
@@ -28,21 +30,18 @@ set undodir=~/.vim/undo
 set undofile
 let mapleader='\'
 
-nmap <leader>n :cnext<CR>
-vmap <leader>n :cnext<CR>
-nmap <leader>p :cprev<CR>
-vmap <leader>p :cprev<CR>
-nmap <leader>g :cc<CR>
-vmap <leader>g :cc<CR>
+set mouse=a
+noremap <MiddleMouse> "*p<CR>
 
-nmap <leader>t :NERDTree<CR>
-vmap <leader>t :NERDTree<CR>
+noremap <leader>n :cnext<CR>
+noremap <leader>p :cprev<CR>
+noremap <leader>g :cc<CR>
 
-nmap <leader>f :CommandT<CR>
-vmap <leader>f :CommandT<CR>
+noremap <leader>t :NERDTree<CR>
 
-nmap <Leader>p :set paste!<CR>
-vmap <Leader>p :set paste!<CR>
+noremap <leader>f :CommandT<CR>
+
+noremap <Leader>p :set paste!<CR>
 "let g:clang_complete_copen = 1
 "let g:clang_periodic_quickfix = 1
 
@@ -72,8 +71,6 @@ if has("autocmd")
   endif
 endif
 
-colorscheme understated
-
 set laststatus=2
 set statusline=%f
 set statusline+=%m
@@ -86,4 +83,6 @@ set statusline+=%{&ft}
 set statusline+=]
 set statusline+=\ [line\ %l\/%L,\ col\ %03c]
 
+" noremap <LeftMouse> <LeftMouse>cursor (line('.'), col('.'))
+" http://www.linuxquestions.org/questions/linux-newbie-8/vim-cursor-position-631669/
 " vim: set fenc=utf-8 tw=80 sw=2 sts=2 et foldmethod=marker :
