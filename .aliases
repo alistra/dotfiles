@@ -61,7 +61,10 @@ fi
 #{{{ Shell functions
 def() {	wn "$*" -over }
 
-tmpinstall() { install -m 755 "$*" /srv/www/tmp/ }
+tmpinstall() {
+	install -m 755 "$*" /srv/www/tmp/
+	echo "http://alistra.ath.cx/tmp/$*"
+}
 
 t-ids() { grep -v 'ETA'| grep -v 'Sum:'| cut -c-4 | xargs commify }
 
@@ -124,9 +127,14 @@ ghci()
 {
 	if [ -d cabal-dev/packages-7.2.2.conf ]
 	then
-		/usr/bin/ghci -package-conf cabal-dev/packages-7.2.2.conf "$*"
+		/usr/bin/ghci -package-conf cabal-dev/packages-7.2.2.conf $*
 	else
-		/usr/bin/ghci "$*"
+		if [ "$*" ]
+		then
+			/usr/bin/ghci $*
+		else
+			/usr/bin/ghci
+		fi
 	fi
 }
 
@@ -134,9 +142,14 @@ ghc()
 {
 	if [ -d cabal-dev/packages-7.2.2.conf ]
 	then
-		/usr/bin/ghc -package-conf cabal-dev/packages-7.2.2.conf "$*"
+		/usr/bin/ghc -package-conf cabal-dev/packages-7.2.2.conf $*
 	else
-		/usr/bin/ghc "$*"
+		if [ "$*" ]
+		then
+			/usr/bin/ghc $*
+		else
+			/usr/bin/ghc
+		fi
 	fi
 }
 #}}}
