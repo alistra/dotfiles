@@ -25,6 +25,7 @@ set showmatch
 set showmode
 set smartcase
 set smartindent
+set spelllang=en_us
 set ttyfast
 set undodir=~/.vim/undo
 set undofile
@@ -41,7 +42,8 @@ noremap <leader>t :NERDTree<CR>
 
 noremap <leader>f :CommandT<CR>
 
-noremap <Leader>p :set paste!<CR>
+noremap <leader>p :set paste!<CR>
+noremap <leader>s :set spell!<CR>
 "let g:clang_complete_copen = 1
 "let g:clang_periodic_quickfix = 1
 
@@ -62,13 +64,11 @@ autocmd Bufenter *.cabal  set tabstop=4|set shiftwidth=4|set expandtab|set sts=4
 filetype plugin on
 filetype indent on
 
-if has("autocmd")
-  if v:version > 701
-    highlight Todo ctermbg=green guibg=green
-    autocmd Syntax * call matchadd('Todo', '\W\zs\(TODO\|HMMM\|FIXME\|BUG\|HACK\|STUB\|undefined\)')
-    highlight ExtraWhitespace ctermbg=red guibg=red
-    autocmd Syntax * call matchadd('ExtraWhitespace', '\s\+$')
-  endif
+if v:version > 701
+  highlight Todo ctermbg=green guibg=green
+  autocmd Syntax * call matchadd('Todo', '\W\zs\(TODO\|HMMM\|FIXME\|BUG\|HACK\|STUB\|undefined\)')
+  highlight ExtraWhitespace ctermbg=red guibg=red
+  autocmd Syntax * call matchadd('ExtraWhitespace', '\s\+$')
 endif
 
 set laststatus=2
