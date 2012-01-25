@@ -51,9 +51,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0,                     xK_F3    ), tmuxAttachPromptCompl defaultXPConfig)
 --    , ((0,                     xK_F4    ), runOrRaiseNext myBrowser (className =? "XXXTerm"))
     , ((0,                     xK_F4   ), spawn myBrowser)
-    , ((0,                     xK_F6    ), promptSearchBrowser greenXPConfig myBrowser scroogle)
+    , ((0,                     xK_F6    ), promptSearchBrowser greenXPConfig myBrowser (intelligent google))
     , ((0,                     xK_F7    ), promptSearchBrowser greenXPConfig myBrowser (intelligent wikipedia))
-    , ((0,                     xK_F8    ), selectSearchBrowser myBrowser scroogle)
+    , ((0,                     xK_F8    ), selectSearchBrowser myBrowser google)
     , ((0,                     xK_F12   ), spawn myMomsBrowser)
 
     , ((0,                     xK_Print ), spawn "scrot '%Y-%m-%d_%R:%S_$wx$h_scrot.png'")
@@ -153,6 +153,7 @@ myManageHook = manageDocks <+> composeAll
     , className =? "Window"         --> doFloat
     , className =? "xmessage"       --> doFloat
     , className =? "Xmessage"       --> doFloat
+    , className =? "wicd-client.py" --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
