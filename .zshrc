@@ -1,9 +1,10 @@
+source /etc/zsh/zprofile
 source /etc/profile
 #{{{ Prompt
 autoload -U compinit promptinit
 compinit
 promptinit
-if [ "`hostname`" = bialobrewy ] || [ "`hostname`" = adeli ] ; then
+if [ "$HOST" = bialobrewy ] || [ "$HOST" = adeli ] ; then
 	prompt gentoo
 else
 	prompt adam1
@@ -121,5 +122,5 @@ zle -N edit-command-line
 
 bindkey '^x' edit-command-line
 #}}}
-source ~/.aliases
-source ~/.zshinit
+source ~alistra/.aliases
+source ~alistra/.zshinit
