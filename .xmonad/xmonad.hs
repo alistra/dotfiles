@@ -126,8 +126,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
             tc <- io tmuxCompletion
             inputPromptWithCompl config "tmux attach" (mkComplFunFromList' tc) ?+ tmuxAttachSession tc
 
-        scroogle = intelligent $ searchEngine "scroogle" "https://ssl.scroogle.org/cgi-bin/nbbwssl.cgi?Gw="
-
 
 
 myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList
