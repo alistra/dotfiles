@@ -1,12 +1,14 @@
 source /etc/profile
-source /etc/zsh/zprofile
 #{{{ Prompt
 autoload -U compinit promptinit
 compinit
-promptinit; prompt gentoo
+promptinit
+prompt adam1
 #}}}
 #{{{ Variables
 umask 077
+export PATH="/usr/local/bin:${PATH}"
+export PATH=~/.cabal/bin:$PATH
 export HISTSIZE=20000
 export LESS="$LESS -i"
 export GREP_OPTIONS="--color"
@@ -115,5 +117,5 @@ zle -N edit-command-line
 
 bindkey '^x' edit-command-line
 #}}}
-source ~alistra/.aliases
-source ~alistra/.zshinit
+source ~/.aliases
+source ~/.zshinit
