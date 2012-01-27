@@ -16,7 +16,11 @@ alias git='nocorrect noglob git'
 alias wget='nocorrect noglob wget'
 
 alias tmux='TMUX= tmux'
-alias ls='ls -G -h --color'
+if [ $(uname) = Darwin ] ; then
+	alias ls='ls -G -h'
+else
+	alias ls='ls --color -h'
+fi
 alias du='du -h'
 alias df='df -h'
 alias ex='rlwrap ex'

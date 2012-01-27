@@ -123,5 +123,10 @@ zle -N edit-command-line
 
 bindkey '^x' edit-command-line
 #}}}
-source ~alistra/.aliases
-source ~alistra/.zshinit
+if [ $(uname) = Darwin ] ; then
+	source /Users/alistra/.aliases
+	source /Users/alistra/.zshinit
+else
+	source ~alistra/.aliases
+	source ~alistra/.zshinit
+fi
