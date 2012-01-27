@@ -3,7 +3,16 @@ source /etc/profile
 autoload -U compinit promptinit
 compinit
 promptinit
-prompt adam1
+if [ "`hostname`" = bialobrewy ] ; then
+	prompt gentoo
+else
+	if [ "`hostname`" == adeli ] ; then
+		prompt gentoo
+
+	else
+		prompt adam1
+	fi
+fi
 #}}}
 #{{{ Variables
 umask 077
@@ -19,7 +28,7 @@ export EDITOR="vim"
 export VISUAL="vim"
 export PAGER="less"
 export SOCKS_SERVER="localhost:31337"
-export BROWSER='xxxterm' 
+export BROWSER='xxxterm'
 #}}}
 #{{{ Options
 setopt correctall
