@@ -3,15 +3,10 @@ source /etc/profile
 autoload -U compinit promptinit
 compinit
 promptinit
-if [ "`hostname`" = bialobrewy ] ; then
+if [ "`hostname`" = bialobrewy ] || [ "`hostname`" = adeli ] ; then
 	prompt gentoo
 else
-	if [ "`hostname`" == adeli ] ; then
-		prompt gentoo
-
-	else
-		prompt adam1
-	fi
+	prompt adam1
 fi
 #}}}
 #{{{ Variables
