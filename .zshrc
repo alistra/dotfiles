@@ -13,6 +13,7 @@ fi
 umask 077
 export PATH="/usr/local/bin:${PATH}"
 export PATH=~/.cabal/bin:$PATH
+export PATH=~/Library/Haskell/bin:$PATH
 export HISTSIZE=20000
 export LESS="$LESS -i"
 export GREP_OPTIONS="--color"
