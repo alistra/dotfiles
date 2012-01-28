@@ -170,7 +170,7 @@ defaults xmobar = defaultConfig {
     terminal           = myTerminal,
     focusFollowsMouse  = True,
     borderWidth        = 1,
-    modMask            = mod4Mask,
+    modMask            = mod1Mask,
     workspaces         = myWorkspaces,
     normalBorderColor  = "#000000",
     focusedBorderColor = "#ff0000",
@@ -180,7 +180,7 @@ defaults xmobar = defaultConfig {
 
     layoutHook         = myLayout,
     manageHook         = myManageHook,
-    logHook            = myLogHook xmobar,
+--  logHook            = myLogHook xmobar,
     startupHook        = adjustEventInput,
     handleEventHook    = focusOnMouseMove
     }
