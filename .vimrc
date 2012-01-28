@@ -37,6 +37,7 @@ noremap <MiddleMouse> "*p<CR>
 noremap <leader>n :cnext<CR>
 noremap <leader>p :cprev<CR>
 noremap <leader>g :cc<CR>
+noremap <leader>u :GundoToggle<CR>
 
 noremap <leader>t :NERDTree<CR>
 
