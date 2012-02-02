@@ -23,6 +23,7 @@ import qualified XMonad.Actions.FlexibleResize as Flex
 import qualified Data.Map        as M
 import Graphics.X11.ExtraTypes.XF86
 import Control.Monad
+import Control.Arrow hiding ((|||), (<+>))
 
 myTerminal :: String
 myTerminal          = "urxvtc -e tmux"
@@ -49,11 +50,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0,                     xK_F1    ), spawn $ XMonad.terminal conf)
     , ((0,                     xK_F2    ), shellPrompt defaultXPConfig)
     , ((0,                     xK_F3    ), tmuxAttachPromptCompl defaultXPConfig)
---    , ((0,                     xK_F4    ), runOrRaiseNext myBrowser (className =? "XXXTerm"))
-    , ((0,                     xK_F4   ), spawn myBrowser)
+    , ((0,                     xK_F4    ), spawn myBrowser)
     , ((0,                     xK_F6    ), promptSearchBrowser greenXPConfig myBrowser (intelligent google))
     , ((0,                     xK_F7    ), promptSearchBrowser greenXPConfig myBrowser (intelligent wikipedia))
-    , ((0,                     xK_F8    ), selectSearchBrowser myBrowser google)
+    , ((0,                     xK_F8    ), selectSearchBrowser myBrowser (intelligent google))
     , ((0,                     xK_F12   ), spawn myMomsBrowser)
 
     , ((0,                     xK_Print ), spawn "scrot '%Y-%m-%d_%R:%S_$wx$h_scrot.png'")
@@ -66,6 +66,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,               xK_g     ), goToSelected defaultGSConfig)
     , ((modMask,               xK_m     ), XMonad.Util.PasteP.pasteString email)
     , ((modMask .|. shiftMask, xK_m     ), XMonad.Util.PasteP.pasteString email2)
+
+    , ((modMask,               xK_p     ), pastePassword)
 
     , ((modMask,               xK_c     ), kill)
 
@@ -126,7 +128,14 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
             tc <- io tmuxCompletion
             inputPromptWithCompl config "tmux attach" (mkComplFunFromList' tc) ?+ tmuxAttachSession tc
 
-
+        pastePassword = do
+            cont <- io $ readFile "/home/alistra/.pwdb"
+            let keyVals = map (second tail) . map (span (/=':')) . lines $ cont
+            let keys = map fst keyVals
+            inputPromptWithCompl defaultXPConfig "pass-name" (mkComplFunFromList' keys) ?+
+                (\key -> case lookup key keyVals of
+                    Nothing -> return ()
+                    Just val -> XMonad.Util.PasteP.pasteString val)
 
 myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList
     [ ((modMask, button1), \w -> focus w >> mouseMoveWindow w)
@@ -151,7 +160,6 @@ myManageHook = manageDocks <+> composeAll
     , className =? "Window"         --> doFloat
     , className =? "xmessage"       --> doFloat
     , className =? "Xmessage"       --> doFloat
-    , className =? "wicd-client.py" --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
