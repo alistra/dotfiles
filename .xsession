@@ -9,6 +9,7 @@ else
 	synclient VertEdgeScroll=0 &
 	synclient EmulateTwoFingerMinw=10 &
 fi
+
 xset r rate 300 25 &
 setxkbmap -layout pl &
 xmodmap ~/.Xmodmap &
@@ -21,4 +22,4 @@ autocutsel -s CLIPBOARD &
 hoogle server -p 12345 &
 eval $(gpg-agent --daemon) &
 
-exec xmonad
+exec ck-launch-session dbus-launch xmonad
