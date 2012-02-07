@@ -22,4 +22,4 @@ autocutsel -s CLIPBOARD &
 hoogle server -p 12345 &
 eval $(gpg-agent --daemon) &
 
-exec ck-launch-session dbus-launch xmonad
+exec dbus-launch xmonad
