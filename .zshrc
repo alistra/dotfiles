@@ -12,9 +12,10 @@ fi
 #}}}
 #{{{ Variables
 umask 077
+export PATH="/sbin:/usr/sbin:/usr/local/sbin:${PATH}"
 export PATH="/usr/local/bin:${PATH}"
-export PATH=~/.cabal/bin:$PATH
-export PATH=~/Library/Haskell/bin:$PATH
+export PATH="~/.cabal/bin:${PATH}"
+export PATH="~/Library/Haskell/bin:${PATH}"
 export HISTSIZE=20000
 export LESS="$LESS -i"
 export GREP_OPTIONS="--color"
