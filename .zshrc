@@ -35,7 +35,7 @@ setopt hist_reduce_blanks
 setopt inc_append_history
 setopt autocd
 setopt extendedglob
-setopt AUTO_LIST
+setopt BASH_AUTO_LIST
 setopt AUTO_MENU
 setopt APPEND_HISTORY
 setopt share_history
@@ -55,7 +55,7 @@ zstyle ':completion:*:*:killall:*' menu yes select
 zstyle ':completion:*:killall:*'   force-list always
 
 #completion cache
-zstyle ':completion::complete:*' use-cache on
+zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion::complete:*' cache-path .zcache
 
 #completion
@@ -72,14 +72,10 @@ zstyle ':completion:*:functions' ignored-patterns '_*'
 #removing trailing slashes from directory as an argument
 zstyle ':completion:*' squeeze-shlashes 'yes'
 
-#don't complete cd in your own dir (eg. ../`pwd`)
-zstyle ':completion:*:cd:*' ignore-parents parent pwd
-
 #colors
 [ -f /etc/DIR_COLORS ] && eval $(dircolors -b /etc/DIR_COLORS)
 export ZLSCOLORS="${LS_COLORS}"
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31' 
 
 #path expansion
 zstyle ':completion:*' expand 'yes'
