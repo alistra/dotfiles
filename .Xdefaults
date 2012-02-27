@@ -2,10 +2,7 @@ urxvt*background: black
 urxvt*foreground: white
 urxvt*scrollBar: false
 
-!! urxvt*font: xft:DejaVu Sans Mono:pixelsize=15:antialias=false
-urxvt*font: xft:Droid Sans Mono Dotted:pixelsize=15:antialias=true
-!! urxvt*font: xft:Bitstream Vera Sans Mono:pixelsize=15:antialias=true
-!! urxvt*font: xft:Aerial Mono:pixelsize=15:antialias=true
+urxvt*font: xft:DejaVu Sans Mono:pixelsize=15:antialias=false
 urxvt*transparent: yes
 urxvt.cursorBlink: false
 urxvt.saveLines: 65535
