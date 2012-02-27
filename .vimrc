@@ -19,7 +19,7 @@ set incsearch
 set modeline
 set nohls
 set number
-set scrolloff=10
+set scrolloff=3
 set showcmd
 set showmatch
 set showmode
@@ -37,6 +37,9 @@ noremap <MiddleMouse> "*p<CR>
 noremap <leader>n :cnext<CR>
 noremap <leader>p :cprev<CR>
 noremap <leader>g :cc<CR>
+
+noremap <leader>w :%s/\s\+$//<CR>
+
 noremap <leader>u :GundoToggle<CR>
 
 noremap <leader>t :NERDTreeToggle<CR>
@@ -44,6 +47,7 @@ noremap <leader>t :NERDTreeToggle<CR>
 noremap <leader>f :CommandT<CR>
 
 noremap <leader>p :set paste!<CR>
+
 noremap <leader>s :set spell!<CR>
 "let g:clang_complete_copen = 1
 "let g:clang_periodic_quickfix = 1
@@ -83,7 +87,4 @@ set statusline+=/
 set statusline+=%{&ft}
 set statusline+=]
 set statusline+=\ [line\ %l\/%L,\ col\ %03c]
-
-" noremap <LeftMouse> <LeftMouse>cursor (line('.'), col('.'))
-" http://www.linuxquestions.org/questions/linux-newbie-8/vim-cursor-position-631669/
 " vim: set fenc=utf-8 tw=80 sw=2 sts=2 et foldmethod=marker :
