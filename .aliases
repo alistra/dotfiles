@@ -34,7 +34,6 @@ alias gist='gist -o -p'
 alias xpdf='xpdf -fullscreen'
 
 alias i='tmux attach -t irc'
-alias m='tmux attach -t mail'
 alias t='transmission-remote'
 alias scpresume="rsync --partial --progress --rsh=ssh"
 alias du1='du --max-depth=1'
