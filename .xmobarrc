@@ -6,7 +6,7 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
        	            , Run Cpu [] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
                     , Run Date "%a %d/%m/%y %H:%M:%S" "date" 10
-		    , Run Com "timeout 15 mailcheck || echo" [] "mail" 90000
+		    , Run Com "timeout 15 mailcheck || echo" [] "mail" 3000
 		    , Run Com "hostname" [] "hostname" 360000 
 		    , Run Com "ips" [] "ips" 100
 		    , Run Com "acpitool | cut -d ' ' -f 12 | egrep -v '^$' | sed -e 's/available//' || echo \"charged\"" [] "battery" 100

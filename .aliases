@@ -1,4 +1,5 @@
 #!/bin/zsh
+
 #{{{ Aliases
 alias man='nocorrect man'
 alias grep='nocorrect grep -i'
@@ -28,7 +29,6 @@ alias df='df -h'
 alias ex='rlwrap ex'
 alias ocaml='rlwrap ocaml'
 alias qiv='qiv -tm'
-alias alpine='alpine -p "{imap.gmail.com/ssl/user=balicki.aleksander@gmail.com}remote_pinerc"'
 alias vncviewer='vncviewer -DotWhenNoCursor=0'
 alias gist='gist -o -p'
 alias xpdf='xpdf -fullscreen'
@@ -42,15 +42,16 @@ alias nocomments='grep -v "^[\t ]*#"|grep -v "^[ \t]*$"'
 alias vm='kdesu virt-manager'
 alias dpaste='wgetpaste -s dpaste'
 alias codepad='wgetpaste -s codepad'
+alias txt2png='convert -font "DejaVu-Sans-Mono-Book" label:@- png:-'
 
-if [ "`hostname`" = "adeli" ]
+if [ $(hostname) = "adeli" ]
 then
 	alias blueoff='echo 0 > /sys/devices/platform/thinkpad_acpi/bluetooth_enable'
 	alias blueon='echo 1 > /sys/devices/platform/thinkpad_acpi/bluetooth_enable'
 	alias hibernate='sudo pm-hibernate'
 	alias hi='sudo pm-hibernate'
 	alias suspend='sudo pm-suspend'
-elif [ "`hostname`" = "bialobrewy" ]
+elif [ $(hostname) = "bialobrewy" ]
 then
 	alias thps3='cd ~/.wine/drive_c/Program\ Files/Activision/Thps3 && wine Skate3.exe && cd -'
 fi
