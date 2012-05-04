@@ -11,6 +11,8 @@ A module for sending key presses to windows. This modules provides generalized
 and specialized functions for this task.
 -}
 
+{-# LANGUAGE PackageImports #-}
+
 module XMonad.Util.PasteP ( -- * Usage
                            -- $usage
                            pasteSelection,
@@ -25,7 +27,7 @@ module XMonad.Util.PasteP ( -- * Usage
 import XMonad (io, theRoot, withDisplay, X ())
 import Graphics.X11
 import Graphics.X11.Xlib.Extras (none, setEventType, setKeyEvent)
-import Control.Monad.Reader (asks)
+import "mtl" Control.Monad.Reader (asks)
 import XMonad.Operations (withFocused)
 import Data.Char (isUpper)
 import Data.Maybe (listToMaybe)

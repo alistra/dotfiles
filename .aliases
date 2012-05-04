@@ -43,7 +43,7 @@ alias vm='kdesu virt-manager'
 alias dpaste='wgetpaste -s dpaste'
 alias codepad='wgetpaste -s codepad'
 alias txt2png='convert -font "DejaVu-Sans-Mono-Book" label:@- png:-'
-
+alias html2ascii='lynx -force_html -stdin -dump -nolist'
 if [ $(hostname) = "adeli" ]
 then
 	alias blueoff='echo 0 > /sys/devices/platform/thinkpad_acpi/bluetooth_enable'

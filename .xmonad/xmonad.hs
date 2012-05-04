@@ -64,6 +64,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     , ((modMask,               xK_s     ), withDisplay (io . flip ungrabKeyboard currentTime) >> spawn "scrot -s '%Y-%m-%d_%R:%S_$wx$h_scrot.png'")
     , ((modMask,               xK_g     ), goToSelected defaultGSConfig)
+    , ((modMask,               xK_a     ), XMonad.Util.PasteP.pasteString "alistra")
     , ((modMask,               xK_m     ), XMonad.Util.PasteP.pasteString email)
     , ((modMask .|. shiftMask, xK_m     ), XMonad.Util.PasteP.pasteString email2)
 
