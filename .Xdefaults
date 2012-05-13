@@ -7,7 +7,7 @@ urxvt*transparent: yes
 urxvt.cursorBlink: false
 urxvt.saveLines: 65535
 urxvt.perl-ext-common: default,matcher
-urxvt.urlLauncher: xxxterm
+urxvt.urlLauncher: google-chrome
 urxvt.matcher.button: 2
 urxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
 urxvt.termName: rxvt

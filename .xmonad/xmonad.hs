@@ -29,7 +29,7 @@ myTerminal :: String
 myTerminal          = "urxvtc -e tmux"
 
 myBrowser :: String
-myBrowser           = "xxxterm"
+myBrowser           = "google-chrome"
 
 email :: String
 email               = "balicki.aleksander@gmail.com"
