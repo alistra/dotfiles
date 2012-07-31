@@ -29,6 +29,8 @@ set spelllang=en_us
 set ttyfast
 set undodir=~/.vim/undo
 set undofile
+set linebreak
+set hidden
 let mapleader='\'
 
 set mouse=a

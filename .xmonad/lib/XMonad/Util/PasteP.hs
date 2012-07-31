@@ -58,7 +58,9 @@ pasteSelection = getSelection >>= pasteString
 -- | Send a string to the window which is currently focused. This function correctly
 -- handles capitalization.
 pasteString :: String -> X ()
-pasteString = mapM_ (\x -> if isUpper x || x `elem` "!@#$%^&*()_+{}:<>?\"" then pasteChar shiftMask x else pasteChar noModMask x)
+pasteString = mapM_ (\x ->  if isUpper x || x `elem` "!@#$%^&*()_+{}:<>?\""
+                                then pasteChar shiftMask x
+                                else pasteChar noModMask x)
 
 {- | Send a character to the current window. This is more low-level.
    Remember that you must handle the case of capitalization appropriately.
@@ -92,8 +94,3 @@ sendKeyWindow mods key w = withDisplay $ \d -> do
                   setEventType ev keyRelease
                   sendEvent d w True keyReleaseMask ev
 
--- | A null 'KeyMask'. Used when you don't want a character or string shifted, control'd, or what.
---
---   TODO: This really should be a function in the X11 binding. When noModMask shows up there, remove.
-noModMask :: KeyMask
-noModMask = 0

@@ -1,3 +1,5 @@
 urlCommand "xxxterm %s"
 bind c any toggleContinuousMode
 bind f any toggleFullScreenMode
+bind shift-space singlePage prevPage
+bind shift-space continuous pageUp

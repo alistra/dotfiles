@@ -154,6 +154,7 @@ myLayout = avoidStruts $ smartBorders $ tiled ||| Mirror tiled ||| Full
 myManageHook :: ManageHook
 myManageHook = manageDocks <+> composeAll
     [ className =? "MPlayer"        --> doFloat
+    , className =? "mplayer2"       --> doFloat
     , className =? "Gimp"           --> doFloat
     , className =? "qemu"           --> doFloat
     , className =? "qemu-system-x86_64" --> doFloat

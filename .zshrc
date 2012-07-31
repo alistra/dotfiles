@@ -25,8 +25,8 @@ export WORDCHARS='*?_-[]~=&;!#$%^(){}<>'
 export EDITOR="vim"
 export VISUAL="vim"
 export PAGER="less"
-export SOCKS_SERVER="localhost:31337"
-export BROWSER='xxxterm'
+#export SOCKS_SERVER="localhost:31337"
+export BROWSER='google-chrome'
 #}}}
 #{{{ Options
 setopt correctall
