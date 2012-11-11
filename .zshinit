@@ -3,10 +3,10 @@ if [ "`hostname`" = "bialobrewy" ]
 then
 	if [ "$ZSHINIT" = "seriale" ]
 	then
-		cd /torrents
+		cd /torrents/serenity
 	elif [ "$ZSHINIT" = "current" ]
 	then
-		cd /torrents
+		cd /torrents/serenity
 		fresh
 	fi
 fi
@@ -21,19 +21,12 @@ then
 elif [ "$ZSHINIT" = "irc" ]
 then
 	ssh -t spock 'ZSHINIT=irc zsh'
-elif [ "$ZSHINIT" = "wget" ]
-then
-	wget -nc --adjust-extension --load-cookies ~/.config/jumanji/cookies -O "$WGETOUTFILE" -- "$WGETFILE"
-	exec xdg-open $WGETOUTFILE &
-	disown
-	unset ZSHINIT
-	exit
 elif [ "$ZSHINIT" = "torrents" ]
 then
 	if [ "`hostname`" = "bialobrewy" ]
 	then
 		tmux split-window -l11 'watch -n1 "tail -n10 /var/log/tvtorrents"'
 	fi
-	watch -n1 "transmission-remote -l"
+	watch -n1 "transmission-remote 10.0.0.2 -l"
 fi
 unset ZSHINIT

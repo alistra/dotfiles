@@ -1,6 +1,2 @@
 keycode 166 = Left
 keycode 167 = Right
-clear Mod1
-keycode 66= Meta_L
-add Mod1 = Meta_L
-

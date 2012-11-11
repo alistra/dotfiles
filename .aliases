@@ -34,7 +34,7 @@ alias gist='gist -o -p'
 alias xpdf='xpdf -fullscreen'
 
 alias i='tmux attach -t irc'
-alias t='transmission-remote'
+alias t='transmission-remote 10.0.0.2'
 alias scpresume="rsync --partial --progress --rsh=ssh"
 alias du1='du --max-depth=1'
 alias fresh='ls -lrt'
@@ -66,11 +66,17 @@ tmpinstall() {
 	echo "http://alistra.ath.cx/tmp/$*"
 }
 
+torrentinstall() {
+	install -m 755 "$*" /torrents/serenity/watchdir/
+}
+
 t-ids() { \grep -v 'ETA'| grep -v 'Sum:'| cut -c-4 | xargs commify }
 
 t-start() { t -tall -s }
 
 t-stop() { t -tall -S }
+
+t-pause() {t-stop; sleep 3600; t-start}
 
 t-fix() { t -t`t -l | grep -v 'ETA'| grep -v 'Sum:'| fgrep '*' | t-ids` -s }
 
@@ -79,13 +85,13 @@ t-load()
 
 	for file in $*
 	do
-		transmission-remote -a $file
+		transmission-remote 10.0.0.2 -a $file
 	done
 }
 
-t-active() { transmission-remote -l | grep -v 'ETA'| grep -v 'Sum:'| grep -v 'Finished'| cut -c-4 | xargs commify }
+t-active() { transmission-remote 10.0.0.2 -l | grep -v 'ETA'| grep -v 'Sum:'| grep -v 'Finished'| cut -c-4 | xargs commify }
 
-t-finished() { transmission-remote -l | grep Finished | cut -c-4 | xargs commify }
+t-finished() { transmission-remote 10.0.0.2 -l | grep Finished | cut -c-4 | xargs commify }
 
 loop()
 {
