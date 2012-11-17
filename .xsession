@@ -20,6 +20,5 @@ urxvtd &
 autocutsel -s PRIMARY &
 autocutsel -s CLIPBOARD &
 hoogle server -p 12345 &
-eval $(gpg-agent --daemon) &
 
 exec dbus-launch xmonad
