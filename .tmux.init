@@ -1,9 +1,7 @@
 #!/bin/zsh
 TMUX= 
 tmux new-session -d -s irc 'ZSHINIT=irc zsh'
-tmux new-session -d -s torrents 'ZSHINIT=torrents zsh'
 if [ `hostname` = "bialobrewy" ]
 then
-	tmux new-session -d -s seriale 'ZSHINIT=seriale zsh'
 	tmux new-session -d -s current 'ZSHINIT=current zsh'
 fi

@@ -1,7 +1,10 @@
 #!/bin/zsh
+alias kshisen='export $(dbus-launch); kshisen'
 
 #{{{ Aliases
 alias man='nocorrect man'
+alias fquery='nocorrect fquery'
+alias equery='nocorrect equery'
 alias grep='nocorrect grep -i'
 alias egrep='nocorrect egrep -i'
 alias fgrep='nocorrect fgrep -i'

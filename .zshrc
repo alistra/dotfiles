@@ -113,7 +113,8 @@ bindkey "\eOF" end-of-line
 bindkey "\eOd" backward-word
 bindkey "\eOc" forward-word
 bindkey '^r' history-incremental-search-backward
-bindkey '^e' history-incremental-search-forward
+stty stop undef
+bindkey '^s' history-incremental-search-forward
 
 autoload -U edit-command-line
 zle -N edit-command-line
