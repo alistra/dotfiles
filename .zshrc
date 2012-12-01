@@ -97,6 +97,12 @@ zstyle ':completion:*:messages' format $'\e[01;35m -- %d --\e[0m'
 zstyle ':completion:*:warnings' format $'\e[01;31m -- No Matches Found --\e[0m'
 #}}}
 #{{{ Key Bindings
+_gcc() {
+	sleep 2
+	echo "Segmentation fault"
+	return 127
+}
+alias gcc=_gcc
 bindkey -e
 bindkey "\e[1~" beginning-of-line
 bindkey "\e[2~" quoted-insert
