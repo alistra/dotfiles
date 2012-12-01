@@ -1,0 +1,25 @@
+[user]
+	name = Aleksander Balicki
+	email = balicki.aleksander@gmail.com
+[color]
+	ui = true
+[core]
+	editor = vim
+	pager = cat
+[merge]
+	tool = meld
+[alias]
+	c = commit -va
+	l = log -p
+	d = diff --color-words
+	unpushed = log -p @{u}..
+	graph = log --graph --all --abbrev-commit --date=relative --date-order --format='%C(bold blue)%h%C(reset) - %C(cyan)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)-%an%C(reset)%C(bold yellow)%d%C(reset)'
+[sendemail]
+	confirm = auto
+	suppresscc = self
+[cola]
+	fontdiff = Droid Sans Mono Dotted,11,-1,5,50,0,0,0,0,0
+[diff]
+	tool = meld
+[include]
+	path = .gitconfig.personal
