@@ -1,4 +1,4 @@
-urlCommand "xxxterm %s"
+urlCommand "google-chrome %s"
 bind c any toggleContinuousMode
 bind f any toggleFullScreenMode
 bind shift-space singlePage prevPage

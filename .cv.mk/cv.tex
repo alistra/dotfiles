@@ -14,18 +14,15 @@
 \usepackage{hyperref}
 \usepackage{geometry}
 \usepackage[utf8]{inputenc}
-% Comment the following lines to use the default Computer Modern font
-% instead of the Palatino font provided by the mathpazo package.
-% Remove the 'osf' bit if you don't like the old style figures.
 \usepackage[T1]{fontenc}
 \usepackage[sc,osf]{mathpazo}
+\usepackage{tabularx}
 
-% Set your name here
 \def\name{Aleksander Balicki}
 
 % Replace this with a link to your CV if you like, or set it empty
 % (as in \def\footerlink{}) to remove the link in the footer:
-\def\footerlink{}
+\def\footerlink{http://alistra.ath.cx/cv.pdf}
 
 % The following metadata will show up in the PDF properties
 \hypersetup{
@@ -40,8 +37,10 @@
 
 \geometry{
   body={6.5in, 8.5in},
-  left=1.0in,
-  top=1.25in
+  left=0.61in,
+  right=0.61in,
+  top=0.61in,
+  bottom=0.61in
 }
 
 % Customize page headers
@@ -75,52 +74,69 @@
 
 \begin{document}
 
-% Place name at left
-{\huge \name}
-
-% Alternatively, print name centered and bold:
-%\centerline{\huge \bf \name}
+\centerline{\huge \name}
+%{\huge \name}
 
 \vspace{0.25in}
 
-\begin{minipage}{0.45\linewidth}
-  \begin{tabular}{ll}
-    Phone: 	& +48 695 198 977 \\
-    Email: 	& \href{mailto:balicki.aleksander@gmail.com}{\tt balicki.aleksander@gmail.com} \\
-    Homepage: 	& \href{http://alistra.ath.cx/}{\tt http://alistra.ath.cx/} \\
-    Github:     & \href{http://github.com/alistra/}{\tt http://github.com/alistra/}\\
-    Address: 	& Żniwna 47\\
-    		& Wrocław, 52-230 Poland
-  \end{tabular}
-\end{minipage}
+\begin{tabularx}{\textwidth}{lXlll}
+        Phone: 	& +48 695 198 977 & Homepage: & \href{http://alistra.ath.cx/}{\tt http://alistra.ath.cx/} \\
+        Email: 	& \href{mailto:balicki.aleksander@gmail.com}{\tt balicki.aleksander@gmail.com}
+        & Github: & \href{http://github.com/alistra/}{\tt http://github.com/alistra/}\\
+    \end{tabularx}
 
 \section*{Employment}
 
 \begin{itemize}
-	\item MorrisCooke, 2012, {\bf iOS developer} 1 month.
+    \item MorrisCooke, 2012, {\bf iOS developer} 1 month, current.
 		\begin{itemize}
-			\item Unreleased iPad app
+
+            \item Ported Organizer+ to the new {\bf iPhone 5 resolution} and {\bf iOS 6}
+
 		\end{itemize}
 
-%	\item Timepie, 2012, {\bf OS X developer} 1 month
-%		Activity tracking app - AppleScript to talk with browsers, OAuth - OS X app
-
-	\item Intres, 2012, {\bf iOS and OS X developer} 8 months.
+	\item Stealth-mode startup, 2012, {\bf OS X developer} 1 month
 		\begin{itemize}
-		    \item Web-based file hosting service - SOAP backend using {\bf sudzc.com}, {\bf fmdb} for SQLite,\\
-			{\bf Sparkle} for OS X updates, {\bf CDEvents} for filesystem events, {\bf Growl} for OS X notifications \\
-				- iOS and OS X client apps
-			\item dGuide, tour guides manager - {\bf Django} backend, {\bf three20} for photo galleries \\
-				- iOS app, App Store.
+
+			\item Interacting with major web browsers (Firefox, Chrome, Safari) using {\bf AppleScript}
+
 		\end{itemize}
+
+	\item Intres, 2012, {\bf iOS and OS X developer} 10 months.
+		\begin{itemize}
+            \item StoreQ - Web-based file hosting service
+                \begin{itemize}
+                    \item Created and designed the apps for both iOS and OS X
+                    \item The iOS app provided a read-only access to the files, due to sandboxing;\\
+                        the OS X app had a bidirectional synchronization system for the stored files
+                    \item Frameworks used: SOAP backend using {\bf sudzc.com}, {\bf fmdb} for SQLite,
+                        {\bf Sparkle} for OS X updates,\\ {\bf CDEvents} for filesystem events,
+                        {\bf Growl} for OS X notifications
+                \end{itemize}
+
+            \item Added {\bf iAd} and {\bf AdMob} frameworks to dGuide
+
+            \item Optimized the amount of data dGuide downloads upon startup (from 20MB down to 100KB),
+                required modifying the {\bf Django} backend
+
+    \end{itemize}
+
 	\item Synthcomm, 2010, {\bf iPhone developer} internship, 2 months.
 		\begin{itemize}
-			\item App for syncing address book photos - {\bf Facebook API}, {\bf Ruby on rails} backend.
+
+			\item Created and designed an app for syncing address book photos,
+                using {\bf Facebook API}, {\bf Ruby on rails} backend.
+
 		\end{itemize}
+
 	\item Power Media, 2008, {\bf Linux system administrator} internship, 3 months.
-		\begin{itemize}
-			\item Ruby scripting, log parsing, linux workstation and network management.
-		\end{itemize}
+	    \begin{itemize}
+
+		\item Created a linux ISO, that logged the workstation hardware to the destined email address upon startup
+
+		\item Wrote a ruby script that visualized the progress of Bacula backups in ASCII art
+
+	    \end{itemize}
 \end{itemize}
 
 \section*{Education}
@@ -131,19 +147,20 @@
 \end{itemize}
 
 \section*{Skills}
+
 \begin{itemize}
 	\item Objective-C, Haskell, Python, C and I'm able to learn new programming languages fast.
 	\item Knowledge of Cocoa[Touch], GCD, iOS and OS X HIG, AppleScript basics.
 	\item Knowledge of algorithms, data structures, databases and networking.
-	\item Linux/Unix command line tools and scripting, network and Linux administration.
-	\item Contributed small patches to open source projects, like: xxxterm, jumanji, rust;\\
+    \item Linux/Unix command line tools (vim, git) and scripting, network and Linux administration.
+	\item Contributed small patches to open source projects: xxxterm, jumanji, rust;\\
 		 haskell libraries: alex, imgurder, derive, Safe, XMonad.Util.Paste
 \end{itemize}
 
 \section*{Personal}
 
 \begin{itemize}
-	\item Interested in compilers, static code analysis, computational complexity and Linux operating system.
+	\item Interested in compilers, static code analysis, computational complexity and Linux.
 \end{itemize}
 
 \bigskip
@@ -151,8 +168,7 @@
 % Footer
 \begin{center}
   \begin{footnotesize}
-    Last updated: \today \\
-    \href{\footerlink}{\texttt{\footerlink}}
+    Last updated: \today \hfill \href{\footerlink}{\texttt{\footerlink}}
   \end{footnotesize}
 \end{center}
 

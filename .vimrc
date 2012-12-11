@@ -65,7 +65,8 @@ autocmd Filetype cpp      set tabstop=8|set shiftwidth=8|compiler clang|set make
 autocmd FileType python   set tabstop=4|set shiftwidth=4|set expandtab|set sts=4
 autocmd FileType ruby     set tabstop=2|set shiftwidth=2|set expandtab|set sts=2|compiler ruby
 autocmd FileType ocaml    set tabstop=4|set shiftwidth=4|set expandtab|set sts=4
-autocmd FileType haskell  set tabstop=4|set shiftwidth=4|set expandtab|set sts=4|compiler ghc
+autocmd Bufenter *.tex    set tabstop=4|set shiftwidth=4|set expandtab|set sts=4
+"autocmd FileType haskell  set tabstop=4|set shiftwidth=4|set expandtab|set sts=4|compiler ghc
 autocmd Bufenter *.cabal  set tabstop=4|set shiftwidth=4|set expandtab|set sts=4
 
 filetype plugin on
