@@ -3,7 +3,7 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
        , fgColor = "grey"
        , position = TopW L 96
        , commands = [ Run StdinReader
-       	            , Run Cpu [] 10
+       	            , Run MultiCpu ["-t", "Cpu: <total0>% <total1>%"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
                     , Run Date "%a %d/%m/%y %H:%M:%S" "date" 10
 		    , Run Com "timeout 15 mailcheck || echo" [] "mail" 3000
@@ -13,5 +13,5 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
 		    ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ <fc=red>%mail%</fc> <fc=white>%cpu%</fc> <fc=gray>%memory%</fc> <fc=white>(%battery%)</fc> <fc=gray>%hostname%</fc> <fc=white>%date%</fc> <fc=gray>%ips%</fc>"
+       , template = "%StdinReader% }{ <fc=red>%mail%</fc> <fc=white>%multicpu%</fc> <fc=gray>%memory%</fc> <fc=white>(%battery%)</fc> <fc=gray>%hostname%</fc> <fc=white>%date%</fc> <fc=gray>%ips%</fc>"
        }

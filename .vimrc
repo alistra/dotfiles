@@ -54,7 +54,7 @@ noremap <leader>s :set spell!<CR>
 "let g:clang_complete_copen = 1
 "let g:clang_periodic_quickfix = 1
 
-let g:haddock_browser = "xxxterm"
+let g:haddock_browser = "google-chrome"
 
 set wildmode=list:longest
 set wildmenu
@@ -66,7 +66,7 @@ autocmd FileType python   set tabstop=4|set shiftwidth=4|set expandtab|set sts=4
 autocmd FileType ruby     set tabstop=2|set shiftwidth=2|set expandtab|set sts=2|compiler ruby
 autocmd FileType ocaml    set tabstop=4|set shiftwidth=4|set expandtab|set sts=4
 autocmd Bufenter *.tex    set tabstop=4|set shiftwidth=4|set expandtab|set sts=4
-"autocmd FileType haskell  set tabstop=4|set shiftwidth=4|set expandtab|set sts=4|compiler ghc
+autocmd FileType haskell  set tabstop=4|set shiftwidth=4|set expandtab|set sts=4
 autocmd Bufenter *.cabal  set tabstop=4|set shiftwidth=4|set expandtab|set sts=4
 
 filetype plugin on

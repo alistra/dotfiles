@@ -22,7 +22,6 @@
 
 % Replace this with a link to your CV if you like, or set it empty
 % (as in \def\footerlink{}) to remove the link in the footer:
-\def\footerlink{http://alistra.ath.cx/cv.pdf}
 
 % The following metadata will show up in the PDF properties
 \hypersetup{
@@ -88,7 +87,7 @@
 \section*{Employment}
 
 \begin{itemize}
-    \item MorrisCooke, 2012, {\bf iOS developer} 1 month, current.
+    \item \href{http://www.morriscooke.com}{MorrisCooke}, 2012, {\bf iOS developer} 1 month, current.
 		\begin{itemize}
 
             \item Ported Organizer+ to the new {\bf iPhone 5 resolution} and {\bf iOS 6}
@@ -102,26 +101,23 @@
 
 		\end{itemize}
 
-	\item Intres, 2012, {\bf iOS and OS X developer} 10 months.
+    \item \href{http://intres.com.pl}{Intres}, 2012, {\bf iOS and OS X developer} 10 months.
 		\begin{itemize}
-            \item StoreQ - Web-based file hosting service
+            \item \href{http://storeq.com}{StoreQ} - Web-based file hosting service
                 \begin{itemize}
                     \item Created and designed the apps for both iOS and OS X
-                    \item The iOS app provided a read-only access to the files, due to sandboxing;\\
-                        the OS X app had a bidirectional synchronization system for the stored files
-                    \item Frameworks used: SOAP backend using {\bf sudzc.com}, {\bf fmdb} for SQLite,
-                        {\bf Sparkle} for OS X updates,\\ {\bf CDEvents} for filesystem events,
-                        {\bf Growl} for OS X notifications
+                    \item Patched a bug in the {\bf SudzC} library involving too small integer types being generated for the WSDL type
+                    \item Frameworks used: {\bf fmdb}, {\bf Sparkle}, {\bf CDEvents}, {\bf Growl}
                 \end{itemize}
 
-            \item Added {\bf iAd} and {\bf AdMob} frameworks to dGuide
+            \item Added {\bf iAd} and {\bf AdMob} frameworks to \href{http://dguide.pl}{dGuide}
 
-            \item Optimized the amount of data dGuide downloads upon startup (from 20MB down to 100KB),
+            \item Optimized the amount of data \href{http://dguide.pl}{dGuide} downloads upon startup (from 20MB down to 100KB),\\
                 required modifying the {\bf Django} backend
 
     \end{itemize}
 
-	\item Synthcomm, 2010, {\bf iPhone developer} internship, 2 months.
+    \item \href{http://www.linkedin.com/company/synthcomm-sp.-z-o.o.}{Synthcomm}, 2010, {\bf iPhone developer} internship, 2 months.
 		\begin{itemize}
 
 			\item Created and designed an app for syncing address book photos,
@@ -129,7 +125,7 @@
 
 		\end{itemize}
 
-	\item Power Media, 2008, {\bf Linux system administrator} internship, 3 months.
+    \item \href{http://power.com.pl}{Power Media}, 2008, {\bf Linux system administrator} internship, 3 months.
 	    \begin{itemize}
 
 		\item Created a linux ISO, that logged the workstation hardware to the destined email address upon startup
@@ -137,6 +133,12 @@
 		\item Wrote a ruby script that visualized the progress of Bacula backups in ASCII art
 
 	    \end{itemize}
+\end{itemize}
+
+\section*{Projects}
+\begin{itemize}
+    \item imgur-directory-listing - a photoblog, that uploads the pictures to \href{http://imgur.com}{imgur},
+        designed for slow upload connections,\\ initially written in {\bf Ruby on Rails}, rewritten in {\bf Yesod}.
 \end{itemize}
 
 \section*{Education}
@@ -155,11 +157,6 @@
     \item Linux/Unix command line tools (vim, git) and scripting, network and Linux administration.
 	\item Contributed small patches to open source projects: xxxterm, jumanji, rust;\\
 		 haskell libraries: alex, imgurder, derive, Safe, XMonad.Util.Paste
-\end{itemize}
-
-\section*{Personal}
-
-\begin{itemize}
 	\item Interested in compilers, static code analysis, computational complexity and Linux.
 \end{itemize}
 
@@ -168,7 +165,7 @@
 % Footer
 \begin{center}
   \begin{footnotesize}
-    Last updated: \today \hfill \href{\footerlink}{\texttt{\footerlink}}
+    Last updated: \today \hfill \href{http://alistra.ath.cx/cv.pdf}{\texttt{http://alistra.ath.cx/cv.pdf}}
   \end{footnotesize}
 \end{center}
 
