@@ -29,6 +29,7 @@ else
 fi
 alias du='du -h'
 alias df='df -h'
+alias gdb='gdb -silent'
 alias ex='rlwrap ex'
 alias ocaml='rlwrap ocaml'
 alias qiv='qiv -tm'

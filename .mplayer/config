@@ -9,3 +9,6 @@ softvol=yes
 softvol-max=800
 volstep=1
 heartbeat-cmd="xscreensaver-command -deactivate > /dev/null"
+cache = 65536
+cache-min = 0
+cache-seek-min = 25.0
