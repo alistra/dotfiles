@@ -23,3 +23,5 @@
 	tool = meld
 [include]
 	path = .gitconfig.personal
+[github]
+	user = alistra
