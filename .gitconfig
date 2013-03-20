@@ -7,7 +7,7 @@
 	editor = vim
 	pager = cat
 [merge]
-	tool = meld
+	tool = kdiff3
 [alias]
 	c = commit -va
 	l = log -p
@@ -20,10 +20,13 @@
 [cola]
 	fontdiff = Droid Sans Mono Dotted,11,-1,5,50,0,0,0,0,0
 [diff]
-	tool = meld
+	tool = kdiff3
+	mnemonicprefix = true
 [include]
 	path = .gitconfig.personal
 [github]
 	user = alistra
 [push]
 	default = simple
+[branch]
+	autosetupmerge = true
