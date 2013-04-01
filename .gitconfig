@@ -8,6 +8,7 @@
 	pager = cat
 [merge]
 	tool = kdiff3
+	conflictstyle = diff3
 [alias]
 	c = commit -va
 	l = log -p
