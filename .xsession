@@ -16,7 +16,6 @@ xmodmap ~/.Xmodmap &
 xsetroot -cursor_name left_ptr &
 
 xscreensaver -no-splash &
-urxvtd &
 autocutsel -s PRIMARY &
 autocutsel -s CLIPBOARD &
 hoogle server -p 12345 &

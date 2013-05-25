@@ -5,7 +5,7 @@ urxvt*scrollBar: false
 urxvt*font: xft:DejaVu Sans Mono:pixelsize=15:antialias=false
 urxvt*transparent: yes
 urxvt.cursorBlink: false
-urxvt.saveLines: 65535
+urxvt.saveLines: 655350
 urxvt.perl-ext-common: default,matcher
 urxvt.urlLauncher: google-chrome
 urxvt.matcher.button: 2
