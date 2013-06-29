@@ -42,6 +42,8 @@ setopt share_history
 setopt complete_in_word
 setopt list_packed
 setopt noequals
+setopt noclobber
+setopt no_hup
 #}}}
 #{{{ Completion
 zmodload  zsh/complist
