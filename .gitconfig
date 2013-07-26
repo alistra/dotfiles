@@ -23,6 +23,7 @@
 [diff]
 	tool = kdiff3
 	mnemonicprefix = true
+	algorithm = patience
 [include]
 	path = .gitconfig.personal
 [github]

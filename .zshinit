@@ -20,6 +20,6 @@ then
 	unset VIMFILE
 elif [ "$ZSHINIT" = "irc" ]
 then
-	ssh -t spock 'ZSHINIT=irc zsh'
+	irssi
 fi
 unset ZSHINIT
