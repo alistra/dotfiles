@@ -11,11 +11,13 @@ set dictionary+=/usr/share/dict/*
 set diffopt=filler
 set diffopt+=icase
 set diffopt+=iwhite
+set directory-=.                                             " don't store swapfiles in the current directory
 set encoding=utf-8
 set foldmethod=marker
 set guioptions-=T
 set ignorecase
 set incsearch
+set laststatus=2
 set modeline
 set nohls
 set number
@@ -79,7 +81,6 @@ if v:version > 701
   autocmd Syntax * call matchadd('ExtraWhitespace', '\s\+$')
 endif
 
-set laststatus=2
 set statusline=%f
 set statusline+=%m
 set statusline+=%r
