@@ -26,7 +26,7 @@ import Control.Monad
 import Control.Arrow hiding ((|||), (<+>))
 
 myTerminal :: String
-myTerminal          = "TMUX= urxvt -e tmux"
+myTerminal          = "TMUX= xterm -e tmux"
 
 myBrowser :: String
 myBrowser           = "google-chrome"
@@ -119,8 +119,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
     where
         tmuxAttachSession tc s = io $ if any (isPrefixOf s) tc
-                then spawn ("urxvt -e tmux attach -t " ++ s)
-                else spawn ("urxvt -e tmux new-session -s " ++ s)
+                then spawn ("xterm -e tmux attach -t " ++ s)
+                else spawn ("xterm -e tmux new-session -s " ++ s)
 
         tmuxCompletion = do
             (_, stdout, _, _) <- runInteractiveCommand "tmux-init 1>/dev/null; tmux list-sessions|cut -f1 -d:"

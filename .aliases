@@ -38,7 +38,6 @@ alias gist='gist -o -p'
 alias xpdf='xpdf -fullscreen'
 
 alias i='tmux attach -t irc'
-alias t='transmission-remote 10.0.0.2'
 alias scpresume="rsync --partial --progress --rsh=ssh"
 alias du1='du --max-depth=1'
 alias fresh='ls -lrt'
@@ -169,3 +168,4 @@ ghc()
 	fi
 }
 #}}}
+source .aliases.local

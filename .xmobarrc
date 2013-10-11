@@ -8,7 +8,7 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
                     , Run Date "%a %d/%m/%y %H:%M:%S" "date" 10
 		    , Run Com "timeout 15 mailcheck || echo" [] "mail" 3000
 		    , Run Com "hostname" [] "hostname" 360000 
-		    , Run CommandReader "/usr/local/bin/ips-printer" "ips"
+		    , Run CommandReader "/usr/local/bin/ips" "ips"
 		    , Run Com "acpitool | cut -d ' ' -f 12 | egrep -v '^$' | sed -e 's/available//' || echo \"charged\"" [] "battery" 100
 		    ]
        , sepChar = "%"

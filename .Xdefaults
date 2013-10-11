@@ -14,3 +14,20 @@ urxvt.termName: rxvt
 urxvt.scrollTtyOutput: false
 urxvt.scrollWithBuffer: true
 urxvt.scrollTtyKeypress: true
+
+xterm*background: black
+xterm*foreground: white
+xterm*scrollBar: false
+
+xterm*faceName: xft:DejaVu Sans Mono:pixelsize=15:antialias=false
+xterm*transparent: yes
+xterm.cursorBlink: false
+xterm.saveLines: 655350
+xterm.perl-ext-common: default,matcher
+xterm.urlLauncher: google-chrome
+xterm.matcher.button: 2
+xterm.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
+xterm.scrollTtyOutput: false
+xterm.scrollWithBuffer: true
+xterm.scrollTtyKeypress: true
+XTerm*metaSendsEscape: true
